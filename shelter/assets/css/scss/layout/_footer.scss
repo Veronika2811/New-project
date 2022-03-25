@@ -1,0 +1,170 @@
+.footer {
+  background: $bgGradient;
+}
+
+.footer__container {
+  @include flex($align: flex-start, $justify: space-between);
+  padding: 40px 40px 0 40px;
+
+  @media (max-width: $tablet) {
+    @include flex();
+    flex-direction: column;
+    gap: 65px;
+    padding: 30px 64px 0 64px;
+  }
+
+  @media (max-width: $mobile) {
+    gap: 40px;
+  }
+}
+
+.footer__content {
+  @include flex($align: flex-start, $justify: space-between);
+  gap: 160px;
+  padding-top: 17px;
+
+  @media (max-width: $tablet) {
+    @include flex();
+    gap: 60px;
+    padding: 0;
+  }
+
+  @media (max-width: $mobile) {
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 41px;
+  }
+}
+
+.contacts {
+  @include flex($align: flex-start, $justify: flex-start);
+  flex-direction: column;
+  width: 279px;
+  gap: 39px;
+
+  .title {
+    color: $white;
+  }
+
+  @media screen and (max-width: $mobile) {
+    flex-wrap: wrap;
+    @include flex();
+
+    .title {
+      line-height: 32px;
+    }
+
+  }
+}
+
+.contacts__item {
+  @include flex();
+  flex-direction: row;
+  gap: 20px;
+  height: 32px;
+}
+
+.image__email {
+  margin-top: 4px;
+}
+
+.image__phone {
+  margin-top: 7px;
+
+  @media (max-width: $tablet) {
+    margin-top: 6px;
+  }
+}
+
+.contact {
+  color: $gold;
+  @include font($size: 20px, $spacing: 0.06em, $height: 23px);
+  align-items: center;
+}
+
+.phone {
+  padding-top: 2px;
+}
+
+.location {
+  width: 302px;
+  @include flex($align: flex-start);
+  flex-direction: column;
+  gap: 32px;
+
+  .title {
+    color: $white;
+  }
+
+  @media screen and (max-width: $mobile) {
+    gap: 40px;
+
+    .title {
+      width: 270px;
+      margin: 0 auto;
+    }
+
+  }
+}
+
+.location__item {
+  @include flex();
+  gap: 20px;
+
+  @media (max-width: $mobile) {
+    margin-left: 1.5px; //
+
+    &:last-child {
+      margin-top: -2.4px; //
+    }
+
+  }
+}
+
+.image__location {
+  margin-left: -1px; //
+
+  &:nth-child(1) {
+    margin-top: -2px; //
+  }
+  @media (max-width: $tablet) {
+
+    &:nth-child(1) {
+      margin-top: 0; //
+    }
+
+  }
+}
+
+.boston {
+  padding-top: 1px; //
+
+  @media (max-width: $tablet) {
+    padding-top: 0; //
+  }
+}
+
+.london {
+  padding-top: 2px; //
+
+  @media (max-width: $tablet) {
+    padding-top: 1px; //
+  }
+
+  @media (max-width: $mobile) {
+    padding-top: 2px; //
+  }
+}
+
+.london__item {
+  @media (max-width: $tablet) {
+    padding-top: 1px; //
+  }
+}
+
+.img__footer-puppy {
+  @media (max-width: $mobile) {
+    width: 260px;
+    height: 269px;
+  }
+}
