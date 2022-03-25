@@ -1,0 +1,126 @@
+.body {
+  font-family: $georgiaRegular;
+  background: $white;
+  margin: 0 auto;
+  color: $darkTitle;
+  max-width: $desktop;
+}
+
+/* pets */
+
+.pets__container {
+  background-color: $whiteGray;
+  padding: 0 40px;
+
+  .title {
+    color: $darkTitle;
+    @include font($size: 35px, $spacing: 0.06em, $height: 45.5px);
+    padding-bottom: 58px;
+    padding-top: 81px;
+    text-align: center;
+
+    @media (max-width: $tablet) {
+      padding-bottom: 28px;
+    }
+
+    @media (max-width: $mobile) {
+      @include font($size: 25px, $spacing: 0.06em, $height: 32px);
+      padding: 42px 0;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    padding: 0 10px;
+  }
+}
+
+.pets__cards {
+  @include flex();
+  flex-wrap: wrap;
+  gap: 40px;
+  padding-bottom: 60px;
+
+  @media (max-width: $tablet) {
+    padding-bottom: 40px;
+    margin: 0 auto;
+  }
+  @media (max-width: $mobile) {
+    gap: 30px;
+    padding-bottom: 42px;
+  }
+}
+
+.card {
+  height: 435px;
+  width: 270px;
+  background-color: $whiteDark;
+  border-radius: 9px;
+  @include flex($justify: flex-start);
+  flex-direction: column;
+  transition: $transition;
+
+  &:hover {
+    background-color: #fff;
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.1);
+    cursor: pointer;
+  }
+
+  &:nth-child(n + 5) {
+    margin-top: -10px;
+  }
+
+  @media (max-width: $tablet) {
+    &:nth-child(n + 7) {
+      display: none;
+    }
+
+    &:nth-child(n + 3) {
+      margin-top: -10px;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    &:nth-child(n + 3) {
+      margin-top: 0;
+    }
+    &:nth-child(n + 4) {
+      display: none;
+    }
+  }
+}
+
+.img__card {
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+}
+
+.pets__name {
+  color: $darkTitle;
+  @include font($size: 20px, $spacing: 0.06em, $height: 23px);
+  padding: 30px 0;
+}
+
+.pets__navigation {
+  width: 340px;
+  height: 52px;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  gap: 20px;
+  padding-bottom: 153px;
+
+  @media (max-width: $tablet) {
+    padding-bottom: 128px;
+  }
+
+  @media (max-width: $mobile) {
+    gap: 10px;
+    width: 300px;
+    padding-bottom: 94px;
+  }
+}
+
+.number {
+  background-color: #fddcc4;
+  border: none;
+}

@@ -7,11 +7,11 @@ function toggleMenu() {
     burger.classList.toggle('open');
     menu.classList.toggle('open'); 
 
-    if (menu.classList.contains('open')) {
+    /*if (menu.classList.contains('open')) {
         logo.style.display = 'none';
     } else {
         logo.style.display = 'block';
-    }
+    }*/
 
 };
 

@@ -1,5 +1,9 @@
 .footer {
   background: $bgGradient;
+
+  .title {
+    @include font($size: 35px, $spacing: 0.06em, $height: 45px);
+  }
 }
 
 .footer__container {
@@ -46,12 +50,14 @@
     color: $white;
   }
 
-  @media screen and (max-width: $mobile) {
+  @media (max-width: $mobile) {
     flex-wrap: wrap;
     @include flex();
 
     .title {
       line-height: 32px;
+        @include font($size: 25px, $spacing: 0.06em, $height: 32px);
+      text-align: center
     }
 
   }
@@ -102,6 +108,8 @@
     .title {
       width: 270px;
       margin: 0 auto;
+      @include font($size: 25px, $spacing: 0.06em, $height: 32px);
+      text-align: center;
     }
 
   }

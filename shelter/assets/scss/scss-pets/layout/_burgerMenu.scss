@@ -1,0 +1,103 @@
+@media (max-width: $mobile) {
+    html, 
+    .body {
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    .header {
+        padding: 30px 53px 30px 10px;
+    }
+
+    .header__container {
+        @include flex($justify: space-between);
+    }
+
+    .burger {
+        display: block;
+        position: fixed;
+        height: 22px;
+        width: 30px;
+        right: 53px;
+        z-index: 3;
+        transition: $transition;
+
+        &:after,
+        &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            background-color: $gold;
+            transition: $transition;
+        }
+
+        &:after {
+            top: 0.5px;
+        }
+
+        &:before {
+            bottom: 0.5px;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .burger__logo {
+        display: block;
+        position: absolute;
+        top: 30px;
+        left: 10px;
+    }
+    
+    .burger__line {
+        position: absolute;
+        background-color: $gold;
+        width: 100%;
+        height: 2px;
+        top: 10px;
+        transition: $transition;
+    }
+    
+    .menu {
+        display: block;
+        position: fixed;
+        background-color: $white;
+        right: -100%;
+        width: 320px;
+        top: 0;
+        height: 100vh;
+        z-index: 2;
+        padding-top: 115px;
+        @include flex ($align: flex-start);
+        overflow-x: hidden;
+        transition: all 1s ease-in-out;
+    }
+    
+    .menu__list {
+        width: 243px;
+        height: 327px;
+        @include flex ();
+        flex-wrap: wrap;
+        z-index: 3;
+        margin-top: 137px;
+        gap: 40px;
+    }
+    
+    .menu__item {
+        @include font($size: 32px, $spacing: 0, $height: 51px)
+    }
+
+    .burger.open {
+        transform: rotate(90deg); 
+    }
+
+    
+    .menu.open {
+        right: 0;
+        transition: all 1s ease-in-out;
+    }
+}

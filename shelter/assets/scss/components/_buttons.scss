@@ -6,6 +6,7 @@
   color: $dark;
   @include font($size: 17px, $spacing: 0.06em, $height: 22px);
   transition: $transition;
+  @include flex();
 
   &:hover {
     background-color: $hoverBtn;
@@ -19,12 +20,26 @@
   border: 2px solid $gold;
   border-radius: 100%;
   transition: $transition;
+  background-color: transparent;
+  @include flex();
 
   &:hover {
     background-color: $hoverBtn;
     border: none;
     cursor: pointer;
   }
+
+  &:disabled {
+    color: $gray;
+    border: 2px solid $gray;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.number {
+  background-color: $hoverBtn;
+  border: none;
 }
 
 @media (max-width: $mobile) {

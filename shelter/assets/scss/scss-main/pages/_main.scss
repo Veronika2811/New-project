@@ -1,6 +1,10 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .body {
   font-family: $georgiaRegular;
-  background: $gray;
+  background: $white;
   margin: 0 auto;
   color: $white;
   max-width: $desktop;
