@@ -1,0 +1,162 @@
+.popup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #000;
+  display: none;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(41, 41, 41, 0.6);
+}
+
+.popup__window {
+  width: 942px;
+  height: 552px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @media (max-width: $tablet) {
+    width: 672px;
+    height: 402px;
+  }
+
+  @media (max-width: $mobile) {
+    width: 270px;
+    height: 393px;
+  }
+}
+
+.btn__position {
+  @include flex($justify: flex-end);
+}
+
+.btn__close {
+  border: 2px solid $gold;
+  width: 52px;
+  height: 52px;
+  border-radius: 100%;
+  @include flex();
+  transition: $transition;
+
+  &:hover {
+    background-color: $hoverBtn;
+    cursor: pointer;
+  }
+}
+
+.img__popup {
+  width: 500px;
+  height: 500px;
+  margin-right: 29px;
+  border-radius: 11px;
+
+  @media (max-width: $tablet) {
+    width: 350px;
+    height: 350px;
+    margin-right: 11px;
+  }
+  @media (max-width: $mobile) {
+    display: none;
+  }
+}
+
+.popup__content {
+  @include flex($align: flex-start, $justify: flex-start);
+  border-radius: 10px;
+  background-color: $whiteDark;
+  width: 900px;
+
+  @media (max-width: $tablet) {
+    width: 630px;
+  }
+
+  @media (max-width: $mobile) {
+    width: 240px;
+  }
+}
+
+.popup__content-text {
+  width: 351px;
+  padding-top: 50px;
+
+  @media (max-width: $tablet) {
+    width: 260px;
+    padding-top: 10px;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 10px;
+  }
+}
+
+.popup__title {
+  @include font($size: 35px, $spacing: 0.06em, $height: 45px);
+  padding-bottom: 10px;
+
+  @media (max-width: $mobile) {
+    text-align: center;
+  }
+}
+
+.popup__subtitle {
+  @include font($size: 20px, $spacing: 0.06em, $height: 23px);
+
+  @media (max-width: $mobile) {
+    text-align: center;
+  }
+}
+
+.popup__description {
+  @include font($size: 15px, $spacing: 0.06em, $height: 17px);
+  padding: 40px 0;
+
+  @media (max-width: $tablet) {
+    @include font($size: 13px, $spacing: 0.06em, $height: 14px);
+    padding: 20px 0;
+    width: 261px;
+  }
+
+  @media (max-width: $mobile) {
+    width: 220px;
+    text-align: justify;
+  }
+}
+
+.pets__attribute {
+  @include flex($align: flex-start);
+  flex-direction: column;
+  gap: 11px;
+  padding-left: 15px;
+
+  p {
+    position: relative;
+    @include font($size: 15px, $spacing: 0.06em, $height: 17px);
+  }
+
+  p:before {
+    content: "";
+    position: absolute;
+    top: -webkit-calc(50% - 2px);
+    top: calc(50% - 2px);
+    left: -15px;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+    background-color: $gold;
+  }
+
+  @media (max-width: $tablet) {
+    gap: 5px;
+  }
+}
+
+.strong {
+  font-family: "Georgia-Bold";
+}
