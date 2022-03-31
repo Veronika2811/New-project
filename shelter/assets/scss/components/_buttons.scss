@@ -43,15 +43,16 @@
 }
 
 @media (max-width: $mobile) {
-  .slider.left {
+  .slider.left,
+  .slider.right {
     order: 1;
-    margin-left: 58px;
+    margin: 0 30px;
   }
-
+/*
   .slider.right {
     order: 1;
     margin-right: 58px;
-  }
+  }*/
 }
 
 .btn__secondary {
@@ -63,7 +64,6 @@
   color: $dark;
   @include font($size: 17px, $spacing: 0.06em, $height: 22px);
   transition: $transition;
-  padding-top: 1px; //
 
   &:hover {
     background-color: $hoverBtn;
@@ -81,6 +81,8 @@
   @include font($size: 20px, $spacing: 0.06em, $height: 23px);
   gap: 15px;
   transition: $transition;
+  margin-top: -2px;
+  padding-left: 2px;
 
   &:hover {
     background-color: $hoverBtn;
@@ -90,7 +92,7 @@
   @media (max-width: $mobile) {
     width: 281px;
     @include font($size: 15px, $spacing: 0.06em, $height: 17px);
-    margin-top: 1px;
+    margin-top: 0.5px;
     margin-left: -1px;
   }
 }

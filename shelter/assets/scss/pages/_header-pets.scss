@@ -1,5 +1,8 @@
 .header {
-  padding: 60px 40px;
+  position: sticky;
+  top: 0;
+  padding: 30px 40px;
+  background-color: $white;
 
   @media (max-width: $tablet) {
     padding: 30px;
@@ -17,13 +20,13 @@
 }
 
 .logo__title {
-  color: $gold;
   @include font($size: 32px, $height: 35.2px);
-  padding-bottom: 10px;
+  padding-bottom: 9px;
+  padding-top: 1px;
 }
 
 .logo__subtitle {
-  color: $white;
+  color: $dark;
   font-family: $arialRegular;
   @include font($size: 13px, $spacing: 0.1em, $height: 15px);
   padding-left: 4px;
@@ -42,18 +45,18 @@
 
 .menu__item {
   position: relative;
-  color: $gray;
+  color: $darkTitle;
   font-family: $arialRegular;
   @include font($size: 15px, $spacing: 0, $height: 24px);
   transition: $transition;
 
   &:hover {
-    color: $whiteDark;
+    color: $dark;
   }
 }
 
 .active {
-  color: $whiteDark;
+  color: $dark;
   cursor: default;
 
   &:after {

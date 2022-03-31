@@ -13,12 +13,13 @@
   @media (max-width: $tablet) {
     @include flex();
     flex-direction: column;
-    gap: 65px;
-    padding: 30px 64px 0 64px;
+    gap: 64px;
+    padding: 31px 64px 0 64px;
   }
 
   @media (max-width: $mobile) {
     gap: 40px;
+    padding: 30px 10px 0 10px;
   }
 }
 
@@ -36,7 +37,7 @@
   @media (max-width: $mobile) {
     flex-wrap: wrap;
     flex-direction: column;
-    gap: 41px;
+    gap: 40px;
   }
 }
 
@@ -44,7 +45,8 @@
   @include flex($align: flex-start, $justify: flex-start);
   flex-direction: column;
   width: 279px;
-  gap: 39px;
+  //height: 234px;
+  gap: 40px;
 
   .title {
     color: $white;
@@ -72,13 +74,24 @@
 
 .image__email {
   margin-top: 4px;
+
+  @media (max-width: $tablet) {
+  margin-top: 2px;
+  }
+  @media (max-width: $mobile) {
+  margin-top: 5px;
+}
 }
 
 .image__phone {
-  margin-top: 7px;
+  margin-top: 4px;
 
   @media (max-width: $tablet) {
-    margin-top: 6px;
+    margin-top: 3px;
+  }
+
+  @media (max-width: $mobile) {
+    margin-top: 5px;
   }
 }
 
@@ -86,10 +99,16 @@
   color: $gold;
   @include font($size: 20px, $spacing: 0.06em, $height: 23px);
   align-items: center;
-}
 
-.phone {
-  padding-top: 2px;
+  @media (max-width: $tablet) {
+   // margin-top: 1px;
+    margin-left: 0.5px;
+  }
+
+  @media (max-width: $mobile) {
+    margin-top: 1px;
+    margin-left: 0px;
+  }
 }
 
 .location {
@@ -103,7 +122,7 @@
   }
 
   @media screen and (max-width: $mobile) {
-    gap: 40px;
+    gap: 41px;
 
     .title {
       width: 270px;
@@ -132,9 +151,9 @@
 .image__location {
   margin-left: -1px; //
 
-  &:nth-child(1) {
+  /*&:nth-child(1) {
     margin-top: -2px; //
-  }
+  }*/
   @media (max-width: $tablet) {
 
     &:nth-child(1) {
@@ -150,10 +169,13 @@
   @media (max-width: $tablet) {
     padding-top: 0; //
   }
+  @media (max-width: $mobile) {
+  margin-top: -1px;
+}
 }
 
 .london {
-  padding-top: 2px; //
+  //padding-top: 2px; //
 
   @media (max-width: $tablet) {
     padding-top: 1px; //
@@ -165,9 +187,14 @@
 }
 
 .london__item {
+  padding-top: 1px;
   @media (max-width: $tablet) {
     padding-top: 1px; //
   }
+  @media (max-width: $mobile) {
+    margin-top: -1px;
+  }
+
 }
 
 .img__footer-puppy {

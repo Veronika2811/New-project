@@ -1,0 +1,14 @@
+@import 'base/normalize';
+@import 'base/mixin';
+@import 'base/fonts';
+@import 'base/variables';
+
+// Pages
+@import 'pages/header-pets';
+@import 'pages/burgerMenu-pets';
+@import 'pages/pets-container';
+@import 'pages/footer';
+
+// Components
+@import 'components/buttons';
+@import 'components/modalWindow';
