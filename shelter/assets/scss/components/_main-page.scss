@@ -1,11 +1,25 @@
 .main-page__wrapper {
   @include flex($align: flex-start, $justify: space-between);
   padding: 0 40px 0 40px;
+
+  @include media-tablet {
+    flex-wrap: wrap;
+    @include flex();
+}
 }
 
 .main__page-content {
   padding-top: 164px;
   width: 460px;
+
+  @include media-tablet {
+    padding-top: 30px;
+
+    .button {
+      justify-content: center;
+    }
+}
+
 }
 
 .main__page-title {
