@@ -75,7 +75,7 @@
 .pets__cards--container {
   @include flex($justify: space-between);
   flex-wrap: wrap;
-  row-gap: 30px;
+  row-gap: 31px;
   padding-top: 59px;
   padding-bottom: 58px;
 }
