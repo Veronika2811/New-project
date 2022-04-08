@@ -1,0 +1,90 @@
+.footer__wrapper {
+  background: $bg-gradient;
+  padding: 40px 40px 0 39px;
+  @include flex($align: flex-start, $justify: space-between);
+  flex-direction: row;
+
+  .title {
+    color: $color-light;
+    padding-left: 1px;
+  }
+}
+
+.footer__content {
+  @include flex($align: flex-start, $justify: space-between);
+  gap: 159px;
+  padding-top: 17px;
+}
+
+.contacts {
+  @include flex($align: flex-start, $justify: flex-start);
+  flex-direction: column;
+  width: 280px;
+  gap: 40px;
+}
+
+.contacts__item {
+  @include flex();
+  flex-direction: row;
+  gap: 20px;
+  height: 32px;
+  padding-top: 2px;
+  padding-left: 1px;
+}
+
+.contact {
+  color: $color-primary;
+  @include font($size: 20px, $spacing: 0.06em, $height: 23px);
+  align-items: center;
+  padding-bottom: 2px;
+}
+
+.image__email,
+.image__phone {
+  padding-bottom: 3px;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  max-width: 312px;
+}
+
+.location__item {
+  @include flex($justify: flex-start);
+  gap: 20px;
+  padding-top: 33px;
+
+  &:last-child {
+    padding-top: 30px;
+  }
+}
+
+.image__location {
+  padding-bottom: 3px;
+}
+
+// Pets pages
+
+.contacts__pets {
+  gap: 39px;
+}
+
+.contacts__item--last {
+  padding-top: 3px;
+}
+
+.image__email-pets {
+  padding-bottom: 3px;
+}
+.image__phone-pets {
+  padding-bottom: 0;
+}
+
+.location__item--first {
+  padding-top: 32px;
+}
+
+.location__item--last {
+  margin-top: 1px;
+}

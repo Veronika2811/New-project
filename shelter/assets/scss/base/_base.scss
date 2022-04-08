@@ -1,0 +1,30 @@
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+.body {
+  font-family: $georgia;
+  max-width: $desktop;
+  margin: auto;
+}
+
+.background__main-page {
+  background: $bg-gradient;
+}
+
+h1 {
+  @include font($size: 3.2rem, $height: 3.5rem);
+}
+
+h2 {
+  @include font($size: 4.4rem, $height: 5.4rem);
+}
+
+h3 {
+  @include font($size: 3.5rem, $height: 4.5rem);
+}
+
+.title {
+  color: $color-title;
+}
