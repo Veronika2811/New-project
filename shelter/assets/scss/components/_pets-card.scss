@@ -36,6 +36,12 @@
   }
 }
 
+.main__last--card {
+  @include media-tablet {
+    display: none;
+}
+}
+
 .card__content {
   padding-top: 27px;
   padding-bottom: 30px;
