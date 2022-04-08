@@ -1,0 +1,17 @@
+.header__wrapper {
+  padding: 60px 40px;
+  @include flex($justify: space-between);
+}
+
+.header__navigation {
+  margin-left: auto;
+}
+
+// Page pets
+
+.header__wrapper--pets {
+  padding: 30px 40px;
+  background-color: $color-light;
+  position: sticky;
+  top: 0;
+}

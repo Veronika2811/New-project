@@ -1,0 +1,80 @@
+.pets__wrapper {
+  background-color: $color-background-pets;
+
+  .title {
+    text-align: center;
+    padding-top: 1px;
+    padding-left: 2px;
+  }
+}
+
+.pets__slider {
+  @include flex($justify: space-between);
+  padding-top: 59px;
+  padding-bottom: 60px;
+}
+
+.pets__cards {
+  @include flex();
+  gap: 90px;
+}
+
+.card {
+  background-color: $color-text-main-hover;
+  border-radius: 9px;
+  @extend %transition;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    background-color: $color-light;
+
+    .button {
+      background-color: $color-button-hover;
+      border: 2px solid $color-button-hover;
+    }
+  }
+}
+
+.card__content {
+  padding-top: 27px;
+  padding-bottom: 30px;
+  text-align: center;
+  padding-left: 1px;
+}
+
+.pets__name {
+  @include font($size: 2rem, $height: 2.3rem);
+  color: $color-title;
+  padding-bottom: 30px;
+}
+
+.pets__button-position {
+  text-align: center;
+  margin-left: 1px;
+}
+
+// Pets page
+
+.pets__container--wrapper {
+  background-color: $color-background-pets;
+
+  .title {
+    text-align: center;
+    padding-top: 1px;
+    padding-left: 2px;
+  }
+}
+
+.pets__cards--container {
+  @include flex($justify: space-between);
+  flex-wrap: wrap;
+  row-gap: 31px;
+  padding-top: 59px;
+  padding-bottom: 58px;
+}
+
+.pets__navigation {
+  @include flex();
+  gap: 20px;
+}
