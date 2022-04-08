@@ -625,7 +625,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  row-gap: 30px;
+  row-gap: 31px;
   padding-top: 59px;
   padding-bottom: 58px;
 }
@@ -841,6 +841,10 @@ ul {
 
 .location__item--last {
   margin-top: 1px;
+}
+
+.footer__wrapper--pets {
+  padding-top: 40px;
 }
 
 /*# sourceMappingURL=style.css.map */
