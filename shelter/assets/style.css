@@ -585,7 +585,7 @@ ul {
 
 @media (max-width: 1279px) {
   .main__last--card {
-    display: none;
+    flex-direction: column;
   }
 }
 
@@ -682,14 +682,15 @@ ul {
 }
 
 .img__donation-dog {
-  margin-top: 11px;
+  margin-top: 12px;
 }
 
 .donation__content {
   width: 380px;
+  margin-right: 1px;
 }
 .donation__content .title {
-  padding-top: 1px;
+  padding-top: 2px;
 }
 
 .donation__subtitle {
@@ -742,7 +743,7 @@ ul {
 
 .footer__wrapper {
   background: url("./images/backgrounds/gradient.png"), radial-gradient(60% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
-  padding: 40px 40px 0 39px;
+  padding: 41px 40px 0 39px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

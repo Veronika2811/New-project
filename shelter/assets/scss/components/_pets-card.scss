@@ -38,7 +38,7 @@
 
 .main__last--card {
   @include media-tablet {
-    display: none;
+    flex-direction: column;
 }
 }
 
