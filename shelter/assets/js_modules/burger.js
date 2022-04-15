@@ -1,33 +1,28 @@
 const burger = document.querySelector('.burger');
-const menu = document.querySelector('.menu'); 
-const menuItems = [...document.querySelectorAll('.menu__item')]
-const logo = document.querySelector('.logo'); 
+const menu = document.querySelector('.header__navigation'); 
+const menuItems = [...document.querySelectorAll('.navigation__link')]
+const logo = document.querySelector('.main__logo'); 
 const mask = document.querySelector('.mask-content');
 const burgerLogo = document.querySelector('.burger__logo');
+const head = document.querySelector('.header__wrapper');
+
 
 
 function toggleMenu() {
     burger.classList.toggle('open');
     menu.classList.toggle('open');
     mask.classList.toggle('open');
-
-    if (menu.classList.contains('open')) {
-        logo.style.display = 'none';
-    
-    } else {
-        logo.style.display = 'block';
-    }
+    head.classList.toggle('open');
+    logo.classList.toggle('open');
 };
 
 
 function burgerSubscribe() {
     burger.addEventListener('click', toggleMenu);
     mask.addEventListener("click", toggleMenu);
-    burgerLogo.addEventListener("click", toggleMenu);
     
     menuItems.forEach(el => {
         el.addEventListener('click', toggleMenu)
-        logo.style.display = 'block';
     });
 }
 
