@@ -4,18 +4,50 @@
 
   @include media-tablet {
     padding: 30px;
-}
+  }
+
+  @include media-mobile {
+    padding: 30px 53px 0 10px;
+  }
 }
 
 .header__navigation {
   margin-left: auto;
+
+  @include media-mobile {
+    display: block;
+    position: fixed;
+    right: -100%;
+    width: 320px;
+    top: 0;
+    height: 100vh;
+    z-index: 2;
+    padding-top: 115px;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    transition: all 1s ease-in-out;
+
+    &--dark {
+      background-color: $color-button-text;
+    }
+
+    &--light {
+      background-color: $color-light;
+    }
+  }
 }
 
 // Page pets
 
-.header__wrapper--pets {
-  padding: 30px 40px;
+.header {
   background-color: $color-light;
+}
+
+.header__wrapper--pets {
+  padding-top: 30px;
+  padding-bottom: 30px;
   position: sticky;
   top: 0;
+  background-color: $color-light;
 }
