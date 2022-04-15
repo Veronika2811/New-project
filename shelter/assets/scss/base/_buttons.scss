@@ -50,10 +50,18 @@
 
 .left {
   background: url("./icons/btn-left.svg") no-repeat 50%;
+  @include media-mobile {
+    order: 1;
+    margin-left: 58px;
+  }
 }
 
 .right {
   background: url("./icons/btn-right.svg") no-repeat 50%;
+  @include media-mobile {
+    order: 1;
+    margin-right: 58px;
+  }
 }
 
 .button__credit-card {
@@ -61,18 +69,26 @@
   margin-bottom: 20px;
   background-color: $color-primary;
   border-radius: 9px;
-  width: 350px;
+  max-width: 350px;
   @include flex;
   gap: 15px;
 
   &:hover {
     background-color: $color-button-hover;
   }
+
+  @include media-mobile {
+    gap: 14px;
+  }
 }
 
 .credit-card__number {
   @include font($size: 2rem, $height: 2.3rem);
   color: $color-title;
+
+  @include media-mobile {
+    @include font($size: 1.5rem, $height: 1.7rem);
+  }
 }
 
 // Pets pages

@@ -1,12 +1,21 @@
 html {
   font-size: 10px;
   scroll-behavior: smooth;
+  overflow-y: overlay;
 }
 
 .body {
   font-family: $georgia;
   max-width: $desktop;
   margin: auto;
+}
+
+@include media-mobile {
+  html,
+  .body {
+    position: relative;
+    overflow-x: hidden;
+  }
 }
 
 .background__main-page {
@@ -23,8 +32,16 @@ h2 {
 
 h3 {
   @include font($size: 3.5rem, $height: 4.5rem);
+
+  @include media-mobile {
+    @include font($size: 2.5rem, $height: 3.2rem);
+  }
 }
 
 .title {
   color: $color-title;
+
+  @include media-mobile {
+    text-align: center;
+  }
 }

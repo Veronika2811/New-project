@@ -1,10 +1,15 @@
-.help__wrapper {
+.help {
   background-color: $color-light;
 
   .title {
     text-align: center;
     padding-top: 1px;
     padding-left: 2px;
+
+    @include media-mobile {
+      padding-top: 2px;
+      padding-left: 1px;
+    }
   }
 }
 
@@ -15,16 +20,50 @@
   flex-wrap: wrap;
   row-gap: 55px;
   flex-direction: row;
+
+  @include media-tablet {
+    padding: 59px 0 0 0;
+    column-gap: 40px;
+    justify-content: center;
+  }
+
+  @include media-mobile {
+    padding-top: 42px;
+    column-gap: 31px;
+    row-gap: 30px;
+    margin: 0 5px;
+    justify-content: flex-start;
+  }
 }
 
 .help__icons-group {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include media-tablet {
+    width: 27%;
+  }
+  
+  @include media-mobile {
+    width: 44.5%;
+  }
 }
 
 .help__icon-name {
   @include font($size: 2rem, $height: 2.3rem);
   padding-top: 30px;
   color: $color-title;
+
+  @include media-mobile {
+    @include font($size: 1.5rem, $height: 1.7rem);
+    padding-top: 20px;
+  }
+}
+
+.icon__help {
+  @include media-mobile {
+    width: 50px;
+    height: 50px;
+  }
 }
