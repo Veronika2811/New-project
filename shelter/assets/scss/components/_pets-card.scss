@@ -103,6 +103,7 @@
 
 .pets__container {
   background-color: $color-background-pets;
+  // margin-top: 120px;
 
   .title {
     text-align: center;
@@ -120,6 +121,7 @@
 
   @include media-mobile {
     padding: 41px 10px 42px 10px;
+    margin-top: 120px;
   }
 }
 
@@ -136,6 +138,8 @@
     padding-bottom: 37px;
     column-gap: 40px;
     row-gap: 31px;
+    max-width: 580px;
+    margin: 0 auto;
   }
 
   @include media-mobile {

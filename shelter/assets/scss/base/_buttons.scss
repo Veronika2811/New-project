@@ -71,15 +71,15 @@
   border-radius: 9px;
   max-width: 350px;
   @include flex;
-  gap: 15px;
+  // gap: 15px;
 
   &:hover {
     background-color: $color-button-hover;
   }
 
-  @include media-mobile {
-    gap: 14px;
-  }
+  // @include media-mobile {
+  //   // gap: 14px;
+  // }
 }
 
 .credit-card__number {
