@@ -22,9 +22,16 @@
 .img__donation-dog {
   margin-top: 11px;
 
+  @include media-tablet {
+    margin-top: 12px;
+    margin-right: 2px;
+  }
+
   @include media-mobile {
     width: 260px;
     height: 135.2px;
+    margin-top: 11px;
+    margin-right: 0;
   }
 }
 
@@ -68,5 +75,12 @@
 
   @include media-mobile {
     text-align: justify;
+  }
+}
+
+.img__sredit-card {
+  margin-right: 15px;
+  @include media-mobile {
+    margin-right: 13px;
   }
 }

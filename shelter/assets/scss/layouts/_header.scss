@@ -42,12 +42,24 @@
 
 .header {
   background-color: $color-light;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header__pets {
+  position: sticky;
+  top: 0px;
+
+  @include media-mobile {
+    position: fixed;
+    left: 0;
+    right: 0;
+  }
 }
 
 .header__wrapper--pets {
   padding-top: 30px;
   padding-bottom: 30px;
-  position: sticky;
-  top: 0;
   background-color: $color-light;
+  
 }

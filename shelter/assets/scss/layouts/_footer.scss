@@ -17,7 +17,7 @@
     @include flex();
     flex-direction: column;
     flex-wrap: wrap;
-    padding: 32px 31px 0 40px;
+    padding: 31px 31px 0 40px;
     gap: 62px;
   }
 
@@ -167,5 +167,11 @@
 
   @include media-tablet {
     padding-top: 30px;
+  }
+}
+
+.img__footer-puppy--pets {
+  @include media-mobile {
+    margin-top: -1px;
   }
 }
