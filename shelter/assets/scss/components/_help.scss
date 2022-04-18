@@ -29,10 +29,10 @@
 
   @include media-mobile {
     padding-top: 42px;
-    column-gap: 31px;
-    row-gap: 30px;
-    margin: 0 5px;
+    gap: 30px 20px;
+    margin: auto;
     justify-content: flex-start;
+    max-width: 300px;
   }
 }
 
@@ -46,7 +46,7 @@
   }
   
   @include media-mobile {
-    width: 44.5%;
+    width: 140px;
   }
 }
 

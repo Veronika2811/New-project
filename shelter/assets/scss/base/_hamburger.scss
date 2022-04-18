@@ -1,7 +1,8 @@
 @include media-mobile {
     .burger {
       display: block;
-      position: fixed;
+      //position: fixed;
+      position: absolute;
       height: 22px;
       width: 30px;
       right: 53px;
