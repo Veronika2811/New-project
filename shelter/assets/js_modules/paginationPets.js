@@ -1,4 +1,35 @@
-import { arrPets } from "./arrPets.js";
+const arrPets = []; // Массив животных
+
+async function getData() {
+  const res = await fetch("../../assets/js_modules/pets.json");
+  const data = await res.json();
+  showData(data);
+}
+
+function showData(data) {
+  for (let i = 0; i < data.length; i++) {
+    arrPets.push(data[i]);
+  }
+  randomPets(arrPets)
+  first()
+}
+
+document.addEventListener("DOMContentLoaded", getData);
+
+function first() {
+  const petsCards = document.querySelectorAll(".card");
+  const newPetsArr = randomPets(petsCards);
+    petsCards.forEach((item, index) => {
+      item.childNodes[1].src = newPetsArr[index].img;
+      item.childNodes[1].alt = newPetsArr[index].name;
+      item.childNodes[3].textContent = newPetsArr[index].name;
+    });
+}
+
+function randomPets(current) {
+  const shuffle = arrPets.sort(() => Math.random() - 0.5);
+  return shuffle;
+}
 
 const firstPagePets = document.querySelector(".first__page");
 const prevPage = document.querySelector(".previous__page");
@@ -17,7 +48,7 @@ function numberOfCardsPerPage() {
   if (widthDocument >= 1280) {
     numberOfCards = 8;
   }
-  if (widthDocument >= 768) {
+  if (widthDocument >= 768 && widthDocument < 1280) {
     numberOfCards = 6;
   }
   if (widthDocument < 768) {
@@ -25,8 +56,10 @@ function numberOfCardsPerPage() {
   }
 }
 
+numberOfCardsPerPage()
+
 function randomIndex(min, max) {
-  return Math.floor(Math.random() * (max - min + 1));
+  return Math.floor(Math.random() * (max - min + 1)) + min; 
 }
 
 function amountPets(amount) {
@@ -39,6 +72,8 @@ function amountPets(amount) {
       visibleArray.push(number);
       amountPets(amount);
     }
+  } else {
+    return;
   }
 }
 
@@ -68,6 +103,7 @@ function pagination(number) {
       arrPets[generalArray[i + number * numberOfCards]].img;
   }
 }
+
 
 export function rightPage() {
   numberOfCardsPerPage();
@@ -122,6 +158,7 @@ function paginationSubscribe() {
   prevPage.addEventListener("click", leftPage);
   firstPagePets.addEventListener("click", firstPage);
   lastPageBtn.addEventListener("click", lastPage);
+
 }
 
 export default paginationSubscribe;
