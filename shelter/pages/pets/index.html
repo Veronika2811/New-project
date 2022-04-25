@@ -49,10 +49,7 @@
         </nav>
         <div class="burger burger__dark">
           <span class="burger__line burger__line--dark"></span>
-      </div>
-        <!-- <span class="header__hamburger hamburger">
-          <span class="hamburger__line"></span>
-        </span> -->
+        </div>
         <div class="mask-content"></div>
       </div>
     </header>
@@ -62,93 +59,101 @@
           Our friends who<br />are looking for a house
         </h3>
         <div class="pets__cards--container">
-          <div class="card">
+          <div class="card" data-pet="1">
             <img
               class="img__card"
               src="../../assets/images/pets-card/pets-katrine.png"
               alt="katrine">
-            <div class="card__content">
-              <p class="pets__name">Katrine</p>
-              <a class="button button--bordered">Learn more</a>
-            </div>
+            <p class="pets__name">Katrine</p>
+            <button class="button button--bordered">Learn more</button>
           </div>
-          <div class="card">
+          <div class="card"  data-pet="1">
             <img
               class="img__card"
               src="../../assets/images/pets-card/pets-jennifer.png"
               alt="jennifer">
-            <div class="card__content">
-              <p class="pets__name">Jennifer</p>
-              <a class="button button--bordered">Learn more</a>
-            </div>
+            <p class="pets__name">Jennifer</p>
+            <button class="button button--bordered">Learn more</button>
           </div>
-          <div class="card">
+          <div class="card"  data-pet="1">
             <img
               class="img__card"
               src="../../assets/images/pets-card/pets-woody.png"
               alt="woody">
-            <div class="card__content">
-              <p class="pets__name">Woody</p>
-              <a class="button button--bordered">Learn more</a>
-            </div>
+            <p class="pets__name">Woody</p>
+            <button class="button button--bordered">Learn more</button>
           </div>
-          <div class="card main__two--card">
+          <div class="card main__last--card"  data-pet="1">
             <img
               class="img__card"
               src="../../assets/images/pets-card/pets-sophia.jpg"
               alt="sophia">
-            <div class="card__content">
-              <p class="pets__name">Sophia</p>
-              <a class="button button--bordered">Learn more</a>
-            </div>
+            <p class="pets__name">Sophia</p>
+            <button class="button button--bordered">Learn more</button>
           </div>
-          <div class="card main__two--card">
+          <div class="card main__last--card"  data-pet="1">
             <img
               class="img__card"
               src="../../assets/images/pets-card/pets-timmy.png"
               alt="timmy">
-            <div class="card__content">
-              <p class="pets__name">Timmy</p>
-              <a class="button button--bordered">Learn more</a>
-            </div>
+            <p class="pets__name">Timmy</p>
+            <button class="button button--bordered">Learn more</button>
           </div>
-          <div class="card main__two--card">
+          <div class="card main__last--card"  data-pet="1">
             <img
               class="img__card"
               src="../../assets/images/pets-card/pets-charly.jpg"
               alt="charly">
-            <div class="card__content">
-              <p class="pets__name">Charly</p>
-              <a class="button button--bordered">Learn more</a>
-            </div>
+            <p class="pets__name">Charly</p>
+            <button class="button button--bordered">Learn more</button>
           </div>
-          <div class="card main__last--card">
+          <div class="card main__two--card"  data-pet="1">
             <img
               class="img__card"
               src="../../assets/images/pets-card/pets-scarlet.png"
               alt="scarlet">
-            <div class="card__content">
-              <p class="pets__name">Scarlett</p>
-              <a class="button button--bordered">Learn more</a>
-            </div>
+            <p class="pets__name">Scarlett</p>
+            <button class="button button--bordered">Learn more</button>
           </div>
-          <div class="card main__last--card">
+          <div class="card main__two--card"  data-pet="1">
             <img
               class="img__card"
               src="../../assets/images/pets-card/pets-freddie.png"
               alt="freddie">
-            <div class="card__content">
-              <p class="pets__name">Freddie</p>
-              <a class="button button--bordered">Learn more</a>
+            <p class="pets__name">Freddie</p>
+            <button class="button button--bordered">Learn more</button>
+          </div>
+        </div>
+        <div class="modal">
+          <div class="overlay"></div>
+          <div class="modal__window">
+            <div class="modal__content">
+              <img class="img__modal" src="../../assets/images/pets-card/pets-jennifer.png" alt="jennifer">
+              <div class="modal__content-text">
+                <h3 class="modal__name">Jennifer</h3>
+                <span class="modal__type">Dog - </span><span class="modal__breed">Labrador</span>
+                <p class="modal__description">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</з>
+                <div class="pets__attribute">
+                  <p class="attribute"><span class="strong">Age: </span><span class="age">2 month</span></p>
+                  <p class="attribute"><span class="strong">Inoculations: </span><span class="inoculations">none</span></p>
+                  <p class="attribute"><span class="strong">Diseases: </span><span class="diseases">none</span></p>
+                  <p class="attribute"><span class="strong">Parasites: </span><span class="parasites">none</span></p>
+                </div>
+              </div>
+              <div class="btn__position">
+                <button class="slider btn__close">
+                  <img src="../../assets/icons/close-btn.svg" alt="close">
+                </button>
+              </div>
             </div>
           </div>
         </div>
         <div class="pets__navigation">
-          <button class="slider slider__navigation" disabled>&lt;&lt;</button>
-          <button class="slider slider__navigation" disabled>&lt;</button>
+          <button class="slider slider__navigation first__page" disabled>&lt;&lt;</button>
+          <button class="slider slider__navigation previous__page" disabled>&lt;</button>
           <div class="slider slider__number">1</div>
-          <button class="slider slider__navigation">&gt;</button>
-          <button class="slider slider__navigation">&gt;&gt;</button>
+          <button class="slider slider__navigation next__page">&gt;</button>
+          <button class="slider slider__navigation last__page">&gt;&gt;</button>
         </div>
       </div>
     </main>
@@ -196,7 +201,7 @@
                 src="../../assets/icons/icon-marker.svg"
                 alt="geo"
                 class="image__location"/>
-                <h4 class="contact">18 South Park, London</h4>
+              <h4 class="contact">18 South Park, London</h4>
             </a>
           </div>
         </div>

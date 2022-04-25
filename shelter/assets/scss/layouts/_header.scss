@@ -16,7 +16,6 @@
 
   @include media-mobile {
     display: block;
-    position: fixed;
     right: -100%;
     width: 320px;
     top: 0;
@@ -30,10 +29,12 @@
 
     &--dark {
       background-color: $color-button-text;
+      position: absolute;
     }
 
     &--light {
       background-color: $color-light;
+      position: fixed;
     }
   }
 }
