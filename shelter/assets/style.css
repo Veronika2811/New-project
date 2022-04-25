@@ -61,7 +61,6 @@
 html {
   font-size: 10px;
   scroll-behavior: smooth;
-  overflow-y: overlay;
 }
 
 .body {
@@ -77,6 +76,11 @@ html {
     overflow-x: hidden;
   }
 }
+.body.open {
+  height: 100vh;
+  overflow: hidden;
+}
+
 .background__main-page {
   background: url("./images/backgrounds/gradient.png"), radial-gradient(60% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 }
@@ -365,7 +369,7 @@ ul {
     width: 30px;
     right: 53px;
     z-index: 3;
-    transition: all 0.3s ease-out;
+    transition: all 1s ease-in-out;
   }
   .burger:hover {
     cursor: pointer;
@@ -484,6 +488,10 @@ ul {
   padding: 13px 43px;
   background-color: transparent;
   border: 2px solid #f1cdb3;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .slider {
@@ -570,6 +578,187 @@ ul {
 .slider__number {
   background-color: #f1cdb3;
   pointer-events: none;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #000000;
+  display: none;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(41, 41, 41, 0.6);
+  display: none;
+  position: fixed;
+}
+.overlay:hover {
+  cursor: pointer;
+}
+
+.modal__window {
+  width: 900px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+.modal__window:hover {
+  cursor: pointer;
+}
+@media (max-width: 1279px) {
+  .modal__window {
+    width: 630px;
+  }
+}
+@media (max-width: 767px) {
+  .modal__window {
+    width: 240px;
+  }
+}
+
+.btn__position {
+  margin-right: -42px;
+  margin-top: -55px;
+  z-index: -1;
+}
+.btn__position:hover {
+  cursor: pointer;
+}
+.btn__position:hover .slider {
+  background-color: #fddcc4;
+  border: 2px solid #fddcc4;
+}
+@media (max-width: 767px) {
+  .btn__position {
+    margin-top: -65px;
+  }
+}
+
+.img__modal {
+  width: 500px;
+  margin-right: 29px;
+  border-radius: 11px;
+}
+@media (max-width: 1279px) {
+  .img__modal {
+    width: 350px;
+    margin-right: 11px;
+  }
+}
+@media (max-width: 767px) {
+  .img__modal {
+    display: none;
+  }
+}
+
+.modal__content {
+  display: flex;
+  border-radius: 10px;
+  background-color: #fafafa;
+  color: #000000;
+  cursor: default;
+}
+@media (max-width: 767px) {
+  .modal__content {
+    padding: 10px;
+  }
+}
+
+.modal__content-text {
+  width: 351px;
+  padding-top: 50px;
+}
+@media (max-width: 1279px) {
+  .modal__content-text {
+    padding-top: 10px;
+    width: 260px;
+  }
+}
+@media (max-width: 767px) {
+  .modal__content-text {
+    padding-top: 0;
+    width: 220px;
+  }
+}
+
+.modal__name {
+  padding-bottom: 10px;
+}
+@media (max-width: 767px) {
+  .modal__name {
+    text-align: center;
+  }
+}
+
+.modal__type,
+.modal__breed {
+  font-family: "Georgia";
+  font-size: 2rem;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  line-height: 2.3rem;
+}
+
+.modal__description {
+  font-family: "Georgia";
+  font-size: 1.5rem;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  line-height: 1.7rem;
+  padding: 40px 0;
+}
+@media (max-width: 1279px) {
+  .modal__description {
+    font-family: "Georgia";
+    font-size: 1.3rem;
+    font-weight: normal;
+    letter-spacing: 0.06em;
+    line-height: 1.4rem;
+    padding: 20px 0;
+  }
+}
+
+.pets__attribute {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding-left: 15px;
+}
+@media (max-width: 1279px) {
+  .pets__attribute {
+    gap: 5px;
+  }
+}
+
+.attribute {
+  position: relative;
+  font-family: "Georgia";
+  font-size: 1.5rem;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  line-height: 1.7rem;
+}
+.attribute::before {
+  content: "";
+  position: absolute;
+  top: -webkit-calc(50% - 2px);
+  top: calc(50% - 2px);
+  left: -15px;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background-color: #f1cdb3;
+}
+
+.strong {
+  font-weight: bold;
 }
 
 .navigation {
@@ -856,17 +1045,15 @@ ul {
 }
 
 @media (max-width: 1279px) {
-  .main__last--card {
-    display: none;
-  }
-}
-
-@media (max-width: 767px) {
   .main__two--card {
     display: none;
   }
 }
-
+@media (max-width: 767px) {
+  .main__last--card {
+    display: none;
+  }
+}
 @media (max-width: 767px) {
   .img__card {
     width: 270px;
@@ -888,7 +1075,8 @@ ul {
   letter-spacing: 0.06em;
   line-height: 2.3rem;
   color: #545454;
-  padding-bottom: 30px;
+  padding: 30px 0;
+  text-align: center;
 }
 
 .pets__button-position {
@@ -960,6 +1148,99 @@ ul {
   .pets__navigation {
     gap: 10px;
   }
+}
+
+.carousel-wrapper {
+  width: 990px;
+  overflow: hidden;
+}
+@media (max-width: 1279px) {
+  .carousel-wrapper {
+    width: 580px;
+  }
+}
+@media (max-width: 767px) {
+  .carousel-wrapper {
+    width: 270px;
+  }
+}
+
+.carousel {
+  display: flex;
+  position: relative;
+  left: -990px;
+}
+@media (max-width: 1279px) {
+  .carousel {
+    left: -580px;
+  }
+}
+@media (max-width: 767px) {
+  .carousel {
+    left: -270px;
+  }
+}
+
+@keyframes move-right {
+  from {
+    left: -990px;
+  }
+  to {
+    left: -1980px;
+  }
+}
+@keyframes move-left {
+  from {
+    left: -990px;
+  }
+  to {
+    left: 0px;
+  }
+}
+@media (max-width: 1279px) {
+  @keyframes move-right {
+    from {
+      left: -580px;
+    }
+    to {
+      left: -1160px;
+    }
+  }
+  @keyframes move-left {
+    from {
+      left: -580px;
+    }
+    to {
+      left: 0px;
+    }
+  }
+}
+@media (max-width: 767px) {
+  @keyframes move-right {
+    from {
+      left: -270px;
+    }
+    to {
+      left: -540px;
+    }
+  }
+  @keyframes move-left {
+    from {
+      left: -270px;
+    }
+    to {
+      left: 0px;
+    }
+  }
+}
+.transition-right {
+  animation-name: move-right;
+  animation-duration: 2s;
+}
+
+.transition-left {
+  animation-name: move-left;
+  animation-duration: 2s;
 }
 
 .help {
@@ -1194,7 +1475,6 @@ ul {
 @media (max-width: 767px) {
   .header__navigation {
     display: block;
-    position: fixed;
     right: -100%;
     width: 320px;
     top: 0;
@@ -1208,9 +1488,11 @@ ul {
   }
   .header__navigation--dark {
     background-color: #292929;
+    position: absolute;
   }
   .header__navigation--light {
     background-color: #ffffff;
+    position: fixed;
   }
 }
 

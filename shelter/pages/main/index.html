@@ -107,35 +107,85 @@
         </h3>
         <div class="pets__slider">
           <div class="slider left"></div>
-          <div class="pets__cards">
-            <div class="card">
-              <img
-                class="img__card"
-                src="../../assets/images/pets-card/pets-katrine.png"
-                alt="katrine"/>
-              <div class="card__content">
-                <p class="pets__name">Katrine</p>
-                <a class="button button--bordered">Learn more</a>
+          <div class="carousel-wrapper">
+            <div class="carousel">
+              <div class="pets__cards pets__cards--left">
+                <div class="card">
+                  <img
+                    class="img__card"
+                    src="../../assets/images/pets-card/pets-freddie.png"
+                    alt="freddie"/>
+                  <p class="pets__name">Freddie</p>
+                  <button class="button button--bordered">Learn more</button>
+                </div>
+                <div class="card main__two--card">
+                  <img
+                    class="img__card"
+                    src="../../assets/images/pets-card/pets-charly.jpg"
+                    alt="charly"/>
+                  <p class="pets__name">Charly</p>
+                  <button class="button button--bordered">Learn more</button>
+                </div>
+                <div class="card main__last--card">
+                  <img
+                    class="img__card"
+                    src="../../assets/images/pets-card/pets-timmy.png"
+                    alt="timmy"/>
+                  <p class="pets__name">Timmy</p>
+                  <button class="button button--bordered">Learn more</button>
+                </div>
               </div>
-            </div>
-            <div class="card main__two--card">
-              <img
-                class="img__card"
-                src="../../assets/images/pets-card/pets-jennifer.png"
-                alt="jennifer"/>
-              <div class="card__content">
-                <p class="pets__name">Jennifer</p>
-                <a class="button button--bordered">Learn more</a>
+              <div class="pets__cards pets__cards--active"> 
+                <div class="card">
+                  <img
+                    class="img__card"
+                    src="../../assets/images/pets-card/pets-katrine.png"
+                    alt="katrine"/>
+                  <p class="pets__name">Katrine</p>
+                  <button class="button button--bordered">Learn more</button>
+                </div>
+                <div class="card main__two--card">
+                  <img
+                    class="img__card"
+                    src="../../assets/images/pets-card/pets-jennifer.png"
+                    alt="jennifer"/>
+                  <p class="pets__name">Jennifer</p>
+                  <button class="button button--bordered">Learn more</button>
+                </div>
+                <div class="card main__last--card">
+                  <img
+                    class="img__card"
+                    src="../../assets/images/pets-card/pets-woody.png"
+                    alt="woody"/>
+                  <p class="pets__name">Woody</p>
+                  <button class="button button--bordered">Learn more</button>
+                </div>
               </div>
-            </div>
-            <div class="card main__last--card">
-              <img
-                class="img__card"
-                src="../../assets/images/pets-card/pets-woody.png"
-                alt="woody"/>
-              <div class="card__content">
-                <p class="pets__name">Woody</p>
-                <a class="button button--bordered">Learn more</a>
+              <div class="pets__cards pets__cards--right">
+                <div class="card">
+                  <img
+                    class="img__card"
+                    src="../../assets/images/pets-card/pets-sophia.jpg"
+                    alt="sophia"/>
+                  <p class="pets__name">Sophia</p>
+                  <button class="button button--bordered">Learn more</button>
+                </div>
+                <div class="card main__two--card">
+                  <img
+                    class="img__card"
+                    src="../../assets/images/pets-card/pets-scarlet.png"
+                    alt="scarlett"/>
+                  <p class="pets__name">Scarlett</p>
+                  <button class="button button--bordered">Learn more</button>
+                </div>
+                <div class="card main__last--card">
+                  <img
+                    class="img__card"
+                    src="../../assets/images/pets-card/pets-timmy.png"
+                    alt="timmy"/>
+                  <p class="pets__name">Timmy</p>
+                  <button class="button button--bordered">Learn more</button>
+                </div>
               </div>
             </div>
           </div>
@@ -143,6 +193,30 @@
         </div>
         <div class="pets__button-position">
           <a class="button button--color" href="../pets/index.html">Get to know the rest</a>
+        </div>
+      </div>
+      <div class="modal">
+        <div class="overlay"></div>
+        <div class="modal__window">
+          <div class="modal__content">
+            <img class="img__modal" src="../../assets/images/pets-card/pets-jennifer.png" alt="jennifer">
+            <div class="modal__content-text">
+              <h3 class="modal__name">Jennifer</h3>
+              <span class="modal__type">Dog - </span><span class="modal__breed">Labrador</span>
+              <p class="modal__description">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</з>
+              <div class="pets__attribute">
+                <p class="attribute"><span class="strong">Age: </span><span class="age">2 month</span></p>
+                <p class="attribute"><span class="strong">Inoculations: </span><span class="inoculations">none</span></p>
+                <p class="attribute"><span class="strong">Diseases: </span><span class="diseases">none</span></p>
+                <p class="attribute"><span class="strong">Parasites: </span><span class="parasites">none</span></p>
+              </div>
+            </div>
+            <div class="btn__position">
+              <button class="slider btn__close">
+                <img src="../../assets/icons/close-btn.svg" alt="close">
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

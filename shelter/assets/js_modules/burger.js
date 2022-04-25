@@ -3,8 +3,8 @@ const menu = document.querySelector('.header__navigation');
 const menuItems = [...document.querySelectorAll('.navigation__link')]
 const logo = document.querySelector('.main__logo'); 
 const mask = document.querySelector('.mask-content');
-const burgerLogo = document.querySelector('.burger__logo');
 const head = document.querySelector('.header__wrapper');
+const body = document.querySelector('.body');
 
 
 
@@ -14,6 +14,7 @@ function toggleMenu() {
     mask.classList.toggle('open');
     head.classList.toggle('open');
     logo.classList.toggle('open');
+    body.classList.toggle('open');
 };
 
 
