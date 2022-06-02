@@ -1,1 +1,1 @@
-[Self-introduction](https://www.youtube.com/watch?v=LmWupsVHhSU)
+[Self-introduction, Veronika Smiayun](https://www.youtube.com/watch?v=LmWupsVHhSU)
