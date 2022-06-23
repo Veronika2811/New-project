@@ -17,18 +17,18 @@ class Sources {
     }
 
     drawCategories(category: string, data: ISources[]): void {
-        const categorySources = document.querySelector('.category-news');
-        const fragmentCategory = document.createDocumentFragment();
+        const categorySources = <HTMLDivElement>document.querySelector('.category-news');
+        const fragmentCategory = <DocumentFragment>document.createDocumentFragment();
         const categoryNewsTemp: HTMLTemplateElement | null = document.querySelector('#categoryNewsTemp');
-        const sourceClone = <HTMLElement>categoryNewsTemp?.content.cloneNode(true);
-        const categoryNewsLabel = <HTMLElement>sourceClone.querySelector('.category-news__label');
+        const sourceClone = <DocumentFragment>categoryNewsTemp?.content.cloneNode(true);
+        const categoryNewsLabel = <HTMLLabelElement>sourceClone.querySelector('.category-news__label');
         categoryNewsLabel ? (categoryNewsLabel.textContent = category) : null;
         const objSources = this.objSources;
         const drawAlphabet = this.drawSources.bind(this);
         const categoryCheckbox: HTMLInputElement | null = sourceClone.querySelector('.category-news__checkbox');
         categoryCheckbox
             ? categoryCheckbox.addEventListener('input', function () {
-                  const alphabetNews = document.querySelector('.sources');
+                  const alphabetNews = <HTMLDivElement>document.querySelector('.sources');
                   alphabetNews ? (alphabetNews.textContent = '') : null;
                   const arrayByCategory: ISources[] = data.filter((item: ISources) => item.category === category);
                   if (this.checked) {
@@ -52,10 +52,10 @@ class Sources {
         items.forEach((item: ISources): void => {
             const fragment = document.createDocumentFragment();
             const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
-            const sourceClone = <HTMLElement>sourceItemTemp?.content.cloneNode(true);
-            const sourceItemName = sourceClone.querySelector('.source__item-name');
+            const sourceClone = <DocumentFragment>sourceItemTemp?.content.cloneNode(true);
+            const sourceItemName = <HTMLSpanElement>sourceClone.querySelector('.source__item-name');
             sourceItemName ? (sourceItemName.textContent = item.name) : null;
-            const sourceItem = sourceClone.querySelector('.source__item');
+            const sourceItem = <HTMLDivElement>sourceClone.querySelector('.source__item');
             sourceItem ? sourceItem.setAttribute('data-source-id', item.id) : null;
             fragment.append(sourceClone);
             sources?.append(fragment);
