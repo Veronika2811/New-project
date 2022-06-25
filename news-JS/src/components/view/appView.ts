@@ -4,9 +4,9 @@ import { Articles, SourcesArray, GetNews, GetSources } from '../interface/interf
 
 
 export class AppView {
-    news: News;
+    public news: News;
 
-    sources: Sources;
+    public sources: Sources;
 
     constructor() {
         this.news = new News();

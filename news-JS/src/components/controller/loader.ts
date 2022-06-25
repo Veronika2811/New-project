@@ -1,9 +1,9 @@
 import { ErrorStatusCode, Callback } from '../interface/interface'
 
 class Loader {
-    baseLink: string;
+    public baseLink: string;
 
-    options: { [key: string]: string };
+    public options: { [key: string]: string };
 
     constructor(baseLink: string, options: { [key: string]: string }) {
         this.baseLink = baseLink;
