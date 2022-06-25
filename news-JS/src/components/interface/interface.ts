@@ -1,3 +1,8 @@
+export enum ErrorStatusCode {
+  Unauthorized = 401,
+  NotFound = 404,
+}
+
 export interface IArticles {
   author: string;
   content: string;
