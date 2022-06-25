@@ -41,3 +41,5 @@ export interface GetSources {
 }
 
 export type ObjectData = { [key: string]: SourcesArray[] };
+
+export type Callback<T> = (data: T) => void;

@@ -1,4 +1,4 @@
-import { ErrorStatusCode } from '../interface/interface'
+import { ErrorStatusCode, Callback } from '../interface/interface'
 
 class Loader {
     baseLink: string;
@@ -12,7 +12,7 @@ class Loader {
 
     getResp<T>(
         { endpoint, options }: { endpoint: string; options?: { [key: string]: string } },
-        callback: (data: T) => void = () => {
+        callback: Callback<T> = () => {
             console.error('No callback for GET response');
         }
     ): void {
@@ -43,7 +43,7 @@ class Loader {
     load<T>(
         method: string,
         endpoint: string,
-        callback: (data: T) => void,
+        callback: Callback<T>,
         options: { [key: string]: string } = {}
     ) {
         fetch(this.makeUrl(options, endpoint), { method })
