@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import './news.css';
-import { IArticles } from '../../interface/interface';
+import { Articles } from '../../interface/interface';
 
 class News {
-    draw(data: IArticles[]): void {
-        const news: IArticles[] = data.length >= 10 ? data.filter((_item: IArticles, idx: number) => idx < 10) : data;
+    draw(data: Articles[]): void {
+        const news: Articles[] = data.length >= 10 ? data.filter((_item: Articles, idx: number) => idx < 10) : data;
         
         const fragment = <DocumentFragment>document.createDocumentFragment();
         const newsItemTemp = <HTMLTemplateElement>document.querySelector('#newsItemTemp');
         
-        news.forEach((item: IArticles, idx: number) => {
+        news.forEach((item: Articles, idx: number) => {
             const newsClone = <DocumentFragment>newsItemTemp.content.cloneNode(true);
         
             if (idx % 2) (<HTMLDivElement>newsClone.querySelector('.news__item')).classList.add('alt');

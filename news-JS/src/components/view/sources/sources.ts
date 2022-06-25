@@ -1,5 +1,5 @@
 import './sources.css';
-import { ISources, ObjectData } from '../../interface/interface';
+import { SourcesArray, ObjectData } from '../../interface/interface';
 
 class Sources {
     private objSources: ObjectData;
@@ -8,15 +8,15 @@ class Sources {
         this.objSources = <ObjectData>{};
     }
 
-    draw(data: ISources[]) {
+    draw(data: SourcesArray[]) {
         const set: Set<string> = new Set();
-        data.forEach((item: ISources): void => {
+        data.forEach((item: SourcesArray): void => {
             set.add(item.category);
         });
         [...set].forEach((category) => this.drawCategories(category, data));
     }
 
-    drawCategories(category: string, data: ISources[]): void {
+    drawCategories(category: string, data: SourcesArray[]): void {
         const categorySources = <HTMLDivElement>document.querySelector('.category-news');
         const fragmentCategory = <DocumentFragment>document.createDocumentFragment();
         const categoryNewsTemp: HTMLTemplateElement | null = document.querySelector('#categoryNewsTemp');
@@ -30,7 +30,7 @@ class Sources {
             ? categoryCheckbox.addEventListener('input', function () {
                   const alphabetNews = <HTMLDivElement>document.querySelector('.sources');
                   alphabetNews ? (alphabetNews.textContent = '') : null;
-                  const arrayByCategory: ISources[] = data.filter((item: ISources) => item.category === category);
+                  const arrayByCategory: SourcesArray[] = data.filter((item: SourcesArray) => item.category === category);
                   if (this.checked) {
                       objSources[category] = arrayByCategory;
                   } else {
@@ -44,12 +44,12 @@ class Sources {
         categorySources?.append(fragmentCategory);
     }
 
-    drawSources(items: ISources[]): void {
+    drawSources(items: SourcesArray[]): void {
         const sources = document.querySelector('.sources');
         if (sources) {
             sources.textContent = '';
         }
-        items.forEach((item: ISources): void => {
+        items.forEach((item: SourcesArray): void => {
             const fragment = document.createDocumentFragment();
             const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
             const sourceClone = <DocumentFragment>sourceItemTemp?.content.cloneNode(true);

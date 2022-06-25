@@ -3,7 +3,7 @@ export enum ErrorStatusCode {
   NotFound = 404,
 }
 
-export interface IArticles {
+export interface Articles {
   author: string;
   content: string;
   description: string;
@@ -15,11 +15,11 @@ export interface IArticles {
 }
 
 export interface SourcesData {
-  name: string;
   id: string;
+  name: string;
 }
 
-export interface ISources {
+export interface SourcesArray {
   category: string;
   country: string;
   description: string;
@@ -29,15 +29,15 @@ export interface ISources {
   url: string;
 }
 
-export interface Inews {
+export interface GetNews {
   articles: [];
   status: string;
   totalResults: number;
 }
 
-export interface Isource {
-  sources: ISources[];
+export interface GetSources {
+  sources: SourcesArray[];
   status: string;
 }
 
-export type ObjectData = { [key: string]: ISources[] };
+export type ObjectData = { [key: string]: SourcesArray[] };
