@@ -13,12 +13,12 @@ export class AppView {
         this.sources = new Sources();
     }
 
-    drawNews(data: GetNews) {
+    drawNews(data: Partial<GetNews>) {
         const values: Articles[] = data?.articles ? data?.articles : [];
         this.news.draw(values);
     }
 
-    drawSources(data: GetSources) {
+    drawSources(data: Pick<GetSources, 'sources' | 'status'>) {
         const values: SourcesArray[] = data?.sources ? data?.sources : [];
         this.sources.draw(values);
     }

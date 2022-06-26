@@ -1,7 +1,7 @@
 import { ErrorStatusCode, Callback } from '../interface/interface'
 
 class Loader {
-    public baseLink: string;
+    readonly baseLink: string;
 
     public options: { [key: string]: string };
 
@@ -25,12 +25,12 @@ class Loader {
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }
-
+        
         return res;
     }
 
     makeUrl(options: { [key: string]: string }, endpoint: string): string {
-        const urlOptions: { [key: string]: string | number } = { ...this.options, ...options };
+        const urlOptions: { [key: string]: string } = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
         Object.keys(urlOptions).forEach((key) => {

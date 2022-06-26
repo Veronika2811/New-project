@@ -19,44 +19,43 @@ class Sources {
     drawCategories(category: string, data: SourcesArray[]): void {
         const categorySources = <HTMLDivElement>document.querySelector('.category-news');
         const fragmentCategory = <DocumentFragment>document.createDocumentFragment();
-        const categoryNewsTemp: HTMLTemplateElement | null = document.querySelector('#categoryNewsTemp');
+        const categoryNewsTemp: HTMLTemplateElement = document.querySelector('#categoryNewsTemp')!;
         const sourceClone = <DocumentFragment>categoryNewsTemp?.content.cloneNode(true);
         const categoryNewsLabel = <HTMLLabelElement>sourceClone.querySelector('.category-news__label');
-        categoryNewsLabel ? (categoryNewsLabel.textContent = category) : null;
+
+        categoryNewsLabel.textContent = category;
         const objSources = this.objSources;
         const drawAlphabet = this.drawSources.bind(this);
-        const categoryCheckbox: HTMLInputElement | null = sourceClone.querySelector('.category-news__checkbox');
-        categoryCheckbox
-            ? categoryCheckbox.addEventListener('input', function () {
-                  const alphabetNews = <HTMLDivElement>document.querySelector('.sources');
-                  alphabetNews ? (alphabetNews.textContent = '') : null;
-                  const arrayByCategory: SourcesArray[] = data.filter((item: SourcesArray) => item.category === category);
-                  if (this.checked) {
-                      objSources[category] = arrayByCategory;
-                  } else {
-                      delete objSources[category];
-                  }
-                  const arrNews = Object.values(objSources).flat(1);
-                  drawAlphabet(arrNews);
-              })
-            : null;
+        const categoryCheckbox: HTMLInputElement = sourceClone.querySelector('.category-news__checkbox')!;
+
+        categoryCheckbox.addEventListener('input', function () {
+            const alphabetNews = <HTMLDivElement>document.querySelector('.sources');
+            alphabetNews.textContent = '';
+            const arrayByCategory: SourcesArray[] = data.filter((item: SourcesArray) => item.category === category);
+            if (this.checked) {
+                objSources[category] = arrayByCategory;
+            } else {
+                delete objSources[category];
+            }
+            const arrNews = Object.values(objSources).flat(1);
+            drawAlphabet(arrNews);
+        });
+
         fragmentCategory.append(sourceClone);
         categorySources?.append(fragmentCategory);
     }
 
     drawSources(items: SourcesArray[]): void {
         const sources = document.querySelector('.sources');
-        if (sources) {
-            sources.textContent = '';
-        }
+        
         items.forEach((item: SourcesArray): void => {
             const fragment = document.createDocumentFragment();
-            const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
+            const sourceItemTemp: HTMLTemplateElement = document.querySelector('#sourceItemTemp')!;
             const sourceClone = <DocumentFragment>sourceItemTemp?.content.cloneNode(true);
             const sourceItemName = <HTMLSpanElement>sourceClone.querySelector('.source__item-name');
-            sourceItemName ? (sourceItemName.textContent = item.name) : null;
+            sourceItemName.textContent = item.name;
             const sourceItem = <HTMLDivElement>sourceClone.querySelector('.source__item');
-            sourceItem ? sourceItem.setAttribute('data-source-id', item.id) : null;
+            sourceItem.setAttribute('data-source-id', item.id);
             fragment.append(sourceClone);
             sources?.append(fragment);
         });
