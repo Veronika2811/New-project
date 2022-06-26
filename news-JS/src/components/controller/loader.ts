@@ -25,7 +25,7 @@ class Loader {
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }
-        
+
         return res;
     }
 
@@ -45,7 +45,7 @@ class Loader {
         endpoint: string,
         callback: Callback<T>,
         options: { [key: string]: string } = {}
-    ) {
+    ): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

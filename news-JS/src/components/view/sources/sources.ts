@@ -8,7 +8,7 @@ class Sources {
         this.objSources = <ObjectData>{};
     }
 
-    draw(data: SourcesArray[]) {
+    draw(data: SourcesArray[]): void {
         const set: Set<string> = new Set();
         data.forEach((item: SourcesArray): void => {
             set.add(item.category);
@@ -47,7 +47,7 @@ class Sources {
 
     drawSources(items: SourcesArray[]): void {
         const sources = document.querySelector('.sources');
-        
+
         items.forEach((item: SourcesArray): void => {
             const fragment = document.createDocumentFragment();
             const sourceItemTemp: HTMLTemplateElement = document.querySelector('#sourceItemTemp')!;
