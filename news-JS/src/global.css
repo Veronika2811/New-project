@@ -2,6 +2,10 @@ body {
     color: #fff;
     background: #4d4e4e;
     font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
 }
 
 main {
@@ -25,10 +29,11 @@ header h1::after {
 }
 
 footer {
+    max-width: 1920px;
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 footer .copyright {
     font-size: 14px;
@@ -43,4 +48,19 @@ footer .copyright a:hover {
 }
 footer .copyright:before {
     content: '©';
+}
+
+.footer__icon-rsschool {
+    width: 150px;
+}
+
+.footer__icon-git,
+.footer__icon-rsschool {
+    filter: invert(100%) sepia(0%) saturate(1393%) hue-rotate(157deg) brightness(115%) contrast(101%);
+    transition: 0.5s;
+}
+
+.footer__icon-git:hover,
+.footer__icon-rsschool:hover {
+    filter: invert(74%) sepia(53%) saturate(413%) hue-rotate(319deg) brightness(104%) contrast(102%);
 }
