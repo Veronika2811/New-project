@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link rel="shortcut icon" href="./assets/icon-70-512.ico">
+        <link rel="shortcut icon" href="./assets/icon-70-512.ico" />
         <title>NewsPortal</title>
     </head>
     <body>
@@ -17,20 +17,21 @@
             <div class="news"></div>
         </main>
         <footer>
-            <a href="https://github.com/Veronika2811" id="github">
-                <img class="footer__icon-git" src="./assets/Github_black.svg" alt="GitHub">
-            </a>
-            <p class="copyright">
-                Copyright <a href="https://newsapi.org">NewsAPI</a>
-            </p>
+            <div class="github">
+                <a href="https://github.com/Veronika2811" class="github">
+                    <span>© 2022</span>
+                    <img class="footer__icon-git" src="./assets/Github_black.svg" alt="GitHub" />
+                </a>
+            </div>
+            <p class="copyright">Copyright <a href="https://newsapi.org">NewsAPI</a></p>
             <a href="https://rs.school/js/">
-                <img class="footer__icon-rsschool" src="./assets/rs_school_js.svg" alt="RSSCHOOL">
+                <img class="footer__icon-rsschool" src="./assets/rs_school_js.svg" alt="RSSchool" />
             </a>
         </footer>
 
         <template id="categoryNewsTemp">
             <div class="category-news__item">
-                <input type="checkbox" class="category-news__checkbox">
+                <input type="checkbox" class="category-news__checkbox" />
                 <label class="category-news__label"></label>
             </div>
         </template>
@@ -60,6 +61,5 @@
                 </div>
             </div>
         </template>
-
     </body>
 </html>

@@ -29,8 +29,8 @@ header h1::after {
 }
 
 footer {
+    padding-top: 10px;
     max-width: 1920px;
-    height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -63,4 +63,19 @@ footer .copyright:before {
 .footer__icon-git:hover,
 .footer__icon-rsschool:hover {
     filter: invert(74%) sepia(53%) saturate(413%) hue-rotate(319deg) brightness(104%) contrast(102%);
+}
+
+.github {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+@media (max-width: 445px) {
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
