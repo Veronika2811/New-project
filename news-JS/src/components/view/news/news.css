@@ -164,3 +164,8 @@
         padding-left: 25px;
     }
 }
+
+.no-news {
+    text-align: center;
+    font-size: 50px;
+}
