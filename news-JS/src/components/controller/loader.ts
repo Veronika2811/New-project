@@ -1,4 +1,5 @@
-import { ErrorStatusCode, Callback } from '../interface/interface'
+/* eslint-disable no-console */
+import { ErrorStatusCode, Callback } from '../interface/interface';
 
 class Loader {
     readonly baseLink: string;
@@ -31,7 +32,7 @@ class Loader {
 
     makeUrl(options: { [key: string]: string }, endpoint: string): string {
         const urlOptions: { [key: string | number]: string } = { ...this.options, ...options };
-        let url = `${this.baseLink}${endpoint}?`;
+        let url: string = `${this.baseLink}${endpoint}?`;
 
         Object.keys(urlOptions).forEach((key) => {
             url += `${key}=${urlOptions[key]}&`;
@@ -40,12 +41,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load<T>(
-        method: string,
-        endpoint: string,
-        callback: Callback<T>,
-        options: { [key: string]: string } = {}
-    ): void {
+    load<T>(method: string, endpoint: string, callback: Callback<T>, options: { [key: string]: string } = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

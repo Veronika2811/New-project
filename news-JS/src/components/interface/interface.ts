@@ -1,43 +1,43 @@
 export enum ErrorStatusCode {
-  Unauthorized = 401,
-  NotFound = 404,
+    Unauthorized = 401,
+    NotFound = 404,
 }
 
 export interface Articles {
-  author: string;
-  content: string;
-  description: string;
-  publishedAt: string;
-  source: SourcesData;
-  title: string;
-  url: string;
-  urlToImage: string;
+    author: string;
+    content: string;
+    description: string;
+    publishedAt: string;
+    source: SourcesData;
+    title: string;
+    url: string;
+    urlToImage: string;
 }
 
 export interface SourcesData {
-  id: string;
-  name: string;
+    id: string;
+    name: string;
 }
 
 export interface SourcesArray {
-  category: string;
-  country: string;
-  description: string;
-  id: string;
-  language: string;
-  name: string;
-  url: string;
+    category: string;
+    country: string;
+    description: string;
+    id: string;
+    language: string;
+    name: string;
+    url: string;
 }
 
 export interface GetNews {
-  articles: [];
-  status: string;
-  totalResults: number;
+    articles: Articles[];
+    status: string;
+    totalResults: number;
 }
 
 export interface GetSources {
-  sources: SourcesArray[];
-  status: string;
+    sources: SourcesArray[];
+    status: string;
 }
 
 export type ObjectData = { [key: string]: SourcesArray[] };

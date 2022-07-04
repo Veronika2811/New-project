@@ -17,7 +17,7 @@ class AppController extends AppLoader {
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
-                const sourceId = target.getAttribute('data-source-id');
+                const sourceId = <string>target.getAttribute('data-source-id');
                 if (sourceId) {
                     if (newsContainer.getAttribute('data-source') !== sourceId) {
                         newsContainer.setAttribute('data-source', sourceId);
@@ -34,7 +34,7 @@ class AppController extends AppLoader {
                 }
                 return;
             }
-            target = <HTMLElement>target.parentNode!;
+            target = <HTMLElement>target.parentNode;
         }
     }
 }

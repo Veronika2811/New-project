@@ -1,12 +1,11 @@
 import News from './news/news';
 import Sources from './sources/sources';
-import { Articles, SourcesArray, GetNews, GetSources } from '../interface/interface'
-
+import { Articles, SourcesArray, GetNews, GetSources } from '../interface/interface';
 
 export class AppView {
-    public news: News;
+    private news: News;
 
-    public sources: Sources;
+    private sources: Sources;
 
     constructor() {
         this.news = new News();

@@ -1,19 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 import './news.css';
 import { Articles } from '../../interface/interface';
 
 class News {
     draw(data: Articles[]): void {
-        // if(data.length === 0) {
-        //     console.log('no');
-        // }
         const news: Articles[] = data.length >= 10 ? data.filter((_item: Articles, idx: number) => idx < 10) : data;
-        // console.log(news)
 
         if (news.length === 0) {
             (<HTMLDivElement>document.querySelector('.news')).innerHTML = '';
-            const noNews = document.createElement('p');
-            noNews.classList.add('no-news')
+            const noNews: HTMLParagraphElement = document.createElement('p');
+            noNews.classList.add('no-news');
             noNews.textContent = 'No news';
             (<HTMLDivElement>document.querySelector('.news')).append(noNews);
         } else {
