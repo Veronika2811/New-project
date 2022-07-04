@@ -30,17 +30,18 @@ class Sources {
 
         categoryCheckbox.addEventListener('input', function () {
             const btnNews = <HTMLDivElement>document.querySelector('.sources');
+            const blockNews = <HTMLDivElement>document.querySelector('.news')
             btnNews.textContent = '';
             const arrayByCategory: SourcesArray[] = data.filter((item: SourcesArray) => item.category === category);
             if (this.checked) {
                 objSources[category] = arrayByCategory;
             } else {
                 delete objSources[category];
+                blockNews.textContent = '';
             }
             const arrNews = Object.values(objSources).flat(1);
             drawBtn(arrNews);
         });
-
         categoryFragment.append(sourceClone);
         categorySources?.append(categoryFragment);
     }
