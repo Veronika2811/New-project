@@ -1,6 +1,3 @@
-import './styles.scss';
-
-// import { test } from './test'
-
-// test();
-document.body.innerHTML = 'Veronika';
+import './global.scss';
+import './common/header.scss';
+import './common/footer.scss';

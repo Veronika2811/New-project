@@ -6,9 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Online-Store</title>
   <link rel="shortcut icon" href="./favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=DM+Sans&display=swap" rel="stylesheet">
 </head>
-<body>
-  <h1>hello</h1>
-  <img src="./assets//yetgfwzad05z0uwit4ircalnnmxhmzfg.jpg" alt="">
+<body class="body">
+  <header class="header">
+    <div class="header-wrapper">
+      <div class="logo">
+        <h1 class="logo__title">Online-Store</h1>
+      </div>
+        <nav class="menu">
+          <ul class="menu__list">
+            <li>
+              <input placeholder="Поиск..." type="text" class="search">
+            </li>
+            <li class="cart-item">
+              <img src="./assets/svg/cart.svg" alt="cart" class="cart">
+              <span class="items-the-cart">0</span>
+            </li>
+          </ul>
+        </nav>
+    </div>
+    <hr class="line">
+  </header>
+  
+  <footer>
+    <span>© 2022</span>
+    <div class="github">
+        <a href="https://github.com/Veronika2811" class="github">
+            <img class="footer__icon-git" src="./assets/svg/github.svg" alt="GitHub">
+            <span>Veronika2811</span>
+        </a>
+    </div>
+    <a href="https://rs.school/js/">
+        <img class="footer__icon-rsschool" src="./assets/svg/rs_school.svg" alt="RSSchool">
+    </a>
+</footer>
 </body>
 </html>

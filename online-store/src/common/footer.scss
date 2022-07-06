@@ -1,0 +1,43 @@
+@import "./constants.scss";
+
+footer {
+  padding: 20px 2.5%;
+  max-width: 1920px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5em;
+}
+
+.footer__icon-rsschool {
+  width: 150px;
+  transition: 0.5s;
+
+  &:hover {
+    filter: invert(46%) sepia(25%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+  }
+}
+
+.github {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  text-decoration: none;
+  transition: 0.5s;
+
+  &:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+  }
+
+  & span {
+    color: $colorBlack;
+  }
+}
+
+@media (max-width: 445px) {
+  footer {
+      flex-direction: column;
+      gap: 10px;
+  }
+}
