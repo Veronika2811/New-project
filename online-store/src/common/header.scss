@@ -14,7 +14,7 @@
 
 .logo__title {
   font-family: $fontLogo;
-  font-size: 3em;
+  font-size: 6rem;
   line-height: 40.5px;
   font-weight: 400;
 
@@ -39,8 +39,8 @@
   background-repeat: no-repeat;
   background-size: 20px;
   border: 1px solid $colorBlack;
-  font-size: 18px;
-  $fontMain: "DMSans";
+  font-size: 1.8rem;
+  font-family: $fontMain;
 }
 
 .cart-item {
@@ -57,16 +57,20 @@
   width: 20px;
   height: 20px;
   border: 1px solid $colorBlack;
-  text-align: center;
+  // text-align: center;
   border-radius: 10px;
-  background: $colorGold;;
+  background: $colorGold;
   right: 15px;
   top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
 }
 
 .line {
   border: none;
-  border-top: 2px solid $colorGold;;
+  border-top: 2px solid $colorGrey;
   text-align: center;
   width: 95%;
   margin: 0 auto;

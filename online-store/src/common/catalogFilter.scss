@@ -1,0 +1,143 @@
+@import "./constants.scss";
+
+.left-side {
+  border: 1px solid $colorGrey;
+  border-radius: 12px;
+}
+
+.title-filter {
+  font-size: 2rem;
+  font-family: $fontMain;
+  text-decoration: none;
+  line-height: 50px;
+  font-weight: 400;
+  display: block;
+  height: 50px;
+  text-align: center;
+  background-color: $colorGrey;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.wrapper-btn {
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 1.5rem;
+}
+
+.sort-params {
+  padding: 5px;
+  border: 1px solid $colorGrey;
+  width: 100%;
+  color: $colorGrey;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.wrapper {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: space-between;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-family: $fontMain;
+  padding-bottom: 10px;
+}
+
+.settings {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.settings__item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.btn {
+  height: 50px;
+  width: 49%;
+  transition: 0.3s;
+  cursor: pointer;
+  border: none;
+  font-family: $fontMain;
+
+  &_view {
+    background-color: $colorGold;
+
+    &:hover {
+      background-color: #d7c99e;
+      color: #ffffff;
+    }
+  }
+
+  &_reset {
+    background-color: $colorGrey;
+    
+    &:hover {
+      background-color: #858383;
+      color: #ffffff;
+    }
+  }
+}
+
+.sort {
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+}
+
+
+// Checkbox
+
+.custom-checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.custom-checkbox+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+.custom-checkbox+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid $colorGrey;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.custom-checkbox:checked+label::before {
+  border-color: $colorGold;
+  background-color: $colorGold;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+.custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
+  border-color: $colorGold;
+}

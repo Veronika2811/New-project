@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online-Store</title>
-  <link rel="shortcut icon" href="./favicon.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=DM+Sans&display=swap" rel="stylesheet">
-</head>
-<body class="body">
-  <header class="header">
-    <div class="header-wrapper">
-      <div class="logo">
-        <h1 class="logo__title">Online-Store</h1>
-      </div>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online-Store</title>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=DM+Sans&display=swap"
+      rel="stylesheet">
+  </head>
+  <body class="body">
+    <header class="header">
+      <div class="header-wrapper">
+        <div class="logo">
+          <h1 class="logo__title">Online-Store</h1>
+        </div>
         <nav class="menu">
           <ul class="menu__list">
             <li>
@@ -27,21 +29,186 @@
             </li>
           </ul>
         </nav>
-    </div>
-    <hr class="line">
-  </header>
-  
-  <footer>
-    <span>© 2022</span>
-    <div class="github">
+      </div>
+      <hr class="line">
+    </header>
+    <main class="catalog">
+      <section class="left-side">
+        <h2 class="title-filter">Фильтры</h2>
+        <div class="wrapper">
+          <h2 class="title">Сортировка</h2>
+          <select name="sort-fields" class="sort-params">
+            <option value="value1" selected>По названию, от А до Я</option>
+            <option value="value2">По названию, от Я до А</option>
+            <option value="value3">Увеличение цены</option>
+            <option value="value4">Уменьшение цены</option>
+          </select>
+        </div>
+        <hr class="line" />
+        <div class="wrapper">
+          <h2 class="title">Наши предложения</h2>
+          <ul class="settings">
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="offer-1">
+              <label for="offer-1">Новинки</label>
+            </li>
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="offer-2">
+              <label for="offer-2">Популярное</label>
+            </li>
+          </ul>
+        </div>
+        <hr class="line">
+        <div class="wrapper">
+          <h2 class="title">Вид украшения</h2>
+          <ul class="settings">
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-decoration-1">
+              <label for="type-decoration-1">Кольца</label>
+            </li>
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-decoration-2">
+              <label for="type-decoration-2">Серьги</label>
+            </li>
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-decoration-3">
+              <label for="type-decoration-3">Цепочки</label>
+            </li>
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-decoration-4">
+              <label for="type-decoration-4">Браслеты</label>
+            </li>
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-decoration-5">
+              <label for="type-decoration-5">Заколки</label>
+            </li>
+          </ul>
+        </div>
+        <hr class="line" />
+        <div class="wrapper">
+          <h2 class="title">Вид вставки</h2>
+          <ul class="settings">
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-insert-1">
+              <label for="type-insert-1">Без вставки</label>
+            </li>
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-insert-2">
+              <label for="type-insert-2">Бриллиант</label>
+            </li>
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-insert-3">
+              <label for="type-insert-3">Фианит</label>
+            </li>
+          </ul>
+        </div>
+        <hr class="line" />
+        <div class="wrapper">
+          <h2 class="title">Вид металла</h2>
+          <ul class="settings">
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-metall-1">
+              <label for="type-metall-1">Золото</label>
+            </li>
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-metall-2">
+              <label for="type-metall-2">Серебро</label>
+            </li>
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-metall-3">
+              <label for="type-metall-3">Позолоченная латунь</label>
+            </li>
+            <li class="settings__item">
+              <input
+                class="custom-checkbox"
+                type="checkbox"
+                value="yes"
+                id="type-metall-4">
+              <label for="type-metall-4">Сталь</label>
+            </li>
+          </ul>
+        </div>
+        <hr class="line">
+        <div class="wrapper-btn">
+          <button class="btn btn_view">ПОКАЗАТЬ</button>
+          <button class="btn btn_reset">СБРОС</button>
+        </div>
+      </section>
+      <section class="right-side">
+        <h1>25</h1>
+      </section>
+    </main>
+    <footer>
+      <span>© 2022</span>
+      <div class="github">
         <a href="https://github.com/Veronika2811" class="github">
-            <img class="footer__icon-git" src="./assets/svg/github.svg" alt="GitHub">
-            <span>Veronika2811</span>
+          <img
+            class="footer__icon-git"
+            src="./assets/svg/github.svg"
+            alt="GitHub"
+          />
+          <span>Veronika2811</span>
         </a>
-    </div>
-    <a href="https://rs.school/js/">
-        <img class="footer__icon-rsschool" src="./assets/svg/rs_school.svg" alt="RSSchool">
-    </a>
-</footer>
-</body>
+      </div>
+      <a href="https://rs.school/js/">
+        <img
+          class="footer__icon-rsschool"
+          src="./assets/svg/rs_school.svg"
+          alt="RSSchool"
+        />
+      </a>
+    </footer>
+  </body>
 </html>

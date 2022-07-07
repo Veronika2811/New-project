@@ -1,10 +1,13 @@
-$colorBlack: #000000;
-$colorWhite: #ffffff;
+@import "./common/constants.scss";
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  font-size: 10px;
 }
 
 .body {
@@ -16,4 +19,16 @@ $colorWhite: #ffffff;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  padding: 50px 2.5%;
+  font-family: $fontMain;
+}
+
+.right-side {
+  // background-color: red;
+  margin-left: 15px;
 }
