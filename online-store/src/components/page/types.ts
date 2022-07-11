@@ -1,0 +1,1 @@
+export type ToysProperties = 'offer' | 'decoration' | 'typeInsert' | 'typeMetall';

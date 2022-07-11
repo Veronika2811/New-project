@@ -31,4 +31,9 @@ html {
 .right-side {
   // background-color: red;
   margin-left: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 15px;
+  justify-content: center;
 }
+
