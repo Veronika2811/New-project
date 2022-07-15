@@ -3,6 +3,7 @@ import { Filter } from './interfaces/interface';
 import { product } from './card';
 import Card from './generateCard';
 import { sortingSelect } from './sortingCards';
+import { searchCard } from './search';
 
 export default class FilterSort {
 
@@ -118,6 +119,12 @@ export default class FilterSort {
         value = localStorage.getItem('option')!;
       }
       sortingSelect(value);
+
+      let valueSearch = '';
+      if (localStorage.getItem('search') !== null) {
+        valueSearch = JSON.parse(localStorage.getItem('search')!);
+      }
+      searchCard(valueSearch);
     }
   }
 

@@ -1,19 +1,27 @@
 @import './constants.scss';
 
 .card {
-  // border: 1px solid $colorGrey;
+  // // border: 1px solid $colorGrey;
+  // // border-radius: 10px;
+  // // width: 250px;
+  // border: 1px solid #D8D8D8;
   // border-radius: 10px;
-  // width: 250px;
+  // // width: 250px;
+  // height: 430px;
+  // // display: flex;
+  // // flex-direction: column;
   border: 1px solid #D8D8D8;
-  border-radius: 10px;
-  width: 250px;
-  height: 430px;
-  // display: flex;
-  // flex-direction: column;
+    border-radius: 10px;
+    height: 430px;
+    // display: flex;
+    // gap: 5px;
+    // flex-direction: column;
+    // align-items: center;
+    text-align: center;
 }
 
 .card-image {
-  width: 248px;
+  width: 250px;
   // width: 250px;
   height: 250px;
   border-top-left-radius: 10px;
@@ -49,6 +57,8 @@
 }
 
 .cart-product {
+  width: 25px;
+  height: 25px;
   &:hover {
     cursor: pointer;
     transition: 0.5s;
@@ -63,11 +73,25 @@
 .block-cart {
   width: 250px;
     background: #D8D8D8;
-    height: 120%;
+    // height: 120%;
     display: flex;
     justify-content: center;
     /* margin: 0 10px; */
     padding: 6px 0;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.name,
+.price,
+.year-issue, 
+.type-decoration,
+.type-insert, 
+.type-metall, 
+.block-cart {
+  margin-top: 5px;
+}
+
+.sort-text {
+  display: none;
 }

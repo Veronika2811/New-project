@@ -2,6 +2,7 @@
 import FilterSort from './filterSorting';
 import { sortingSelect } from './sortingCards';
 import * as noUiSlider from 'nouislider';
+import { searchCard } from './search';
 
 
 export class Listener {
@@ -54,7 +55,6 @@ export class Listener {
       };
       el.checked = localStorage.getItem(el.id) === 'true';
     });
-
   }
 
   listenerSort() {
@@ -66,6 +66,7 @@ export class Listener {
     }
 
     select.onchange = function () {
+
       const indexSelected = select.selectedIndex;
       const option = select.querySelectorAll('option')[indexSelected];
       value = option.getAttribute('value')!;
@@ -75,6 +76,34 @@ export class Listener {
     document.querySelector('.sort-params > option[selected]')?.removeAttribute('selected');
     document.querySelector(`.sort-params > option[value=${value}]`)?.setAttribute('selected', 'selected');
     sortingSelect(value);
+  }
+
+  listenerSearch() {
+    const inputSearch = document.querySelector('.search') as HTMLInputElement;
+    const elastic = document.querySelector('.search') as HTMLInputElement;
+
+    let value = '';
+    if (localStorage.getItem('search') != null) {
+      value = JSON.parse(localStorage.getItem('search')!);
+    }
+
+    elastic?.addEventListener('input', (ev) => {
+      inputSearch.addEventListener('search', () => {
+        (document.querySelector('.warning') as HTMLHeadElement).style.display = 'none';
+      });
+      value = (ev.target! as HTMLInputElement).value.trim();
+      localStorage.setItem('search', JSON.stringify(value));
+      searchCard(value);
+    });
+
+    // inputSearch.oninput = function () {
+    //   value = inputSearch.value.replace(/\s/g, '');
+    //   localStorage.setItem('search', JSON.stringify(value));
+    //   searchCard(value);
+    // };
+
+    inputSearch.value = value;
+    searchCard(value);
   }
 
   listenerButton() {
@@ -90,6 +119,6 @@ export class Listener {
     this.listenerRange();
     this.listenerSort();
     this.listenerButton();
-
+    this.listenerSearch();
   }
 }

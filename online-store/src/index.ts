@@ -5,6 +5,7 @@
 
 import './global.scss';
 import Page from './components/Page';
+import Card from './components/generateCard';
 
 new Page().createPage();
 
@@ -212,3 +213,35 @@ new Page().createPage();
     
 // //   }
 // // })
+
+// function insertMark(string: string, pos: number, len: number) {
+//   return string.slice(0, pos) + '<mark>' + string.slice(pos, pos + len) + '</mark>' + string.slice(pos + len);
+// }
+
+// const inputSearch = document.querySelector('.search') as HTMLInputElement;
+
+// inputSearch.oninput = function () {
+//   const val = inputSearch.value.replace(/\s/g, '');
+
+//   const name = document.querySelectorAll('.name');
+  
+//   if (val != '') {
+//     name.forEach((el) => {
+//       const parentCard = el.parentElement;
+//       if ((el as HTMLElement).innerText.search(val) == -1) {
+//         parentCard!.classList.add('hide');
+//         el.innerHTML = (el as HTMLElement).innerText;
+//       } else {
+//         el.classList.remove('hide');
+//         const str = (el as HTMLElement).innerText;
+//         el.innerHTML = insertMark(str, (el as HTMLElement).innerText.search(val), val.length);
+//       }
+//     });
+//   } else {
+//     name.forEach((el) => {
+//       const parentCard = el.parentElement;
+//       parentCard!.classList.remove('hide');
+//       el.innerHTML = (el as HTMLElement).innerText;
+//     });
+//   }
+// };

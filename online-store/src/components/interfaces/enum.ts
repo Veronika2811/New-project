@@ -4,7 +4,7 @@ export enum DOM {
                 <div class="logo">
                   <h1 class="logo__title">Online-Store</h1>
                 </div>
-                <h3 class="warning"></h3>
+                <h3 class="warning">Извините, совпадений не обнаружено</h3>
                 <nav class="menu">
                   <ul class="menu__list">
                     <li>
@@ -211,7 +211,6 @@ export enum DOM {
     </div>
   </section>
   <section class="right-side">
-  
   </section>
 </main>`,
   footer = `<footer>

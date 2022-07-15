@@ -29,7 +29,7 @@ class Card {
 
       fragment.append(newsClone);
     });
-    rightSide.appendChild(fragment);
+    rightSide.append(fragment);
   }
 
   drawText(): void {
