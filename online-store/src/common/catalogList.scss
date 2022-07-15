@@ -1,4 +1,4 @@
-@import '../../../common/constants.scss';
+@import './constants.scss';
 
 .card {
   // border: 1px solid $colorGrey;
@@ -13,7 +13,8 @@
 }
 
 .card-image {
-  width: 250px;
+  width: 248px;
+  // width: 250px;
   height: 250px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -57,4 +58,16 @@
 .active-card {
   // filter: invert(46%) sepia(25%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
   filter: invert(14%) sepia(97%) saturate(5697%) hue-rotate(352deg) brightness(97%) contrast(100%);
+}
+
+.block-cart {
+  width: 250px;
+    background: #D8D8D8;
+    height: 120%;
+    display: flex;
+    justify-content: center;
+    /* margin: 0 10px; */
+    padding: 6px 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }

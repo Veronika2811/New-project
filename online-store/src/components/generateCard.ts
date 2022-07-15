@@ -1,4 +1,4 @@
-import { Filter } from '../../interfaces/interface';
+import { Filter } from './interfaces/interface';
 
 class Card {
 
@@ -12,8 +12,12 @@ class Card {
     const newsItemTemp = document.querySelector('.card') as HTMLTemplateElement;
 
     news.forEach((item: Filter) => {
+      // newsItemTemp.setAttribute(`${data - sort}`, item.price);
+      // newsItemTemp.dataset.sort = String(parseInt(item.price));
       const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
-
+      // newsItemTemp.setAttribute(`${data - sort}`, item.price);
+      (newsClone.querySelector('.card') as HTMLElement).dataset.sort = String(parseInt(item.price));
+      (newsClone.querySelector('.card') as HTMLElement).dataset.name = item.name;
       (newsClone.querySelector('.card-image') as HTMLDivElement).style.backgroundImage = `url(${ item.image })`;
       (newsClone.querySelector('.name') as HTMLHeadingElement).textContent = item.name;
       (newsClone.querySelector('.price span') as HTMLSpanElement).textContent = item.price;

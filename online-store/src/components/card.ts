@@ -1,4 +1,4 @@
-import { Filter } from '../../interfaces/interface';
+import { Filter } from './interfaces/interface';
 
 export const product: Filter[] = [
   { 

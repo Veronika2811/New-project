@@ -25,10 +25,10 @@ export enum DOM {
     <div class="wrapper">
       <h2 class="title">Сортировка</h2>
       <select name="sort-fields" class="sort-params">
-        <option value="value1" selected>По названию, от А до Я</option>
-        <option value="value2">По названию, от Я до А</option>
-        <option value="value3">Увеличение цены</option>
-        <option value="value4">Уменьшение цены</option>
+        <option id="1" value="value1" selected>По названию, от А до Я</option>
+        <option id="2" value="value2">По названию, от Я до А</option>
+        <option id="3" value="value3">Увеличение цены</option>
+        <option id="4" value="value4">Уменьшение цены</option>
       </select>
     </div>
     <hr class="line" />
@@ -62,6 +62,7 @@ export enum DOM {
     </div>
     </div>
     <hr class="line">
+    <div class="filter">
     <div class="wrapper">
       <h2 class="title">Наши предложения</h2>
       <ul class="settings settings-offer">
@@ -202,10 +203,11 @@ export enum DOM {
         </li>
       </ul>
     </div>
+    </div>
     <hr class="line">
     <div class="wrapper-btn">
-      <button class="btn btn_view">ПОКАЗАТЬ</button>
-      <button class="btn btn_reset">СБРОС</button>
+      <button class="btn btn_view">Сброс фильтров</button>
+      <button class="btn btn_reset">Сброс настроек</button>
     </div>
   </section>
   <section class="right-side">
