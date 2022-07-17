@@ -1,18 +1,14 @@
-@import "./constants.scss";
+@import "./utils/constants.scss";
 
 .left-side {
   border: 1px solid $colorGrey;
   border-radius: 12px;
-  height: 1300px;
+  height: 1240px;
 }
 
 .title-filter {
-  font-size: 2rem;
-  font-family: $fontMain;
-  text-decoration: none;
+  @include font($family: $fontMain, $size: 2rem);
   line-height: 50px;
-  font-weight: 400;
-  display: block;
   height: 50px;
   text-align: center;
   background-color: $colorGrey;
@@ -20,55 +16,39 @@
   border-top-right-radius: 10px;
 }
 
-.wrapper-btn {
-  padding: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.label {
-  font-size: 1.5rem;
-}
-
 .sort-params {
   padding: 5px;
-  border: 1px solid $colorGrey;
+  border: 2px solid $colorGrey;
   width: 100%;
   color: $colorGrey;
   cursor: pointer;
   border-radius: 10px;
   margin-left: 10px;
-  font-size: 1.5rem;
-}
+  @include font($size: 1.5rem);
 
-.wrapper {
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  // align-items: center;
-  // justify-content: space-between;
-}
-
-.title {
-  font-size: 1.6rem;
-  font-family: $fontMain;
-  padding-bottom: 10px;
+  &:focus {
+    outline: none;
+    border-color: $colorGold;
+  }
 }
 
 .settings {
   list-style: none;
-  display: flex;
+  @include flex($align: flex-start);
   flex-direction: column;
   gap: 10px;
   margin-left: 10px;
 }
 
 .settings__item {
-  display: flex;
+  @include font($size: 1.5rem);
+  @include flex();
   gap: 10px;
-  align-items: center;
-  font-size: 1.5rem;
+}
+
+.wrapper-btn {
+  padding: 25px;
+  @include flex($justify: space-between);
 }
 
 .btn {
@@ -77,9 +57,9 @@
   transition: 0.3s;
   cursor: pointer;
   border: none;
-  font-family: $fontMain;
+  @include font($size: 1.5rem);
 
-  &_view {
+  &_reset-filter {
     background-color: $colorGold;
 
     &:hover {
@@ -98,15 +78,7 @@
   }
 }
 
-.sort {
-  @media (max-width: 1000px) {
-    flex-direction: column;
-  }
-}
-
-
 // Checkbox
-
 .custom-checkbox {
   position: absolute;
   z-index: -1;
@@ -145,7 +117,6 @@
 }
 
 // Range
-
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -159,15 +130,13 @@ input[type="number"] {
 }
 
 .filter-price__inputs {
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.5rem;
+  @include flex($justify: space-between);
+  @include font($size: 1.5rem);
 }
 
 .filter-price__label {
   display: flex;
   align-items: center;
-  // justify-content: space-between;
   width: 133px;
   height: 30px;
   border: 1px solid $colorGrey;
@@ -180,6 +149,10 @@ input[type="number"] {
   color: $colorBlack;
   padding: 0 10px;
   width: 100%;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .filter-prise__text {
@@ -197,5 +170,4 @@ input[type="number"] {
 .filter-price__slider {
   margin-bottom: 20px;
   margin-top: 10px;
-  // width: calc(100% - 10px);
 }

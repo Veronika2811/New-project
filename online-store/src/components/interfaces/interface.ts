@@ -1,11 +1,10 @@
 export interface Filter {
   name: string;
-  price: string;
-  year: string;
+  price: number;
+  year: number;
   offer: string | boolean;
   decoration: string;
-  typeInsert: string;
-  typeMetall: string;
+  insert: string;
+  metall: string;
   image: string;
-  active?: boolean;
 }

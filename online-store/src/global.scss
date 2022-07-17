@@ -1,4 +1,5 @@
-@import "./common/constants.scss";
+@import "./common/utils/constants.scss";
+@import "./common/utils/mixin.scss";
 
 * {
   box-sizing: border-box;
@@ -21,26 +22,27 @@ html {
   min-height: 100vh;
 }
 
+.wrapper {
+  padding: 25px;
+}
+
 .catalog {
   display: grid;
   grid-template-columns: 2fr 4fr;
-  padding: 50px 2.5%;
-  font-family: $fontMain;
+  padding: 20px 2.5%;
 }
 
-.right-side {
-  // background-color: red;
-  margin-left: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px 15px;
-  justify-content: center;
+h1 {
+  @include font($family: $fontLogo, $size: 6rem);
+  line-height: 40.5px;
+  user-select: none;
+
+  &::first-letter {
+    color: $colorGold;
+  }
 }
 
-.hide {
-  display: none;
-}
-
-mark {
-  background-color: #bdae82;
+h2 {
+  @include font($size: 1.6rem, $weight: bold);
+  padding-bottom: 10px;
 }

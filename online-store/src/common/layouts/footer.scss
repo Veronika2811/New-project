@@ -1,12 +1,10 @@
-@import "./constants.scss";
+@import "../utils/constants.scss";
 
 footer {
   padding: 20px 2.5%;
   max-width: 1920px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 2rem;
+  @include flex($justify: space-between);
+  @include font($family: $fontMain, $size: 2rem);
 }
 
 .footer__icon-rsschool {
@@ -19,19 +17,18 @@ footer {
 }
 
 .github {
-  align-items: center;
-  display: flex;
+  @include flex();
   gap: 20px;
   text-decoration: none;
   transition: 0.5s;
+  
+  & span {
+    color: $colorBlack;
+  }
 
   &:hover {
     filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
-  }
-
-  & span {
-    color: $colorBlack;
   }
 }
 

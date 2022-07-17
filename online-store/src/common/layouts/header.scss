@@ -1,0 +1,65 @@
+@import "../utils/constants.scss";
+@import "../utils/mixin.scss";
+
+.header {
+  height: 90px;
+}
+
+.header-wrapper {
+  @include flex($justify: space-between);
+  gap: 30px;
+  padding: 20px 2.5%;
+}
+
+.menu__list {
+  @include flex();
+  gap: 40px;
+  list-style: none;
+}
+
+.search {
+  @include font($size: 1.8rem);
+  border: 2px solid $colorBlack;
+  border-radius: 10px;
+  padding: 5px;
+
+  &:focus {
+    outline: none;
+    border-color: $colorGold;
+  }
+}
+
+.cart-item {
+  position: relative;
+}
+
+.cart {
+  width: 33px;
+}
+
+.items-the-cart {
+  display: inline-block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid $colorBlack;
+  border-radius: 10px;
+  background: $colorGold;
+  right: 15px;
+  top: 15px;
+  @include flex();
+  @include font($size: 1.2rem);
+}
+
+.line {
+  border: none;
+  border-top: 2px solid $colorGrey;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.warning {
+  @include font($size: 2rem);
+  display: none;
+  color: red;
+}

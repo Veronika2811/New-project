@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import FilterSort from './filterSorting';
 import { sortingSelect } from './sortingCards';
 import * as noUiSlider from 'nouislider';
@@ -7,16 +7,16 @@ import { searchCard } from './search';
 
 export class Listener {
   listenerRange() {
-    const rangeSliderPrice = document.getElementById('range-slider') as noUiSlider.target;
-    const rangeSliderYear = document.getElementById('range-slider-2') as noUiSlider.target;
+    const rangeSliderPrice = document.getElementById('range-slider-price') as noUiSlider.target;
+    const rangeSliderYear = document.getElementById('range-slider-year') as noUiSlider.target;
 
-    // Price
-    const minPrice = document.getElementById('input-1') as HTMLInputElement;
-    const maxPrice = document.getElementById('input-2') as HTMLInputElement;
-    const inputsPrice = [minPrice, maxPrice];
-    
     let currentRangePrice: string[] = [];
     let currentRangeYear: string[] = [];
+
+    // Price
+    const minPrice = document.getElementById('input-min-price') as HTMLInputElement;
+    const maxPrice = document.getElementById('input-max-price') as HTMLInputElement;
+    const inputsPrice = [minPrice, maxPrice];
 
     rangeSliderPrice.noUiSlider?.on('update', (values, handle) =>  {
       currentRangePrice = [];
@@ -54,23 +54,22 @@ export class Listener {
         localStorage.setItem(el.id, JSON.stringify(el.checked));
       };
       el.checked = localStorage.getItem(el.id) === 'true';
+      new FilterSort().sorting(currentRangePrice, currentRangeYear);
     });
   }
 
   listenerSort() {
     const select = document.querySelector('select') as HTMLSelectElement;
 
-    let value = 'value1';
+    let value;
     if (localStorage.getItem('option') !== null) {
-      value = localStorage.getItem('option')!;
+      value = localStorage.getItem('option') as string;
+    } else {
+      value = 'value1';
     }
 
-    select.onchange = function () {
-
-      const indexSelected = select.selectedIndex;
-      const option = select.querySelectorAll('option')[indexSelected];
-      value = option.getAttribute('value')!;
-      sortingSelect(value!);
+    select.onchange = () => {
+      sortingSelect(select.value);
     };
 
     document.querySelector('.sort-params > option[selected]')?.removeAttribute('selected');
@@ -80,29 +79,23 @@ export class Listener {
 
   listenerSearch() {
     const inputSearch = document.querySelector('.search') as HTMLInputElement;
-    const elastic = document.querySelector('.search') as HTMLInputElement;
 
     let value = '';
-    if (localStorage.getItem('search') != null) {
-      value = JSON.parse(localStorage.getItem('search')!);
+    if (localStorage.getItem('search') !== null) {
+      value = JSON.parse(localStorage.getItem('search') as string);
     }
 
-    elastic?.addEventListener('input', (ev) => {
+    inputSearch?.addEventListener('input', (event) => {
       inputSearch.addEventListener('search', () => {
         (document.querySelector('.warning') as HTMLHeadElement).style.display = 'none';
       });
-      value = (ev.target! as HTMLInputElement).value.trim();
+
+      value = (event.target as HTMLInputElement).value.trim();
       localStorage.setItem('search', JSON.stringify(value));
+      
       searchCard(value);
     });
 
-    // inputSearch.oninput = function () {
-    //   value = inputSearch.value.replace(/\s/g, '');
-    //   localStorage.setItem('search', JSON.stringify(value));
-    //   searchCard(value);
-    // };
-
-    inputSearch.value = value;
     searchCard(value);
   }
 
@@ -112,14 +105,17 @@ export class Listener {
 
     btnClearStorage.addEventListener('click', () => {
       localStorage.clear();
+      location.reload();
     });
 
     // Clear filter
-    const btnClearFilter = document.querySelector('.btn_view') as HTMLButtonElement;
+    const btnClearFilter = document.querySelector('.btn_reset-filter') as HTMLButtonElement;
+
     btnClearFilter.addEventListener('click', () => {
       const filterChek = document.querySelector('.filter') as HTMLDivElement;
       const currentCheckbox = filterChek.querySelectorAll('input');
       
+      // Checkbox
       currentCheckbox.forEach((el) => {
         if (el.checked) {
           el.checked = localStorage.getItem(el.id) === 'false';
@@ -127,64 +123,66 @@ export class Listener {
         }
       });
 
-      const rangeSliderPrice = document.getElementById('range-slider') as noUiSlider.target;
-      const rangeSliderYear = document.getElementById('range-slider-2') as noUiSlider.target;
-      rangeSliderPrice.noUiSlider!.set(['20', '200']);
-      rangeSliderYear.noUiSlider!.set(['2010', '2022']);
+      // Range
+      const rangeSliderPrice = document.getElementById('range-slider-price') as noUiSlider.target;
+      const rangeSliderYear = document.getElementById('range-slider-year') as noUiSlider.target;
+      rangeSliderPrice.noUiSlider?.set(['20', '200']);
+      rangeSliderYear.noUiSlider?.set(['2010', '2022']);
 
-
+      // Input search
       const inputSearch = document.querySelector('.search') as HTMLInputElement;
       const value = inputSearch.value = '';
       localStorage.setItem('search', JSON.stringify(value));
+
       searchCard(value);
     });
   }
 
   listenerCart() {
-    const cart = document.querySelectorAll('.block-cart');
-    const itemcart = document.querySelector('.items-the-cart') as HTMLSpanElement;
+    // const cart = document.querySelectorAll('.block-cart');
+    // const itemcart = document.querySelector('.items-the-cart') as HTMLSpanElement;
 
-    if (localStorage.getItem('cart') !== null) {
-      itemcart.innerHTML = JSON.parse(localStorage.getItem('cart')!);
-    }
+    // if (localStorage.getItem('cart') !== null) {
+    //   itemcart.innerHTML = JSON.parse(localStorage.getItem('cart')!);
+    // }
 
-    let activeCardName: string[] = [];
+    // let activeCardName: string[] = [];
 
-    if (localStorage.getItem('activeCard') !== null) {
-      activeCardName = JSON.parse(localStorage.getItem('activeCard')!);
-      // const cart = document.querySelectorAll('.block-cart');
-      cart.forEach((el) => {
-        if (activeCardName.includes(el.parentElement?.dataset.name as string)) {
-          el.classList.add('active-card');
-        }
-      });
-    }
+    // if (localStorage.getItem('activeCard') !== null) {
+    //   activeCardName = JSON.parse(localStorage.getItem('activeCard')!);
+    //   // const cart = document.querySelectorAll('.block-cart');
+    //   cart.forEach((el) => {
+    //     if (activeCardName.includes(el.parentElement?.dataset.name as string)) {
+    //       el.classList.add('active-card');
+    //     }
+    //   });
+    // }
 
-    cart.forEach((el) => {
+    // cart.forEach((el) => {
   
-      el.addEventListener('click', () => {
-        const nameCard = el.parentElement?.dataset.name as string;
+    //   el.addEventListener('click', () => {
+    //     const nameCard = el.parentElement?.dataset.name as string;
     
-        if (el.classList.contains('active-card')) {
-          el.classList.remove('active-card');
+    //     if (el.classList.contains('active-card')) {
+    //       el.classList.remove('active-card');
     
-          if (activeCardName.length > 0) {
-            activeCardName = activeCardName.filter(function (f) { 
-              return f !== nameCard;
-            });
-          } 
-          itemcart.innerHTML = String(activeCardName.length);
-          localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
-          localStorage.setItem('activeCard', JSON.stringify(activeCardName));
-        } else {
-          el.classList.add('active-card');
-          activeCardName.push(nameCard);
-          itemcart.innerHTML = String(activeCardName.length);
-          localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
-          localStorage.setItem('activeCard', JSON.stringify(activeCardName));
-        }
-      });
-    });
+    //       if (activeCardName.length > 0) {
+    //         activeCardName = activeCardName.filter(function (f) { 
+    //           return f !== nameCard;
+    //         });
+    //       } 
+    //       itemcart.innerHTML = String(activeCardName.length);
+    //       localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
+    //       localStorage.setItem('activeCard', JSON.stringify(activeCardName));
+    //     } else {
+    //       el.classList.add('active-card');
+    //       activeCardName.push(nameCard);
+    //       itemcart.innerHTML = String(activeCardName.length);
+    //       localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
+    //       localStorage.setItem('activeCard', JSON.stringify(activeCardName));
+    //     }
+    //   });
+    // });
   }
 
   listenerAll() {
@@ -192,6 +190,6 @@ export class Listener {
     this.listenerSort();
     this.listenerButton();
     this.listenerSearch();
-    this.listenerCart();
+    // this.listenerAll();
   }
 }

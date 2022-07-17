@@ -2,7 +2,7 @@ export enum DOM {
   header = `<header class="header">
               <div class="header-wrapper">
                 <div class="logo">
-                  <h1 class="logo__title">Online-Store</h1>
+                  <h1>Online-Store</h1>
                 </div>
                 <h3 class="warning">Извините, совпадений не обнаружено</h3>
                 <nav class="menu">
@@ -23,7 +23,7 @@ export enum DOM {
   <section class="left-side">
     <h2 class="title-filter">Фильтры</h2>
     <div class="wrapper">
-      <h2 class="title">Сортировка</h2>
+      <h2>Сортировка</h2>
       <select name="sort-fields" class="sort-params">
         <option id="1" value="value1" selected>По названию, от А до Я</option>
         <option id="2" value="value2">По названию, от Я до А</option>
@@ -33,38 +33,38 @@ export enum DOM {
     </div>
     <hr class="line" />
     <div class="wrapper">
-      <h2 class="title">Цена</h2>
-      <div class="filter-price__slider" id="range-slider"></div>
+      <h2>Цена</h2>
+      <div class="filter-price__slider" id="range-slider-price"></div>
       <div class="filter-price__inputs">
       <label for="" class="filter-price__label">
         <span class="filter-prise__text">от</span>
-        <input type="number" min="10" max="200" placeholder="10" class="filter-price__input" id="input-1">
+        <input type="number" min="10" max="200" placeholder="10" class="filter-price__input" id="input-min-price" readonly="readonly">
         <span class="filter-prise__text">$</span>
       </label>
       <label for="" class="filter-price__label">
         <span class="filter-prise__text">до</span>
-        <input type="number" min="10" max="200" placeholder="200" class="filter-price__input" id="input-2">
+        <input type="number" min="10" max="200" placeholder="200" class="filter-price__input" id="input-max-price" readonly="readonly">
         <span class="filter-prise__text">$</span>
       </label>
     </div>
     </div>
     <hr class="line" />
     <div class="wrapper">
-      <h2 class="title">Год выпуска</h2>
-      <div class="filter-price__slider" id="range-slider-2"></div>
+      <h2>Год выпуска</h2>
+      <div class="filter-price__slider" id="range-slider-year"></div>
       <div class="filter-price__inputs">
       <label for="" class="filter-price__label">
-        <input type="number" min="2010" max="2022" placeholder="2010" class="filter-price__input" id="input-3">
+        <input type="number" min="2010" max="2022" placeholder="2010" class="filter-price__input" id="input-3" readonly="readonly">
       </label>
       <label for="" class="filter-price__label">
-        <input type="number" min="2010" max="2022" placeholder="2022" class="filter-price__input" id="input-4">
+        <input type="number" min="2010" max="2022" placeholder="2022" class="filter-price__input" id="input-4" readonly="readonly">
       </label>
     </div>
     </div>
     <hr class="line">
     <div class="filter">
     <div class="wrapper">
-      <h2 class="title">Наши предложения</h2>
+      <h2>Наши предложения</h2>
       <ul class="settings settings-offer">
         <li class="settings__item">
           <input
@@ -88,7 +88,7 @@ export enum DOM {
     </div>
     <hr class="line">
     <div class="wrapper">
-      <h2 class="title">Вид украшения</h2>
+      <h2>Вид украшения</h2>
       <ul class="settings settings-decoration">
         <li class="settings__item">
           <input
@@ -139,7 +139,7 @@ export enum DOM {
     </div>
     <hr class="line" />
     <div class="wrapper">
-      <h2 class="title">Вид вставки</h2>
+      <h2>Вид вставки</h2>
       <ul class="settings settings-insert">
         <li class="settings__item">
           <input
@@ -181,7 +181,7 @@ export enum DOM {
     </div>
     <hr class="line" />
     <div class="wrapper">
-      <h2 class="title">Вид металла</h2>
+      <h2>Вид металла</h2>
       <ul class="settings settings-metall">
         <li class="settings__item">
           <input
@@ -206,14 +206,15 @@ export enum DOM {
     </div>
     <hr class="line">
     <div class="wrapper-btn">
-      <button class="btn btn_view">Сброс фильтров</button>
+      <button class="btn btn_reset-filter">Сброс фильтров</button>
       <button class="btn btn_reset">Сброс настроек</button>
     </div>
   </section>
   <section class="right-side">
   </section>
 </main>`,
-  footer = `<footer>
+  footer = `<hr class="line">
+  <footer>
   <span>© 2022</span>
   <div class="github">
     <a href="https://github.com/Veronika2811" class="github">
