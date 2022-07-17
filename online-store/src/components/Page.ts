@@ -120,6 +120,7 @@ export default class Page {
     //   el.checked = localStorage.getItem(el.id) === "true";
     // })
     // localStorage.setItem('range', JSON.stringify(settingPrice));
+    
 
   }
 

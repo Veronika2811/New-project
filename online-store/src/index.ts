@@ -245,3 +245,40 @@ new Page().createPage();
 //     });
 //   }
 // };
+
+
+// const cart = document.querySelectorAll('.block-cart');
+// const itemcart = document.querySelector('.items-the-cart') as HTMLSpanElement;
+
+// let activeCardName: string[] = [];
+
+
+
+// cart.forEach((el) => {
+  
+//   el.addEventListener('click', () => {
+//     const nameCard = el.parentElement?.dataset.name as string;
+
+//     if (el.classList.contains('active-card')) {
+//       el.classList.remove('active-card');
+
+//       if (activeCardName.length > 0) {
+//         activeCardName = activeCardName.filter(function (f) { 
+//           return f !== nameCard;
+//         });
+//       } 
+//       itemcart.innerHTML = String(activeCardName.length);
+//       localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
+//       localStorage.setItem('activeCard', JSON.stringify(activeCardName));
+//     } else {
+//       el.classList.add('active-card');
+//       activeCardName.push(nameCard);
+//       itemcart.innerHTML = String(activeCardName.length);
+//       localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
+//       localStorage.setItem('activeCard', JSON.stringify(activeCardName));
+//     }
+//   });
+// });
+
+
+

@@ -1,18 +1,24 @@
-function insertMark(string: string, pos: number, len: number) {
-  return string.slice(0, pos) + '<mark>' + string.slice(pos, pos + len) + '</mark>' + string.slice(pos + len);
-}
+// function insertMark(string: string, pos: number, len: number) {
+//   return string.slice(0, pos) + '<mark>' + string.slice(pos, pos + len) + '</mark>' + string.slice(pos + len);
+// }
 
 export function searchCard(value: string) {
   const sortNone = document.querySelector('.warning') as HTMLHeadElement;
   const elasticItems = document.querySelectorAll('.card');
   const searchRegExp = new RegExp(value, 'gi') as RegExp;
 
-  if (value === '') {
-    elasticItems.forEach((el) => {
-      el.classList.remove('hide');
-    });
-    return;
-  }
+  const currentCard: boolean[] = [];
+
+  // if (value === '') {
+  //   elasticItems.forEach((el) => {
+  //     el.classList.remove('hide');
+  //   });
+  //   return;
+  // } else {
+  //   let bol = new Set(currentCard);
+  //   console.log(currentCard);
+  // }
+  
 
   elasticItems.forEach((el) => {
     const innerCard = el.querySelector('.name');
@@ -21,11 +27,31 @@ export function searchCard(value: string) {
       const isContainsSearchRequest = searchRegExp.test(elementText);
       if (!isContainsSearchRequest) {
         el.classList.add('hide');
+        currentCard.push(isContainsSearchRequest);
       } else {
         el.classList.remove('hide');
+        currentCard.push(isContainsSearchRequest);
       }
+      
     }
+    
   });
+
+  if (value === '') {
+    sortNone.style.display = 'none';
+    elasticItems.forEach((el) => {
+      el.classList.remove('hide');
+    });
+    // return;
+  } else {
+    const bol = new Set(currentCard);
+    if (bol.size === 1) {
+      sortNone.style.display = 'block';
+    } else {
+      sortNone.style.display = 'none';
+    }
+  }
+  
 }
 
 

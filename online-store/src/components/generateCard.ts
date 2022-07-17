@@ -3,7 +3,7 @@ import { Filter } from './interfaces/interface';
 class Card {
 
   draw(data: Filter[]): void {
-    const news: Filter[] = data.length >= 20 ? data.filter((_item: Filter, idx: number) => idx < 20) : data;
+    // const news: Filter[] = data.length >= 20 ? data.filter((_item: Filter, idx: number) => idx < 20) : data;
 
     const rightSide = document.querySelector('.right-side') as HTMLElement;
     rightSide.innerHTML = '';
@@ -11,7 +11,7 @@ class Card {
     const fragment = document.createDocumentFragment() as DocumentFragment;
     const newsItemTemp = document.querySelector('.card') as HTMLTemplateElement;
 
-    news.forEach((item: Filter) => {
+    data.forEach((item: Filter) => {
       // newsItemTemp.setAttribute(`${data - sort}`, item.price);
       // newsItemTemp.dataset.sort = String(parseInt(item.price));
       const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
@@ -40,7 +40,7 @@ class Card {
     const newsItemTemp = document.querySelector('.text-warning') as HTMLTemplateElement;
     const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
 
-    (newsClone.querySelector('.warning') as HTMLHeadingElement).textContent = 'Извините, совпадений не обнаружено';
+    (newsClone.querySelector('.warning-text') as HTMLHeadingElement).textContent = 'Извините, совпадений не обнаружено';
     fragment.append(newsClone);
 
     rightSide.append(fragment);

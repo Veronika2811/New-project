@@ -113,6 +113,78 @@ export class Listener {
     btnClearStorage.addEventListener('click', () => {
       localStorage.clear();
     });
+
+    // Clear filter
+    const btnClearFilter = document.querySelector('.btn_view') as HTMLButtonElement;
+    btnClearFilter.addEventListener('click', () => {
+      const filterChek = document.querySelector('.filter') as HTMLDivElement;
+      const currentCheckbox = filterChek.querySelectorAll('input');
+      
+      currentCheckbox.forEach((el) => {
+        if (el.checked) {
+          el.checked = localStorage.getItem(el.id) === 'false';
+          localStorage.setItem(el.id, JSON.stringify(el.checked));
+        }
+      });
+
+      const rangeSliderPrice = document.getElementById('range-slider') as noUiSlider.target;
+      const rangeSliderYear = document.getElementById('range-slider-2') as noUiSlider.target;
+      rangeSliderPrice.noUiSlider!.set(['20', '200']);
+      rangeSliderYear.noUiSlider!.set(['2010', '2022']);
+
+
+      const inputSearch = document.querySelector('.search') as HTMLInputElement;
+      const value = inputSearch.value = '';
+      localStorage.setItem('search', JSON.stringify(value));
+      searchCard(value);
+    });
+  }
+
+  listenerCart() {
+    const cart = document.querySelectorAll('.block-cart');
+    const itemcart = document.querySelector('.items-the-cart') as HTMLSpanElement;
+
+    if (localStorage.getItem('cart') !== null) {
+      itemcart.innerHTML = JSON.parse(localStorage.getItem('cart')!);
+    }
+
+    let activeCardName: string[] = [];
+
+    if (localStorage.getItem('activeCard') !== null) {
+      activeCardName = JSON.parse(localStorage.getItem('activeCard')!);
+      // const cart = document.querySelectorAll('.block-cart');
+      cart.forEach((el) => {
+        if (activeCardName.includes(el.parentElement?.dataset.name as string)) {
+          el.classList.add('active-card');
+        }
+      });
+    }
+
+    cart.forEach((el) => {
+  
+      el.addEventListener('click', () => {
+        const nameCard = el.parentElement?.dataset.name as string;
+    
+        if (el.classList.contains('active-card')) {
+          el.classList.remove('active-card');
+    
+          if (activeCardName.length > 0) {
+            activeCardName = activeCardName.filter(function (f) { 
+              return f !== nameCard;
+            });
+          } 
+          itemcart.innerHTML = String(activeCardName.length);
+          localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
+          localStorage.setItem('activeCard', JSON.stringify(activeCardName));
+        } else {
+          el.classList.add('active-card');
+          activeCardName.push(nameCard);
+          itemcart.innerHTML = String(activeCardName.length);
+          localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
+          localStorage.setItem('activeCard', JSON.stringify(activeCardName));
+        }
+      });
+    });
   }
 
   listenerAll() {
@@ -120,5 +192,6 @@ export class Listener {
     this.listenerSort();
     this.listenerButton();
     this.listenerSearch();
+    this.listenerCart();
   }
 }

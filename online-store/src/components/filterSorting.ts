@@ -57,11 +57,17 @@ export default class FilterSort {
         sortedArray.push(el);
       }
     });
-    this.checboxChecked(sortedArray);
+
+    if (sortedArray.length === 0) {
+      new Card().drawText();
+    } else {
+      this.checboxChecked(sortedArray);
+    }
+    // this.checboxChecked(sortedArray);
   }
 
   checboxChecked(arr1: Array<Filter>) {
-    let activeCheckboxObj: { [key: string] : Array<string> } = { offer : [], decor : [], 
+    const activeCheckboxObj: { [key: string] : Array<string> } = { offer : [], decor : [], 
       insert : [], metall : [] };
 
     const filterChek = document.querySelector('.filter') as HTMLDivElement;
@@ -81,13 +87,13 @@ export default class FilterSort {
         if (el.value === 'typeMetall') {
           activeCheckboxObj.metall.push(el.name);
         }
-        localStorage.setItem('setting', JSON.stringify(activeCheckboxObj));
+        // localStorage.setItem('setting', JSON.stringify(activeCheckboxObj));
       }
     });
 
-    if (localStorage.getItem('setting') !== null) {
-      activeCheckboxObj = JSON.parse(localStorage.getItem('setting')!);
-    }
+    // if (localStorage.getItem('setting') !== null) {
+    //   activeCheckboxObj = JSON.parse(localStorage.getItem('setting')!);
+    // }
 
     this.filterSettings(arr1, activeCheckboxObj);
   }
@@ -108,11 +114,14 @@ export default class FilterSort {
     if (arr1.metall.length !== 0) {
       arr = this.compareArrays(arr, arr1.metall);
     }
+
+    // console.log(arr);
     
     if (arr.length === 0) {
       new Card().drawText();
     } else {
       new Card().draw(arr);
+      // console.log(arr);
 
       let value = 'value1';
       if (localStorage.getItem('option') !== null) {
@@ -125,6 +134,23 @@ export default class FilterSort {
         valueSearch = JSON.parse(localStorage.getItem('search')!);
       }
       searchCard(valueSearch);
+
+      const itemcart = document.querySelector('.items-the-cart') as HTMLSpanElement;
+
+      if (localStorage.getItem('cart') !== null) {
+        itemcart.innerHTML = JSON.parse(localStorage.getItem('cart')!);
+      }
+
+      if (localStorage.getItem('activeCard') !== null) {
+        const one = JSON.parse(localStorage.getItem('activeCard')!);
+        const cart = document.querySelectorAll('.block-cart');
+        cart.forEach((el) => {
+          if (one.includes(el.parentElement?.dataset.name)) {
+            el.classList.add('active-card');
+          }
+        });
+      }
+      // searchCard(valueSearch);
     }
   }
 
