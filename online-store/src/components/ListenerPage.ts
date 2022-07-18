@@ -88,6 +88,9 @@ export class Listener {
     inputSearch?.addEventListener('input', (event) => {
       inputSearch.addEventListener('search', () => {
         (document.querySelector('.warning') as HTMLHeadElement).style.display = 'none';
+        document.querySelectorAll('.card').forEach((el) => {
+          el.classList.remove('hide');
+        });
       });
 
       value = (event.target as HTMLInputElement).value.trim().toLowerCase();
