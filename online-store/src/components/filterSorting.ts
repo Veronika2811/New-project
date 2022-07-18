@@ -5,7 +5,7 @@ import { sortingSelect } from './helpers/sortingCards';
 import { searchCard } from './helpers/search';
 
 export default class FilterSort {
-  private compareArrays(
+  compareArrays(
     sourceArray: Array<Filter>,
     filter: Array<string | boolean>,
   ) {
@@ -175,6 +175,7 @@ export default class FilterSort {
               });
             }
             itemcart.innerHTML = String(activeCardName.length);
+            // (document.querySelector('.warning') as HTMLHeadElement).style.display = 'none';
 
             localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
             localStorage.setItem('activeCard', JSON.stringify(activeCardName));
