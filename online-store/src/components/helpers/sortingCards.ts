@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 export function sortingSelect(value: string) {
-  const parentCards = document.querySelector('.right-side') as HTMLElement;
+  const parentCards = <HTMLElement>document.querySelector('.right-side');
 
   if ( value === 'value1' ) {
     for (let i = 0; i < parentCards.children.length; i++) {
