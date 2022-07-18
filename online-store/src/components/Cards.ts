@@ -11,15 +11,15 @@ class Card {
 
     data.forEach((item: Filter) => {
       const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
-      (newsClone.querySelector('.card') as HTMLElement).dataset.sort = String(item.price);
-      (newsClone.querySelector('.card') as HTMLElement).dataset.name = item.name;
+      (newsClone.querySelector('.card') as HTMLDivElement).dataset.sort = String(item.price);
+      (newsClone.querySelector('.card') as HTMLDivElement).dataset.name = item.name;
       (newsClone.querySelector('.card-image') as HTMLDivElement).style.backgroundImage = `url(${ item.image })`;
       (newsClone.querySelector('.name') as HTMLHeadingElement).textContent = item.name;
-      (newsClone.querySelector('.price span') as HTMLSpanElement).textContent = String(item.price);
-      (newsClone.querySelector('.year-issue span') as HTMLSpanElement).textContent = String(item.year);
-      (newsClone.querySelector('.type-decoration span') as HTMLSpanElement).textContent = item.decoration;
-      (newsClone.querySelector('.type-insert span') as HTMLSpanElement).textContent = item.insert;
-      (newsClone.querySelector('.type-metall span') as HTMLSpanElement).textContent = item.metall;
+      (newsClone.querySelector('.price span') as HTMLParagraphElement).textContent = String(item.price);
+      (newsClone.querySelector('.year-issue span') as HTMLParagraphElement).textContent = String(item.year);
+      (newsClone.querySelector('.type-decoration span') as HTMLParagraphElement).textContent = item.decoration;
+      (newsClone.querySelector('.type-insert span') as HTMLParagraphElement).textContent = item.insert;
+      (newsClone.querySelector('.type-metall span') as HTMLParagraphElement).textContent = item.metall;
       (newsClone.querySelector('.img') as HTMLImageElement);
 
       fragment.append(newsClone);

@@ -1,8 +1,8 @@
 
 import FilterSort from './filterSorting';
-import { sortingSelect } from './sortingCards';
+import { sortingSelect } from './helpers/sortingCards';
 import * as noUiSlider from 'nouislider';
-import { searchCard } from './search';
+import { searchCard } from './helpers/search';
 
 
 export class Listener {
@@ -90,12 +90,13 @@ export class Listener {
         (document.querySelector('.warning') as HTMLHeadElement).style.display = 'none';
       });
 
-      value = (event.target as HTMLInputElement).value.trim();
+      value = (event.target as HTMLInputElement).value.trim().toLowerCase();
       localStorage.setItem('search', JSON.stringify(value));
       
       searchCard(value);
     });
 
+    inputSearch.value = value;
     searchCard(value);
   }
 
@@ -133,56 +134,24 @@ export class Listener {
       const inputSearch = document.querySelector('.search') as HTMLInputElement;
       const value = inputSearch.value = '';
       localStorage.setItem('search', JSON.stringify(value));
-
-      searchCard(value);
+      (document.querySelector('.warning') as HTMLHeadElement).style.display = 'none';
+      (document.querySelectorAll('.card')).forEach((el) => {
+        el.classList.remove('hide');
+      });
     });
-  }
 
-  listenerCart() {
-    // const cart = document.querySelectorAll('.block-cart');
-    // const itemcart = document.querySelector('.items-the-cart') as HTMLSpanElement;
+    // Modal close
+    const modalClose = document.querySelector('.modal__btn-close') as HTMLButtonElement;
+    const overlay = document.querySelector('.overlay') as HTMLButtonElement;
 
-    // if (localStorage.getItem('cart') !== null) {
-    //   itemcart.innerHTML = JSON.parse(localStorage.getItem('cart')!);
-    // }
-
-    // let activeCardName: string[] = [];
-
-    // if (localStorage.getItem('activeCard') !== null) {
-    //   activeCardName = JSON.parse(localStorage.getItem('activeCard')!);
-    //   // const cart = document.querySelectorAll('.block-cart');
-    //   cart.forEach((el) => {
-    //     if (activeCardName.includes(el.parentElement?.dataset.name as string)) {
-    //       el.classList.add('active-card');
-    //     }
-    //   });
-    // }
-
-    // cart.forEach((el) => {
-  
-    //   el.addEventListener('click', () => {
-    //     const nameCard = el.parentElement?.dataset.name as string;
-    
-    //     if (el.classList.contains('active-card')) {
-    //       el.classList.remove('active-card');
-    
-    //       if (activeCardName.length > 0) {
-    //         activeCardName = activeCardName.filter(function (f) { 
-    //           return f !== nameCard;
-    //         });
-    //       } 
-    //       itemcart.innerHTML = String(activeCardName.length);
-    //       localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
-    //       localStorage.setItem('activeCard', JSON.stringify(activeCardName));
-    //     } else {
-    //       el.classList.add('active-card');
-    //       activeCardName.push(nameCard);
-    //       itemcart.innerHTML = String(activeCardName.length);
-    //       localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
-    //       localStorage.setItem('activeCard', JSON.stringify(activeCardName));
-    //     }
-    //   });
-    // });
+    modalClose.addEventListener('click', () => {
+      (document.querySelector('.modal') as HTMLDivElement).style.display = 'none';
+      (document.querySelector('.body') as HTMLHeadElement).classList.remove('open');
+    });
+    overlay.addEventListener('click', () => {
+      (document.querySelector('.modal') as HTMLDivElement).style.display = 'none';
+      (document.querySelector('.body') as HTMLHeadElement).classList.remove('open');
+    });
   }
 
   listenerAll() {
@@ -190,6 +159,5 @@ export class Listener {
     this.listenerSort();
     this.listenerButton();
     this.listenerSearch();
-    // this.listenerAll();
   }
 }

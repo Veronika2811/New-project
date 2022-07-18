@@ -72,6 +72,13 @@
 .noUi-touch-area {
   height: 100%;
   width: 100%;
+  cursor: pointer;
+  transition: 0.5s;
+
+  &:hover {
+    border: 1px solid $colorGold;
+    border-radius: 100%;
+  }
 }
 .noUi-state-tap .noUi-connect,
 .noUi-state-tap .noUi-origin {

@@ -1,17 +1,23 @@
 import { Filter } from './interfaces/interface';
 import { products } from './card';
 import Card from './Cards';
-import { sortingSelect } from './sortingCards';
-import { searchCard } from './search';
+import { sortingSelect } from './helpers/sortingCards';
+import { searchCard } from './helpers/search';
 
 export default class FilterSort {
-
-  private compareArrays(sourceArray: Array<Filter>, filter: Array<string | boolean>) {
+  private compareArrays(
+    sourceArray: Array<Filter>,
+    filter: Array<string | boolean>,
+  ) {
     const sortedArray: Filter[] = [];
 
-    sourceArray.forEach((obj)=> {
-      if (filter.includes(obj.offer) || filter.includes(obj.decoration) 
-          || filter.includes(obj.insert) || filter.includes(obj.metall)) {
+    sourceArray.forEach((obj) => {
+      if (
+        filter.includes(obj.offer) ||
+        filter.includes(obj.decoration) ||
+        filter.includes(obj.insert) ||
+        filter.includes(obj.metall)
+      ) {
         sortedArray.push(obj);
       }
     });
@@ -28,7 +34,12 @@ export default class FilterSort {
       const price = arrObject[1];
       const year = arrObject[2] as number;
 
-      if (arrNumber[0] <= price && arrNumber[1] >= price && arrNumber[2] <= year && arrNumber[3] >= year) {
+      if (
+        arrNumber[0] <= price &&
+        arrNumber[1] >= price &&
+        arrNumber[2] <= year &&
+        arrNumber[3] >= year
+      ) {
         sortedArray.push(el);
       }
     });
@@ -41,13 +52,17 @@ export default class FilterSort {
   }
 
   checboxChecked(arr1: Array<Filter>) {
-    let activeCheckboxObj: { [key: string] : Array<string> } = { offer : [], decor : [], 
-      insert : [], metall : [] };
+    let activeCheckboxObj: { [key: string]: Array<string> } = {
+      offer: [],
+      decor: [],
+      insert: [],
+      metall: [],
+    };
 
     const filterChek = document.querySelector('.filter') as HTMLDivElement;
     const currentCheckbox = filterChek.querySelectorAll('input');
 
-    currentCheckbox.forEach((el) => { 
+    currentCheckbox.forEach((el) => {
       if (el.checked) {
         if (el.value === 'offer') {
           activeCheckboxObj.offer.push(el.name);
@@ -72,8 +87,11 @@ export default class FilterSort {
 
     this.filterSettings(arr1, activeCheckboxObj);
   }
-  
-  filterSettings(arr: Array<Filter>, arr1: { [key:string] : (string | boolean)[] }) {
+
+  filterSettings(
+    arr: Array<Filter>,
+    arr1: { [key: string]: (string | boolean)[] },
+  ) {
     if (arr1.offer.length !== 0) {
       arr = this.compareArrays(arr, arr1.offer);
     }
@@ -89,12 +107,12 @@ export default class FilterSort {
     if (arr1.metall.length !== 0) {
       arr = this.compareArrays(arr, arr1.metall);
     }
-    
+
     if (arr.length === 0) {
       new Card().drawText();
     } else {
       new Card().draw(arr);
-      
+
       // Sorting
       let value: string;
       if (localStorage.getItem('option') !== null) {
@@ -106,7 +124,7 @@ export default class FilterSort {
 
       // Search card
       let valueSearch = '';
-      if (localStorage.getItem('search') !== null) {
+      if (localStorage.getItem('search') !== '') {
         valueSearch = JSON.parse(localStorage.getItem('search') as string);
       }
       searchCard(valueSearch);
@@ -121,7 +139,8 @@ export default class FilterSort {
       // Active card
       const cart = document.querySelectorAll('.block-cart');
       if (localStorage.getItem('activeCard') !== null) {
-        const activeCard = JSON.parse(localStorage.getItem('activeCard') as string);
+        const activeCard = JSON.parse(
+          localStorage.getItem('activeCard') as string);
         cart.forEach((el) => {
           if (activeCard.includes(el.parentElement?.dataset.name)) {
             el.classList.add('active-card');
@@ -132,34 +151,53 @@ export default class FilterSort {
       let activeCardName: string[] = [];
 
       if (localStorage.getItem('activeCard') !== null) {
-        activeCardName = JSON.parse(localStorage.getItem('activeCard') as string);
+        activeCardName = JSON.parse(
+          localStorage.getItem('activeCard') as string);
         cart.forEach((el) => {
-          if (activeCardName.includes(el.parentElement?.dataset.name as string)) {
+          if (
+            activeCardName.includes(el.parentElement?.dataset.name as string)
+          ) {
             el.classList.add('active-card');
           }
         });
       }
 
       cart.forEach((el) => {
-  
         el.addEventListener('click', () => {
           const nameCard = el.parentElement?.dataset.name as string;
-    
+
           if (el.classList.contains('active-card')) {
             el.classList.remove('active-card');
-    
+
             if (activeCardName.length > 0) {
-              activeCardName = activeCardName.filter(function (f) { 
+              activeCardName = activeCardName.filter(function (f) {
                 return f !== nameCard;
               });
-            } 
+            }
             itemcart.innerHTML = String(activeCardName.length);
+
             localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
             localStorage.setItem('activeCard', JSON.stringify(activeCardName));
           } else {
-            el.classList.add('active-card');
-            activeCardName.push(nameCard);
-            itemcart.innerHTML = String(activeCardName.length);
+            if (Number(itemcart.innerHTML) >= 20) {
+              (
+                document.querySelector('.modal') as HTMLHeadElement
+              ).style.display = 'block';
+              (
+                document.querySelector('.body') as HTMLHeadElement
+              ).classList.add('open');
+            } else if (Number(itemcart.innerHTML) < 20) {
+              (
+                document.querySelector('.modal') as HTMLHeadElement
+              ).style.display = 'none';
+              (
+                document.querySelector('.body') as HTMLHeadElement
+              ).classList.remove('open');
+              el.classList.add('active-card');
+              activeCardName.push(nameCard);
+              itemcart.innerHTML = String(activeCardName.length);
+            }
+
             localStorage.setItem('cart', JSON.stringify(itemcart.innerHTML));
             localStorage.setItem('activeCard', JSON.stringify(activeCardName));
           }

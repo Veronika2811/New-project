@@ -12,7 +12,8 @@ footer {
   transition: 0.5s;
 
   &:hover {
-    filter: invert(46%) sepia(25%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+    filter: invert(46%) sepia(25%) saturate(638%) hue-rotate(7deg)
+      brightness(92%) contrast(87%);
   }
 }
 
@@ -21,20 +22,20 @@ footer {
   gap: 20px;
   text-decoration: none;
   transition: 0.5s;
-  
+
   & span {
     color: $colorBlack;
   }
 
   &:hover {
-    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
-    contrast(87%);
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg)
+      brightness(92%) contrast(87%);
   }
 }
 
 @media (max-width: 445px) {
   footer {
-      flex-direction: column;
-      gap: 10px;
+    flex-direction: column;
+    gap: 10px;
   }
 }

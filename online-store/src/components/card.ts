@@ -477,8 +477,8 @@ export const products: Filter[] = [
     'year': 2017,
     'offer': 'Популярное',
     'decoration': 'Заколка',
-    'insert': 'Без вставки',
-    'metall': 'Серебро',
+    'insert': 'Фианит',
+    'metall': 'Золото',
     'image': './assets/catalog/hairpins/11.JPG',
   },
   { 
@@ -608,7 +608,7 @@ export const products: Filter[] = [
     'offer': 'Новинка',
     'decoration': 'Кольцо',
     'insert': 'Жемчуг',
-    'metall': 'Серебро',
+    'metall': 'Золото',
     'image': './assets/catalog/rings/12.JPG',
   },
   { 

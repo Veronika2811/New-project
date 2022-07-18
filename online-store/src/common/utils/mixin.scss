@@ -4,11 +4,7 @@
   justify-content: $justify;
 }
 
-@mixin font(
-  $family: $fontMain,
-  $size,
-  $weight: normal
-) {
+@mixin font($family: $fontMain, $size, $weight: normal) {
   font-family: $family;
   font-size: $size;
   font-weight: $weight;

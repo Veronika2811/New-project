@@ -212,6 +212,13 @@ export enum DOM {
   </section>
   <section class="right-side">
   </section>
+  <div class="modal">
+    <div class="overlay"></div>
+        <div class="modal__window">
+          <p class="content">Извините, все слоты заполнены</p>
+          <div class="modal__btn-close">Close</div>
+      </div>
+    </div>
 </main>`,
   footer = `<hr class="line">
   <footer>
