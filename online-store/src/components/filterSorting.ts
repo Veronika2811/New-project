@@ -123,11 +123,11 @@ export default class FilterSort {
       sortingSelect(value);
 
       // Search card
-      let valueSearch = '';
-      if (localStorage.getItem('search') !== '') {
-        valueSearch = JSON.parse(localStorage.getItem('search') as string);
+      // let valueSearch = '';
+      if (localStorage.getItem('search') !== null) {
+        searchCard(JSON.parse(localStorage.getItem('search') as string));
       }
-      searchCard(valueSearch);
+      // searchCard(valueSearch);
 
       // Cart
       const itemcart = document.querySelector('.items-the-cart') as HTMLSpanElement;
