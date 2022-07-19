@@ -1,4 +1,6 @@
 import FilterSort from '../src/components/filterSorting';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { expect, test } from '@jest/globals';
 
 const product = [
   { 
