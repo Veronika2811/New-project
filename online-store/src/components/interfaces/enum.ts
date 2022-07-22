@@ -1,24 +1,4 @@
 export enum DOM {
-  header = `<header class="header">
-              <div class="header-wrapper">
-                <div class="logo">
-                  <h1>Online-Store</h1>
-                </div>
-                <h3 class="warning">Извините, совпадений не обнаружено</h3>
-                <nav class="menu">
-                  <ul class="menu__list">
-                    <li>
-                      <input placeholder="Поиск..." type="search" class="search" autocomplete="off" maxlength="15" autofocus>
-                    </li>
-                    <li class="cart-item">
-                      <img src="./assets/svg/cart.svg" alt="cart" class="cart">
-                      <span class="items-the-cart">0</span>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-              <hr class="line">
-            </header>`,
   main = ` <main class="catalog">
   <section class="left-side">
     <h2 class="title-filter">Фильтры</h2>
@@ -212,31 +192,5 @@ export enum DOM {
   </section>
   <section class="right-side">
   </section>
-  <div class="modal">
-    <div class="overlay"></div>
-        <div class="modal__window">
-          <p class="content">Извините, все слоты заполнены</p>
-          <div class="modal__btn-close">Close</div>
-      </div>
-    </div>
 </main>`,
-  footer = `<hr class="line">
-  <footer>
-  <span>© 2022</span>
-  <div class="github">
-    <a href="https://github.com/Veronika2811" class="github">
-      <img
-        class="footer__icon-git"
-        src="./assets/svg/github.svg"
-        alt="GitHub">
-      <span>Veronika2811</span>
-    </a>
-  </div>
-  <a href="https://rs.school/js/">
-    <img
-      class="footer__icon-rsschool"
-      src="./assets/svg/rs_school.svg"
-      alt="RSSchool">
-  </a>
-  </footer>`,
 }

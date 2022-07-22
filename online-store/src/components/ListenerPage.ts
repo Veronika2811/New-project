@@ -4,7 +4,6 @@ import { sortingSelect } from './helpers/sortingCards';
 import * as noUiSlider from 'nouislider';
 import { searchCard } from './helpers/search';
 
-
 export class Listener {
   listenerRange() {
     const rangeSliderPrice = document.getElementById('range-slider-price') as noUiSlider.target;
@@ -26,7 +25,7 @@ export class Listener {
 
       inputsPrice[handle].value = currentRangePrice[handle] as string;
       localStorage.setItem('price', JSON.stringify(currentRangePrice));
-      new FilterSort().sorting(currentRangePrice, currentRangeYear);
+      new FilterSort().sortByRange(currentRangePrice, currentRangeYear);
     });
 
     // Year
@@ -42,31 +41,30 @@ export class Listener {
 
       inputsYear[handle].value = currentRangeYear[handle] as string;
       localStorage.setItem('year', JSON.stringify(currentRangeYear));
-      new FilterSort().sorting(currentRangePrice, currentRangeYear);
+      new FilterSort().sortByRange(currentRangePrice, currentRangeYear);
     });
 
+    // Checkbox
     const filterChek = document.querySelector('.filter') as HTMLDivElement;
     const currentCheckbox = filterChek.querySelectorAll('input');
     
     currentCheckbox.forEach((el) => {
       el.oninput = () => {
-        new FilterSort().sorting(currentRangePrice, currentRangeYear);
+        new FilterSort().sortByRange(currentRangePrice, currentRangeYear);
         localStorage.setItem(el.id, JSON.stringify(el.checked));
       };
       el.checked = localStorage.getItem(el.id) === 'true';
-      new FilterSort().sorting(currentRangePrice, currentRangeYear);
+      new FilterSort().sortByRange(currentRangePrice, currentRangeYear);
     });
   }
 
   listenerSort() {
     const select = document.querySelector('select') as HTMLSelectElement;
 
-    let value;
+    let value = 'value1';
     if (localStorage.getItem('option') !== null) {
       value = localStorage.getItem('option') as string;
-    } else {
-      value = 'value1';
-    }
+    } 
 
     select.onchange = () => {
       sortingSelect(select.value);
@@ -142,18 +140,22 @@ export class Listener {
         el.classList.remove('hide');
       });
     });
+  }
 
-    // Modal close
+  modalClose() {
     const modalClose = document.querySelector('.modal__btn-close') as HTMLButtonElement;
     const overlay = document.querySelector('.overlay') as HTMLButtonElement;
+    const modal = document.querySelector('.modal') as HTMLDivElement;
+    const body = document.querySelector('.body') as HTMLBodyElement;
 
     modalClose.addEventListener('click', () => {
-      (document.querySelector('.modal') as HTMLDivElement).style.display = 'none';
-      (document.querySelector('.body') as HTMLHeadElement).classList.remove('open');
+      modal.style.display = 'none';
+      body.classList.remove('open');
     });
+
     overlay.addEventListener('click', () => {
-      (document.querySelector('.modal') as HTMLDivElement).style.display = 'none';
-      (document.querySelector('.body') as HTMLHeadElement).classList.remove('open');
+      modal.style.display = 'none';
+      body.classList.remove('open');
     });
   }
 
@@ -162,5 +164,6 @@ export class Listener {
     this.listenerSort();
     this.listenerButton();
     this.listenerSearch();
+    this.modalClose();
   }
 }

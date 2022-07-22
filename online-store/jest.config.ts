@@ -1,10 +1,14 @@
-import type { Config } from '@jest/types';
-// Sync object
-const config: Config.InitialOptions = {
-  verbose: true,
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  moduleDirectories: ['node_modules', 'src'],
+  moduleNameMapper: {
+    '^(.{1,2}/.*).js$': '$1',
+  },
+  rootDir: './test',
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  resetMocks: false,
+  verbose: true,
 };
-
-export default config;

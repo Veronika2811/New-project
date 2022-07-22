@@ -1,8 +1,6 @@
 import FilterSort from '../src/components/filterSorting';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { expect, test } from '@jest/globals';
 
-const product = [
+const productArray = [
   { 
     'name': 'Rock-n-roll',
     'price': 20,
@@ -25,24 +23,25 @@ const product = [
   },
 ];
 
-const endResult  = [
-  { 
-    'name': 'Нежность',
-    'price': 70,
-    'year': 2011,
-    'offer': 'Популярное',
-    'decoration': 'Браслет',
-    'insert': 'Фианит',
-    'metall': 'Серебро',
-    'image': './assets/catalog/bracelets/2.JPG',
-  },
-];
-
 test('Sort an array', () => {
-  expect(new FilterSort().compareArrays(product, ['Фианит'])).toEqual(endResult);
+  const resultArray  = [
+    { 
+      'name': 'Нежность',
+      'price': 70,
+      'year': 2011,
+      'offer': 'Популярное',
+      'decoration': 'Браслет',
+      'insert': 'Фианит',
+      'metall': 'Серебро',
+      'image': './assets/catalog/bracelets/2.JPG',
+    },
+  ];
+
+  expect(new FilterSort().compareArrays(productArray, ['Фианит'])).toEqual(resultArray);
 });
 
-const end  = 
+test('this product has the desired properties', () => {
+  const objectProduct  = 
   { 
     'name': 'Нежность',
     'price': 70,
@@ -54,13 +53,17 @@ const end  =
     'image': './assets/catalog/bracelets/2.JPG',
   };
 
-test('this product has the desired properties', () => {
-  expect(end).toHaveProperty('insert');
+  expect(objectProduct).toHaveProperty('name');
+  expect(objectProduct).toHaveProperty('price');
+  expect(objectProduct).toHaveProperty('year');
+  expect(objectProduct).toHaveProperty('offer');
+  expect(objectProduct).toHaveProperty('decoration');
+  expect(objectProduct).toHaveProperty('insert');
+  expect(objectProduct).toHaveProperty('metall');
+  expect(objectProduct).toHaveProperty('image');
 });
 
 
 test('returns sorted array', () => {
-  expect(new FilterSort().compareArrays(product, ['Фианит'])).toBeDefined();
+  expect(new FilterSort().compareArrays(productArray, ['Фианит'])).toBeDefined();
 });
-
-

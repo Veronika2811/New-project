@@ -2,17 +2,12 @@ import './main_page.scss';
 import { DOM } from './interfaces/enum';
 import * as noUiSlider from 'nouislider';
 import { Listener } from './ListenerPage';
+import Modal from './layouts/Modal';
+import Footer from './layouts/Footer';
+import Header from './layouts/Header';
 
 export default class Page {
-  private header: string = DOM.header;
-
   private main: string = DOM.main;
-
-  private footer: string = DOM.footer;
-
-  createHeader() {
-    document.body.insertAdjacentHTML('afterbegin', this.header);
-  }
 
   createMain() {
     const headerBlock = <HTMLElement>document.querySelector('header');
@@ -58,15 +53,12 @@ export default class Page {
     });
   }
 
-  createFooter() {
-    document.body.insertAdjacentHTML('beforeend', this.footer);
-  }
-
   createPage() {
-    this.createHeader();
+    new Header();
     this.createMain();
     this.createRange();
-    this.createFooter();
+    new Modal();
+    new Footer();
     new Listener().listenerAll();
   }
 }
