@@ -1,0 +1,23 @@
+@import '../../helpers/constants.scss';
+
+.header {
+  display: flex;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+.btn {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.green {
+  background-color: $colorGreen;
+}
+
+.white {
+  background-color: $colorGrey;
+}
