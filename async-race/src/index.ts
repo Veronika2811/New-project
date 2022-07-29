@@ -1,6 +1,5 @@
 import './style.scss';
-import ControlBtn from './components/view/controlButtons/controlButtons';
-import createDomNode from './components/helpers/createDomNode';
+import ContainerGarageTitle from './components/view/containerGarageTitle/ContainerGarageTitle';
 
-new ControlBtn();
+new ContainerGarageTitle().getPage();
 

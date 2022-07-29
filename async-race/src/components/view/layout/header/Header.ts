@@ -1,5 +1,5 @@
 import './header.scss';
-import createBtn from '../../../helpers/CreateBtn';
+import createBtn from '../../../helpers/createBtn';
 import createDomNode from '../../../helpers/createDomNode';
 
 

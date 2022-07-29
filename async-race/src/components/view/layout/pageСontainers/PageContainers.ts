@@ -1,4 +1,4 @@
-import './PageContainers';
+import './pageContainers.scss';
 import createDomNode from '../../../helpers/createDomNode';
 import Header from '../header/Header';
 

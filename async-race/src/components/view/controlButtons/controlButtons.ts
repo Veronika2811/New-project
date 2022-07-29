@@ -1,7 +1,7 @@
 import './controlButtons.scss';
-import createBtn from '../../helpers/CreateBtn';
+import createBtn from '../../helpers/createBtn';
 import createDomNode from '../../helpers/createDomNode';
-import createInput from '../../helpers/CreateInput';
+import createInput from '../../helpers/createInput';
 import PageContainers from '../layout/pageСontainers/PageContainers';
 
 export default class ControlBtn extends PageContainers {
