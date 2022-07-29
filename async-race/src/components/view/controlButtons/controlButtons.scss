@@ -1,0 +1,18 @@
+.control-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create-car,
+.update-car,
+.control-race-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.car-name-create,
+.car-name-update {
+  padding: 4px;
+}

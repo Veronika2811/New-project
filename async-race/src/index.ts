@@ -1,6 +1,6 @@
 import './style.scss';
-import Header from './components/view/layout/header/Header';
-import PageContainers from './components/view/layout/pageСontainers/PageContainers';
+import ControlBtn from './components/view/controlButtons/controlButtons';
+import createDomNode from './components/helpers/createDomNode';
 
-// new Header();
-new PageContainers().getPage();
+new ControlBtn();
+
