@@ -7,22 +7,24 @@ import ContainerGarageTitle from '../containerGarageTitle/ContainerGarageTitle';
 export default class ContainerGarage extends ContainerGarageTitle {
   cars;
 
-  numberPage;
+  // numberPage;
 
-  loader = new Loader();
+  // loader = new Loader();
 
   constructor() {
     super();
 
     this.cars = createDomNode('div', ['cars'], this.containerGarage);
 
-    this.numberPage = 1;
+    // this.numberPage = 1;
   }
 
-  async createCars() {
-    const cars = await this.loader.getCars(this.numberPage);
-    this.countTotal.innerHTML = ` (${cars?.count})`;
+  // async createCars() {
+  //   const cars = await this.loader.getCars(this.numberPage);
+  //   this.countTotal.innerHTML = ` (${cars?.count})`;
+  //   this.currentPage.innerHTML = `${this.numberPage}`;
 
-    cars?.items.forEach((el: Car) => new CarsItem(el));
-  }
+  //   this.cars.innerHTML = '';
+  //   cars?.items.forEach((el: Car) => new CarsItem(el));
+  // }
 }

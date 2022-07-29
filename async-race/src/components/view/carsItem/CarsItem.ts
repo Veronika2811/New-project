@@ -3,38 +3,36 @@ import createButton from '../../helpers/createBtn';
 import createDomNode from '../../helpers/createDomNode';
 import { Car } from '../../interface/interface';
 import getCar from '../../helpers/getCar';
+import ContainerGarage from '../containerGarage/ContainerGarage';
 
-export default class CarsItem {
-  cars;
+export default class CarsItem extends ContainerGarage {
+  carsItem!: HTMLElement;
 
-  carsItem;
+  carsWrapper!: HTMLElement;
 
-  carsWrapper;
+  line!: HTMLElement;
 
-  line;
+  carButtons!: HTMLElement;
 
-  carButtons;
+  selectBtn!: HTMLElement;
 
-  selectBtn;
+  removeBtn!: HTMLElement;
 
-  removeBtn;
+  carName!: HTMLElement;
 
-  carName;
+  highway!: HTMLElement;
 
-  highway;
+  engineButtons!: HTMLElement;
 
-  engineButtons;
+  carBtnA!: HTMLElement;
 
-  carBtnA;
+  carBtnB!: HTMLElement;
 
-  carBtnB;
+  car!: HTMLElement;
 
-  car;
+  imageCar!: string;
 
-  imageCar;
-
-  constructor(data: Car) {
-    this.cars = document.querySelector('.cars') as HTMLDivElement;
+  createCar(data: Car) {
     this.carsItem = createDomNode('div', ['cars-item'], this.cars);
 
     this.carsWrapper = createDomNode('div', ['cars-wrapper'], this.carsItem);

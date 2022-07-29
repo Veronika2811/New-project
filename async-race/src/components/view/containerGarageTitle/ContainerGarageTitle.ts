@@ -18,8 +18,8 @@ export default class ContainerGarageTitle extends ControlBtn {
 
     this.containerGarage = createDomNode('div', ['container-garage'], this.sectionGarage);
     this.pageTitle = createDomNode('h1', ['title'], this.containerGarage, 'Garage');
-    this.countTotal = createDomNode('span', ['count-total'], this.pageTitle, ` (${1})`);
+    this.countTotal = createDomNode('span', ['count-total'], this.pageTitle);
     this.page = createDomNode('h2', ['page'], this.containerGarage, 'Page #');
-    this.currentPage = createDomNode('span', ['current-page'], this.page, '1');
+    this.currentPage = createDomNode('span', ['current-page'], this.page);
   }
 }
