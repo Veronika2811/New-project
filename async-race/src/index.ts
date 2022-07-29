@@ -1,5 +1,8 @@
 import './style.scss';
-import ContainerGarageTitle from './components/view/containerGarageTitle/ContainerGarageTitle';
+import ContainerGarage from './components/view/containerGarage/ContainerGarage';
+import CarsItem from './components/view/carsItem/CarsItem';
 
-new ContainerGarageTitle().getPage();
+new ContainerGarage().getPage();
+
+new CarsItem( { 'name': 'Tesla', 'color': '#e6e6fa', 'id': 1 } );
 
