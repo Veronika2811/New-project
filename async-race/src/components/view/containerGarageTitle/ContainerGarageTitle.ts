@@ -1,25 +1,35 @@
 import './containerGarageTitle.scss';
 import createDomNode from '../../helpers/createDomNode';
-import ControlBtn from '../controlButtons/controlButtons';
 
-export default class ContainerGarageTitle extends ControlBtn {
-  containerGarage;
+export const containerGarage = createDomNode('div', ['container-garage']);
+
+export const countTotal = createDomNode('span', ['count-total']);
+
+export const currentPage = createDomNode('span', ['current-page']);
+
+export class ContainerGarageTitle {
+  sectionGarage;
+
+  containerGarage = containerGarage;
+
+  titlePage;
 
   pageTitle;
 
-  countTotal;
+  countTotal = countTotal;
 
   page;
 
-  currentPage;
+  currentPage = currentPage;
 
-  constructor() {
-    super();
+  constructor(sectionGarage: HTMLElement, titlePage: string) {
+    this.sectionGarage = sectionGarage;
+    this.titlePage = titlePage;
 
-    this.containerGarage = createDomNode('div', ['container-garage'], this.sectionGarage);
-    this.pageTitle = createDomNode('h1', ['title'], this.containerGarage, 'Garage');
-    this.countTotal = createDomNode('span', ['count-total'], this.pageTitle);
+    this.sectionGarage.append(this.containerGarage);
+    this.pageTitle = createDomNode('h1', ['title'], this.containerGarage, this.titlePage);
+    this.pageTitle.append(this.countTotal);
     this.page = createDomNode('h2', ['page'], this.containerGarage, 'Page #');
-    this.currentPage = createDomNode('span', ['current-page'], this.page);
+    this.page.append(this.currentPage);
   }
 }

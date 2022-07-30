@@ -3,9 +3,10 @@ import createButton from '../../helpers/createBtn';
 import createDomNode from '../../helpers/createDomNode';
 import { Car } from '../../interface/interface';
 import getCar from '../../helpers/getCar';
-import ContainerGarage from '../containerGarage/ContainerGarage';
+import Loader from '../../controller/loader';
+import { countTotal, currentPage } from '../containerGarageTitle/ContainerGarageTitle';
 
-export default class CarsItem extends ContainerGarage {
+export default class CarsItem {
   carsItem!: HTMLElement;
 
   carsWrapper!: HTMLElement;
@@ -32,6 +33,22 @@ export default class CarsItem extends ContainerGarage {
 
   imageCar!: string;
 
+  loader = new Loader();
+
+  numberPage;
+
+  cars;
+
+  countTotal = countTotal;
+
+  currentPage = currentPage;
+
+  constructor(cars: HTMLElement) {
+    this.cars = cars;
+    this.numberPage = 1;
+    this.createCars();
+  }
+
   createCar(data: Car) {
     this.carsItem = createDomNode('div', ['cars-item'], this.cars);
 
@@ -52,5 +69,14 @@ export default class CarsItem extends ContainerGarage {
     this.car = createDomNode('div', ['car'], this.highway);
     this.imageCar = getCar(`${data.color}`);
     this.car.innerHTML = this.imageCar;
+  }
+
+  async createCars() {
+    const cars = await this.loader.getCars(this.numberPage);
+    this.countTotal.innerHTML = ` (${cars?.count})`;
+    this.currentPage.innerHTML = `${this.numberPage}`;
+
+    this.cars.innerHTML = '';
+    cars?.items.forEach((el: Car) => this.createCar(el));
   }
 }

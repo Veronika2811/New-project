@@ -1,30 +1,42 @@
 import './pageContainers.scss';
 import createDomNode from '../../../helpers/createDomNode';
-import Header from '../header/Header';
+import { btnGarage, btnWinners } from '../header/Header';
 
-export default class PageContainers extends Header {
+export const sectionGarage = createDomNode('section', ['garage']);
+
+export const sectionWinners = createDomNode('section', ['winners', 'hide']);
+
+export default class PageContainers {
   private main;
 
-  sectionGarage;
+  btnGarage = btnGarage;
 
-  sectionWinners;
+  btnWinners = btnWinners;
+
+  sectionGarage = sectionGarage;
+
+  sectionWinners = sectionWinners;
 
   constructor() {
-    super();
     this.main = createDomNode('main', ['main'], document.body);
-    this.sectionGarage = createDomNode('section', ['garage'], this.main);
-    this.sectionWinners = createDomNode('section', ['winners', 'hide'], this.main);
-  }
+    this.main.append(this.sectionGarage, this.sectionWinners);
 
-  getPage() {
     this.btnWinners.addEventListener('click', () => {
-      this.sectionWinners.classList.remove('hide');
-      this.sectionGarage.classList.add('hide');
+      this.getPageWinners();
     });
 
     this.btnGarage.addEventListener('click', () => {
-      this.sectionGarage.classList.remove('hide');
-      this.sectionWinners.classList.add('hide');
+      this.getPageGarage();
     });
+  }
+
+  getPageWinners() {
+    this.sectionWinners.classList.remove('hide');
+    this.sectionGarage.classList.add('hide');
+  }
+
+  getPageGarage() {
+    this.sectionGarage.classList.remove('hide');
+    this.sectionWinners.classList.add('hide');
   }
 }

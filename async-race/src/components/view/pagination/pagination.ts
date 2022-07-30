@@ -1,19 +1,20 @@
 import './pagination.scss';
 import createBtn from '../../helpers/createBtn';
 import createDomNode from '../../helpers/createDomNode';
-import CarsItem from '../carsItem/CarsItem';
 
-export default class Pagination extends CarsItem {
+export default class Pagination {
   pagination;
 
   btnPrev;
 
   btnNext;
 
-  constructor() {
-    super();
+  containerGarage;
+
+  constructor(containerGarage: HTMLElement) {
+    this.containerGarage = containerGarage;
     
-    this.pagination = createDomNode('div', ['pagination'], this.cars);
+    this.pagination = createDomNode('div', ['pagination'], this.containerGarage);
 
     this.btnPrev = createBtn(['btn', 'green', 'btn-prev'], 'prev', this.pagination);
     this.btnNext = createBtn(['btn', 'green', 'btn-next'], 'next', this.pagination);

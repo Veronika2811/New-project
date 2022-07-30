@@ -1,3 +1,5 @@
+import { Car } from '../interface/interface';
+
 export default class Loader {
   baseUrl: string;
 
@@ -21,6 +23,20 @@ export default class Loader {
         items: await response.json(),
         count: response.headers.get('X-Total-Count'),
       };
+    } catch (error) {
+      console.warn(error);
+    }
+  }
+
+  async createCar(body: Car) {
+    try {
+      return await (await fetch(this.garageUrl, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })).json();
     } catch (error) {
       console.warn(error);
     }

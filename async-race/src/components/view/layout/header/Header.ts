@@ -2,17 +2,19 @@ import './header.scss';
 import createBtn from '../../../helpers/createBtn';
 import createDomNode from '../../../helpers/createDomNode';
 
+export const btnGarage = createBtn(['btn', 'green', 'btn-garage'], 'to garage');
 
-export default class Header {
+export const btnWinners = createBtn(['btn', 'green', 'btn-winners'], 'to winners');
+
+export class Header {
   navigation;
 
-  btnGarage;
+  btnGarage = btnGarage;
   
-  btnWinners;
+  btnWinners = btnWinners;
 
   constructor() {
     this.navigation = createDomNode('header', ['header'], document.body) as HTMLElement;
-    this.btnGarage = createBtn(['btn', 'green', 'btn-garage'], 'to garage', this.navigation);
-    this.btnWinners = createBtn(['btn', 'green', 'btn-winners'], 'to winners', this.navigation);
+    this.navigation.append(this.btnGarage, this.btnWinners);
   }
 }

@@ -2,9 +2,10 @@ import './controlButtons.scss';
 import createBtn from '../../helpers/createBtn';
 import createDomNode from '../../helpers/createDomNode';
 import createInput from '../../helpers/createInput';
-import PageContainers from '../layout/pageСontainers/PageContainers';
 
-export default class ControlBtn extends PageContainers {
+export default class ControlBtn {
+  sectionGarage;
+
   controlButtons;
 
   createCarForm;
@@ -29,8 +30,8 @@ export default class ControlBtn extends PageContainers {
 
   btnGenerateCar;
 
-  constructor() {
-    super();
+  constructor(sectionGarage: HTMLElement) {
+    this.sectionGarage = sectionGarage;
 
     this.controlButtons = createDomNode('div', ['control-btn'], this.sectionGarage);
     this.createCarForm = createDomNode('div', ['create-car'],  this.controlButtons);

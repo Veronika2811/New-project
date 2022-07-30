@@ -1,30 +1,16 @@
-import Loader from '../../controller/loader';
+
 import createDomNode from '../../helpers/createDomNode';
-import { Car } from '../../interface/interface';
-import CarsItem from '../carsItem/CarsItem';
-import ContainerGarageTitle from '../containerGarageTitle/ContainerGarageTitle';
 
-export default class ContainerGarage extends ContainerGarageTitle {
-  cars;
+export const cars = createDomNode('div', ['cars']);
 
-  // numberPage;
+export class ContainerGarage { 
+  cars = cars;
 
-  // loader = new Loader();
+  containerGarage;
 
-  constructor() {
-    super();
-
-    this.cars = createDomNode('div', ['cars'], this.containerGarage);
-
-    // this.numberPage = 1;
+  constructor(containerGarage: HTMLElement) {
+    this.containerGarage = containerGarage;
+    
+    this.containerGarage.append(this.cars);
   }
-
-  // async createCars() {
-  //   const cars = await this.loader.getCars(this.numberPage);
-  //   this.countTotal.innerHTML = ` (${cars?.count})`;
-  //   this.currentPage.innerHTML = `${this.numberPage}`;
-
-  //   this.cars.innerHTML = '';
-  //   cars?.items.forEach((el: Car) => new CarsItem(el));
-  // }
 }
