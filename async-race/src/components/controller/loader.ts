@@ -30,13 +30,25 @@ export default class Loader {
 
   async createCar(body: Car) {
     try {
-      return await (await fetch(this.garageUrl, {
+      const response = await fetch(this.garageUrl, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
           'Content-Type': 'application/json',
         },
-      })).json();
+      });
+      return await response.json();
+    } catch (error) {
+      console.warn(error);
+    }
+  }
+
+  async deleteCar(id: number) {
+    try {
+      const response = await fetch(`${this.garageUrl}/${id}`, {
+        method: 'DELETE',
+      });
+      return await response.json();
     } catch (error) {
       console.warn(error);
     }

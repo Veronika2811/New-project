@@ -44,10 +44,10 @@ export default class ControlBtn {
 
     this.carNameUpdate = createInput(['car-name-update'], [{ 'type': 'text' }, { 'placeholder': 'Update name car' }, { 'disabled': 'true' }], this.updateCarForm);
     this.carColorUpdate = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }, { 'disabled': 'true' }], this.updateCarForm);
-    this.btnCreateCar = createBtn(['btn', 'btn-update'], 'update', this.updateCarForm, 'disabled');
+    this.btnCreateCar = createBtn(['btn', 'btn-update'], 'update', this.updateCarForm, [{ 'disabled': 'true' }]);
 
     this.btnRace = createBtn(['btn', 'green', 'btn-race'], 'race', this.controlRaceButtons);
-    this.btnReset = createBtn(['btn', 'btn-reset'], 'reset', this.controlRaceButtons, 'disabled');
+    this.btnReset = createBtn(['btn', 'btn-reset'], 'reset', this.controlRaceButtons, [{ 'disabled': 'true' }]);
     this.btnGenerateCar = createBtn(['btn', 'btn-generate'], 'generate cars', this.controlRaceButtons);
   }
 }

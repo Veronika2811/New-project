@@ -57,14 +57,16 @@ export default class CarsItem {
 
     this.carButtons = createDomNode('div', ['car-buttons'], this.carsWrapper);
     this.selectBtn = createButton(['btn', 'white', 'btn-select'], 'select', this.carButtons);
-    this.removeBtn = createButton(['btn', 'white', 'btn-remove'], 'remove', this.carButtons);
+    this.removeBtn = createButton(['btn', 'white', 'btn-remove'], 'remove', this.carButtons);//, [{ 'data-id': `${data.id}` }]);
+    this.removeBtn.addEventListener('click', () => this.removeCar(data.id));
+
     this.carName = createDomNode('span', ['car-name'], this.carButtons, `${data.name}`);
 
     this.highway = createDomNode('div', ['highway'], this.carsWrapper);
 
     this.engineButtons = createDomNode('div', ['engine-buttons'], this.highway);
     this.carBtnA = createButton(['btn-engine', 'btn-start'], 'A',  this.engineButtons);
-    this.carBtnB = createButton(['btn-engine', 'btn-stop'], 'B',  this.engineButtons, 'disabled');
+    this.carBtnB = createButton(['btn-engine', 'btn-stop'], 'B',  this.engineButtons, [{ 'disabled': 'true' }]);
 
     this.car = createDomNode('div', ['car'], this.highway);
     this.imageCar = getCar(`${data.color}`);
@@ -78,5 +80,10 @@ export default class CarsItem {
 
     this.cars.innerHTML = '';
     cars?.items.forEach((el: Car) => this.createCar(el));
+  }
+
+  async removeCar(id: number) {
+    this.loader.deleteCar(Number(id));
+    this.createCars();
   }
 }
