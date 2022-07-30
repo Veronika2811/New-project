@@ -2,9 +2,12 @@ import './controlButtons.scss';
 import createBtn from '../../helpers/createBtn';
 import createDomNode from '../../helpers/createDomNode';
 import createInput from '../../helpers/createInput';
+import Loader from '../../controller/loader';
+import CarsItem from '../carsItem/CarsItem';
+import { cars } from '../containerGarage/ContainerGarage';
 
-export const carNameInput = createInput(['car-name-create'], [{ 'type': 'text' }, { 'placeholder': 'Enter name car' }]);
-export const carColorInput = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }]);
+// export const carNameInput = createInput(['car-name-create'], [{ 'type': 'text' }, { 'placeholder': 'Enter name car' }]);
+// export const carColorInput = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }]);
 
 export const carNameUpdate = createInput(['car-name-update'], [{ 'type': 'text' }, { 'placeholder': 'Update name car' }, { 'disabled': 'true' }]);
 export const carColorUpdate = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }, { 'disabled': 'true' }]);
@@ -22,9 +25,9 @@ export class ControlBtn {
 
   controlRaceButtons;
 
-  carNameInput = carNameInput;
+  carNameInput;
 
-  carColorInput = carColorInput;
+  carColorInput;
 
   btnCreateCar;
 
@@ -40,6 +43,10 @@ export class ControlBtn {
 
   btnGenerateCar;
 
+  loader = new Loader();
+
+  cars = cars;
+
   constructor(sectionGarage: HTMLElement) {
     this.sectionGarage = sectionGarage;
 
@@ -48,11 +55,13 @@ export class ControlBtn {
     this.updateCarForm = createDomNode('div', ['update-car'],  this.controlButtons);
     this.controlRaceButtons = createDomNode('div', ['control-race-buttons'],  this.controlButtons);
 
-    this.createCarForm.append(this.carNameInput, this.carColorInput);
+    // this.createCarForm.append(this.carNameInput, this.carColorInput);
 
-    // this.carNameInput = createInput(['car-name-create'], [{ 'type': 'text' }, { 'placeholder': 'Enter name car' }], this.createCarForm);
-    // this.carColorInput = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }], this.createCarForm);
+    this.carNameInput = createInput(['car-name-create'], [{ 'type': 'text' }, { 'placeholder': 'Enter name car' }], this.createCarForm);
+    this.carColorInput = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }], this.createCarForm);
     this.btnCreateCar = createBtn(['btn', 'btn-create'], 'create', this.createCarForm);
+    this.btnCreateCar.addEventListener('click', () => this.creatNewCar());
+
 
     this.updateCarForm.append(this.carNameUpdate, this.carColorUpdate, this.btnUpdateCar);
 
@@ -67,5 +76,18 @@ export class ControlBtn {
     this.btnRace = createBtn(['btn', 'green', 'btn-race'], 'race', this.controlRaceButtons);
     this.btnReset = createBtn(['btn', 'btn-reset'], 'reset', this.controlRaceButtons, [{ 'disabled': 'true' }]);
     this.btnGenerateCar = createBtn(['btn', 'btn-generate'], 'generate cars', this.controlRaceButtons);
+  }
+
+  async creatNewCar() {
+    if (this.carNameInput.value === '') {
+      alert('Enter the make of the car, please!');
+    } else {
+      await this.loader.createCar({ name: this.carNameInput.value, color: this.carColorInput.value });
+
+      this.carNameInput.value = '';
+      this.carColorInput.value = '#ffffff';
+
+      new CarsItem(this.cars).createCars();
+    }
   }
 }

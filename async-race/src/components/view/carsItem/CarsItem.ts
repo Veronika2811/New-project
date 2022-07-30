@@ -107,15 +107,20 @@ export default class CarsItem {
     this.carColorUpdate.value = color;
 
     this.btnUpdateCar.addEventListener('click', async () => {
-      await this.loader.updateCar(id, { name: carNameUpdate.value, color: carColorUpdate.value } );
+      if (this.carNameUpdate.value === '') {
+        alert('Enter the make of the car, please!');
+      } else {
+        await this.loader.updateCar(id, { name: carNameUpdate.value, color: carColorUpdate.value } );
 
-      this.carNameUpdate.value = '';
-      this.carColorUpdate.value = '#ffffff';
+        this.carNameUpdate.value = '';
+        this.carColorUpdate.value = '#ffffff';
   
-      containerUpdateCar.forEach((el) => {
-        setDisableAttribute(el, true);
-      });
-      this.createCars();
+        containerUpdateCar.forEach((el) => {
+          setDisableAttribute(el, true);
+        });
+        
+        this.createCars();
+      }
     });
   }
 }
