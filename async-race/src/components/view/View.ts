@@ -1,5 +1,5 @@
 import { Header } from '../view/layout/header/Header';
-import ControlBtn from './controlButtons/controlButtons';
+import { ControlBtn } from './controlButtons/controlButtons';
 import PageContainers from './layout/pageСontainers/PageContainers';
 
 import { sectionGarage } from '../view/layout/pageСontainers/PageContainers';

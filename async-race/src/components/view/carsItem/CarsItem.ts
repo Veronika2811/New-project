@@ -5,6 +5,8 @@ import { Car } from '../../interface/interface';
 import getCar from '../../helpers/getCar';
 import Loader from '../../controller/loader';
 import { countTotal, currentPage } from '../containerGarageTitle/ContainerGarageTitle';
+import { carNameUpdate, carColorUpdate, btnUpdateCar } from '../controlButtons/controlButtons';
+import setDisableAttribute from '../../helpers/setAttr';
 
 export default class CarsItem {
   carsItem!: HTMLElement;
@@ -43,6 +45,12 @@ export default class CarsItem {
 
   currentPage = currentPage;
 
+  carNameUpdate = carNameUpdate;
+  
+  carColorUpdate = carColorUpdate;
+
+  btnUpdateCar = btnUpdateCar;
+
   constructor(cars: HTMLElement) {
     this.cars = cars;
     this.numberPage = 1;
@@ -57,8 +65,9 @@ export default class CarsItem {
 
     this.carButtons = createDomNode('div', ['car-buttons'], this.carsWrapper);
     this.selectBtn = createButton(['btn', 'white', 'btn-select'], 'select', this.carButtons);
+    this.selectBtn.addEventListener('click', () => this.selectCar((data.id) as number, data.color, data.name));
     this.removeBtn = createButton(['btn', 'white', 'btn-remove'], 'remove', this.carButtons);//, [{ 'data-id': `${data.id}` }]);
-    this.removeBtn.addEventListener('click', () => this.removeCar(data.id));
+    this.removeBtn.addEventListener('click', () => this.removeCar((data.id) as number));
 
     this.carName = createDomNode('span', ['car-name'], this.carButtons, `${data.name}`);
 
@@ -85,5 +94,28 @@ export default class CarsItem {
   async removeCar(id: number) {
     this.loader.deleteCar(Number(id));
     this.createCars();
+  }
+
+  selectCar(id: number, color: string, name: string) {
+    const containerUpdateCar = [this.carNameUpdate, this.carColorUpdate, this.btnUpdateCar];
+
+    containerUpdateCar.forEach((el) => {
+      setDisableAttribute(el, false);
+    });
+
+    this.carNameUpdate.value = name;
+    this.carColorUpdate.value = color;
+
+    this.btnUpdateCar.addEventListener('click', async () => {
+      await this.loader.updateCar(id, { name: carNameUpdate.value, color: carColorUpdate.value } );
+
+      this.carNameUpdate.value = '';
+      this.carColorUpdate.value = '#ffffff';
+  
+      containerUpdateCar.forEach((el) => {
+        setDisableAttribute(el, true);
+      });
+      this.createCars();
+    });
   }
 }

@@ -53,4 +53,19 @@ export default class Loader {
       console.warn(error);
     }
   }
+
+  async updateCar(id: number, body: Car) {
+    try {
+      const response = await fetch(`${this.garageUrl}/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return await response.json();
+    } catch (error) {
+      console.warn(error);
+    }
+  }
 }
