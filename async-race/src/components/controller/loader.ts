@@ -1,6 +1,6 @@
 import { Car } from '../interface/interface';
 
-export default class Loader {
+export class Loader {
   baseUrl: string;
 
   garageUrl: string;

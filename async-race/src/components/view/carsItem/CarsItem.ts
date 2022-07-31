@@ -3,12 +3,16 @@ import createButton from '../../helpers/createBtn';
 import createDomNode from '../../helpers/createDomNode';
 import { Car } from '../../interface/interface';
 import getCar from '../../helpers/getCar';
-import Loader from '../../controller/loader';
+import { Loader } from '../../controller/loader';
 import { countTotal, currentPage } from '../containerGarageTitle/ContainerGarageTitle';
 import { carNameUpdate, carColorUpdate, btnUpdateCar } from '../controlButtons/controlButtons';
-import setDisableAttribute from '../../helpers/setAttr';
+import { btnNext, btnPrev, pageNum } from '../pagination/pagination';
+import loadPagination from '../../helpers/paginationLoad';
 
-export default class CarsItem {
+export let countTotalNum: number;
+
+export class CarsItem {
+
   carsItem!: HTMLElement;
 
   carsWrapper!: HTMLElement;
@@ -39,8 +43,6 @@ export default class CarsItem {
 
   numberPage;
 
-  cars;
-
   countTotal = countTotal;
 
   currentPage = currentPage;
@@ -51,9 +53,15 @@ export default class CarsItem {
 
   btnUpdateCar = btnUpdateCar;
 
-  constructor(cars: HTMLElement) {
+  cars;
+
+  btnNext = btnNext;
+
+  btnPrev = btnPrev;
+
+  constructor(cars: HTMLElement, numberPage: number) {
     this.cars = cars;
-    this.numberPage = 1;
+    this.numberPage = numberPage;
     this.createCars();
   }
 
@@ -83,24 +91,26 @@ export default class CarsItem {
   }
 
   async createCars() {
-    const cars = await this.loader.getCars(this.numberPage);
-    this.countTotal.innerHTML = ` (${cars?.count})`;
+    const carsObj = await this.loader.getCars(this.numberPage);
+    this.countTotal.innerHTML = ` (${carsObj?.count})`;
+    countTotalNum = Number(carsObj?.count);
     this.currentPage.innerHTML = `${this.numberPage}`;
 
     this.cars.innerHTML = '';
-    cars?.items.forEach((el: Car) => this.createCar(el));
+    carsObj?.items.forEach((el: Car) => this.createCar(el));
   }
 
   async removeCar(id: number) {
     this.loader.deleteCar(Number(id));
     this.createCars();
+    loadPagination(pageNum);
   }
 
   selectCar(id: number, color: string, name: string) {
     const containerUpdateCar = [this.carNameUpdate, this.carColorUpdate, this.btnUpdateCar];
 
     containerUpdateCar.forEach((el) => {
-      setDisableAttribute(el, false);
+      el.disabled = false;
     });
 
     this.carNameUpdate.value = name;
@@ -116,9 +126,9 @@ export default class CarsItem {
         this.carColorUpdate.value = '#ffffff';
   
         containerUpdateCar.forEach((el) => {
-          setDisableAttribute(el, true);
+          el.disabled = true;
         });
-        
+
         this.createCars();
       }
     });

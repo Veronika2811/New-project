@@ -2,17 +2,16 @@ import './controlButtons.scss';
 import createBtn from '../../helpers/createBtn';
 import createDomNode from '../../helpers/createDomNode';
 import createInput from '../../helpers/createInput';
-import Loader from '../../controller/loader';
-import CarsItem from '../carsItem/CarsItem';
+import { Loader } from '../../controller/loader';
+import { CarsItem } from '../carsItem/CarsItem';
 import { cars } from '../containerGarage/ContainerGarage';
-
-// export const carNameInput = createInput(['car-name-create'], [{ 'type': 'text' }, { 'placeholder': 'Enter name car' }]);
-// export const carColorInput = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }]);
+import { pageNum } from '../pagination/pagination';
+import loadPagination from '../../helpers/paginationLoad';
 
 export const carNameUpdate = createInput(['car-name-update'], [{ 'type': 'text' }, { 'placeholder': 'Update name car' }, { 'disabled': 'true' }]);
 export const carColorUpdate = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }, { 'disabled': 'true' }]);
 export const btnUpdateCar = createBtn(['btn', 'btn-update'], 'update');
-btnUpdateCar.setAttribute('disabled', 'true');
+btnUpdateCar.disabled = true;
 
 export class ControlBtn {
   sectionGarage;
@@ -55,23 +54,12 @@ export class ControlBtn {
     this.updateCarForm = createDomNode('div', ['update-car'],  this.controlButtons);
     this.controlRaceButtons = createDomNode('div', ['control-race-buttons'],  this.controlButtons);
 
-    // this.createCarForm.append(this.carNameInput, this.carColorInput);
-
     this.carNameInput = createInput(['car-name-create'], [{ 'type': 'text' }, { 'placeholder': 'Enter name car' }], this.createCarForm);
     this.carColorInput = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }], this.createCarForm);
     this.btnCreateCar = createBtn(['btn', 'btn-create'], 'create', this.createCarForm);
     this.btnCreateCar.addEventListener('click', () => this.creatNewCar());
 
-
     this.updateCarForm.append(this.carNameUpdate, this.carColorUpdate, this.btnUpdateCar);
-
-    // this.btnUpdateCar.addEventListener('click', () => this.updateCar());
-
-    // this.carNameUpdate = createInput(['car-name-update'], [{ 'type': 'text' }, { 'placeholder': 'Update name car' }, { 'disabled': 'true' }], this.updateCarForm);
-    // this.carColorUpdate = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }, { 'disabled': 'true' }], this.updateCarForm);
-    // this.btnUpdateCar = createBtn(['btn', 'btn-update'], 'update', this.updateCarForm, [{ 'disabled': 'true' }]);
-
-    // this.controlRaceButtons.append(this.btnRace, this.btnReset);
 
     this.btnRace = createBtn(['btn', 'green', 'btn-race'], 'race', this.controlRaceButtons);
     this.btnReset = createBtn(['btn', 'btn-reset'], 'reset', this.controlRaceButtons, [{ 'disabled': 'true' }]);
@@ -87,7 +75,9 @@ export class ControlBtn {
       this.carNameInput.value = '';
       this.carColorInput.value = '#ffffff';
 
-      new CarsItem(this.cars).createCars();
+      new CarsItem(this.cars, pageNum).createCars();
+
+      loadPagination(pageNum);
     }
   }
 }
