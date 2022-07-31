@@ -7,6 +7,7 @@ import { CarsItem } from '../carsItem/CarsItem';
 import { cars } from '../containerGarage/ContainerGarage';
 import { pageNum } from '../pagination/pagination';
 import loadPagination from '../../helpers/paginationLoad';
+import createRandomCar from '../../helpers/generateRandomCars';
 
 export const carNameUpdate = createInput(['car-name-update'], [{ 'type': 'text' }, { 'placeholder': 'Update name car' }, { 'disabled': 'true' }]);
 export const carColorUpdate = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }, { 'disabled': 'true' }]);
@@ -64,6 +65,7 @@ export class ControlBtn {
     this.btnRace = createBtn(['btn', 'green', 'btn-race'], 'race', this.controlRaceButtons);
     this.btnReset = createBtn(['btn', 'btn-reset'], 'reset', this.controlRaceButtons, [{ 'disabled': 'true' }]);
     this.btnGenerateCar = createBtn(['btn', 'btn-generate'], 'generate cars', this.controlRaceButtons);
+    this.btnGenerateCar.addEventListener('click', () => this.generateCars());
   }
 
   async creatNewCar() {
@@ -79,5 +81,14 @@ export class ControlBtn {
 
       loadPagination(pageNum);
     }
+  }
+
+  async generateCars() {
+    for (let i = 1; i <= 100; i++) {
+      await this.loader.createCar(createRandomCar());
+    }
+    new CarsItem(this.cars, pageNum).createCars();
+
+    loadPagination(pageNum);
   }
 }
