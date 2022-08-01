@@ -68,4 +68,26 @@ export class Loader {
       console.warn(error);
     }
   }
+
+  async switchEngine(id: number, status: string) {
+    try {
+      const response = await fetch(`${this.engineUrl}?id=${id}&status=${status}`, {
+        method: 'PATCH',
+      });
+      return await response.json();
+    } catch (error) {
+      console.warn(error);
+    }
+  }
+
+  async drive(id: number) {
+    try {
+      const response = await fetch(`${this.engineUrl}?id=${id}&status=drive`, { 
+        method: 'PATCH',
+      });
+      return response.status === 200 ? { ...(await response.json()) } : { success: false };
+    } catch (error) {
+      console.warn(error);
+    }
+  }
 }

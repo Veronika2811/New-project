@@ -1,10 +1,10 @@
-@import '../../helpers/constants.scss';
+@import "../../helpers/constants.scss";
 
 .cars-wrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 26px;
 }
 
 .line {
@@ -50,8 +50,31 @@
 .highway {
   display: flex;
   position: relative;
-  background-image: url('../../../assets/flag.png');
+  background-image: url("../../../assets/flag.png");
   background-repeat: no-repeat;
   background-size: 39px;
-  background-position-x: calc(100% - 55px);
+  background-position-x: calc(100% - 110px);
+}
+
+@keyframes car-animation {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+.car {
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  animation-fill-mode: forwards;
+}
+
+.car-track {
+  position: relative;
+  height: 50px;
+  flex-grow: 1;
+  margin-right: 100px;
 }
