@@ -8,6 +8,7 @@ import { cars } from '../containerGarage/ContainerGarage';
 import { pageNum } from '../pagination/pagination';
 import loadPagination from '../../helpers/paginationLoad';
 import createRandomCar from '../../helpers/generateRandomCars';
+import { getCarsOnThePage, startDriving, stopDriving } from '../../helpers/controlCars';
 
 export const carNameUpdate = createInput(['car-name-update'], [{ 'type': 'text' }, { 'placeholder': 'Update name car' }, { 'disabled': 'true' }]);
 export const carColorUpdate = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }, { 'disabled': 'true' }]);
@@ -46,6 +47,8 @@ export class ControlBtn {
   loader = new Loader();
 
   cars = cars;
+  
+  pageNum = pageNum;
 
   constructor(sectionGarage: HTMLElement) {
     this.sectionGarage = sectionGarage;
@@ -63,7 +66,11 @@ export class ControlBtn {
     this.updateCarForm.append(this.carNameUpdate, this.carColorUpdate, this.btnUpdateCar);
 
     this.btnRace = createBtn(['btn', 'green', 'btn-race'], 'race', this.controlRaceButtons);
+    this.btnRace.addEventListener('click', () => this.startRace());
+
     this.btnReset = createBtn(['btn', 'btn-reset'], 'reset', this.controlRaceButtons, [{ 'disabled': 'true' }]);
+    this.btnReset.addEventListener('click', () => this.resetRace());
+    
     this.btnGenerateCar = createBtn(['btn', 'btn-generate'], 'generate cars', this.controlRaceButtons);
     this.btnGenerateCar.addEventListener('click', () => this.generateCars());
   }
@@ -91,4 +98,17 @@ export class ControlBtn {
 
     loadPagination(pageNum);
   }
+
+  startRace() {
+    this.btnReset.disabled = false;
+    this.btnRace.disabled = true;
+    getCarsOnThePage().forEach((el) => startDriving(el));
+  }
+
+  resetRace() {
+    this.btnRace.disabled = false;
+    this.btnReset.disabled = true;
+    getCarsOnThePage().forEach((el) => stopDriving(el));
+  }
 }
+
