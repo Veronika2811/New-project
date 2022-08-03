@@ -1,4 +1,4 @@
-@import "../../helpers/constants.scss";
+@import "../../../helpers/constants.scss";
 
 .cars-wrapper {
   display: flex;
@@ -50,7 +50,7 @@
 .highway {
   display: flex;
   position: relative;
-  background-image: url("../../../assets/flag.png");
+  background-image: url("../../../../assets/flag.png");
   background-repeat: no-repeat;
   background-size: 39px;
   background-position-x: calc(100% - 110px);

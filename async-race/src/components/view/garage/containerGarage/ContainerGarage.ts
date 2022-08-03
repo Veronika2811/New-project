@@ -1,5 +1,5 @@
 
-import createDomNode from '../../helpers/createDomNode';
+import createDomNode from '../../../helpers/createDomNode';
 
 export const cars = createDomNode('div', ['cars']);
 

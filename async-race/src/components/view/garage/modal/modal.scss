@@ -1,0 +1,39 @@
+@import '../../../helpers/constants.scss';
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: 0.3s;
+}
+
+.modal {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: $colorWhite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $colorBlack;
+  padding: 20px;
+}
+
+.text-modal {
+  color: $colorBlack;
+  font-size: 20px;
+  font-weight: 900;
+  user-select: none;
+}
+
+.open {
+  height: 100vh;
+  overflow: hidden;
+}

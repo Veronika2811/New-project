@@ -1,4 +1,3 @@
-import './pageContainers.scss';
 import createDomNode from '../../../helpers/createDomNode';
 import { btnGarage, btnWinners } from '../header/Header';
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Car } from '../interface/interface';
 
 export class Loader {
@@ -23,6 +24,15 @@ export class Loader {
         items: await response.json(),
         count: response.headers.get('X-Total-Count'),
       };
+    } catch (error) {
+      console.warn(error);
+    }
+  }
+
+  async getCar(id: number) {
+    try {
+      const response = await fetch(`${this.garageUrl}/${id}`);
+      return await response.json();
     } catch (error) {
       console.warn(error);
     }
@@ -91,3 +101,7 @@ export class Loader {
     }
   }
 }
+
+
+
+

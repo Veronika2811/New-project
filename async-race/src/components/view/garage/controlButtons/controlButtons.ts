@@ -1,14 +1,15 @@
 import './controlButtons.scss';
-import createBtn from '../../helpers/createBtn';
-import createDomNode from '../../helpers/createDomNode';
-import createInput from '../../helpers/createInput';
-import { Loader } from '../../controller/loader';
+import createBtn from '../../../helpers/createBtn';
+import createDomNode from '../../../helpers/createDomNode';
+import createInput from '../../../helpers/createInput';
+import { Loader } from '../../../controller/loader';
 import { CarsItem } from '../carsItem/CarsItem';
 import { cars } from '../containerGarage/ContainerGarage';
-import { pageNum } from '../pagination/pagination';
-import loadPagination from '../../helpers/paginationLoad';
-import createRandomCar from '../../helpers/generateRandomCars';
-import { getCarsOnThePage, startDriving, stopDriving } from '../../helpers/controlCars';
+import { pageNum } from '../../pagination/pagination';
+import loadPagination from '../../../helpers/paginationLoad';
+import createRandomCar from '../../../helpers/generateRandomCars';
+import { getCarsOnThePage, raceCars, stopDriving } from '../../../helpers/carAnimation';
+import createAMessageAboutTheWinner from '../../../helpers/createMessageWinner';
 
 export const carNameUpdate = createInput(['car-name-update'], [{ 'type': 'text' }, { 'placeholder': 'Update name car' }, { 'disabled': 'true' }]);
 export const carColorUpdate = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }, { 'disabled': 'true' }]);
@@ -99,10 +100,11 @@ export class ControlBtn {
     loadPagination(pageNum);
   }
 
-  startRace() {
+  async startRace() {
     this.btnReset.disabled = false;
     this.btnRace.disabled = true;
-    getCarsOnThePage().forEach((el) => startDriving(el));
+    const winner = await raceCars();
+    createAMessageAboutTheWinner((winner.name as string), (winner.time as number));
   }
 
   resetRace() {
@@ -111,4 +113,3 @@ export class ControlBtn {
     getCarsOnThePage().forEach((el) => stopDriving(el));
   }
 }
-

@@ -1,9 +1,9 @@
 import './pagination.scss'; 
 import createBtn from '../../helpers/createBtn';
 import createDomNode from '../../helpers/createDomNode';
-import { CarsItem, countTotalNum } from '../carsItem/CarsItem';
-import { cars } from '../containerGarage/ContainerGarage';
-import { containerGarage } from '../containerGarageTitle/ContainerGarageTitle';
+import { CarsItem, countTotalNum } from '../garage/carsItem/CarsItem';
+import { cars } from '../garage/containerGarage/ContainerGarage';
+import { containerGarage } from '../View';
 import { Loader } from '../../controller/loader';
 import loadPagination from '../../helpers/paginationLoad';
 

@@ -1,14 +1,14 @@
 import './carsItem.scss';
-import createButton from '../../helpers/createBtn';
-import createDomNode from '../../helpers/createDomNode';
-import { Car } from '../../interface/interface';
-import getCar from '../../helpers/getCar';
-import { Loader } from '../../controller/loader';
-import { countTotal, currentPage } from '../containerGarageTitle/ContainerGarageTitle';
+import createButton from '../../../helpers/createBtn';
+import createDomNode from '../../../helpers/createDomNode';
+import { Car } from '../../../interface/interface';
+import getCar from '../../../helpers/getImageCar';
+import { Loader } from '../../../controller/loader';
+import { countTotal, currentPage } from '../../layout/containerTitle/ContainerGarageTitle';
 import { carNameUpdate, carColorUpdate, btnUpdateCar } from '../controlButtons/controlButtons';
-import { btnNext, btnPrev, pageNum } from '../pagination/pagination';
-import loadPagination from '../../helpers/paginationLoad';
-import { startDriving, stopDriving } from '../../helpers/controlCars';
+import { btnNext, btnPrev, pageNum } from '../../pagination/pagination';
+import loadPagination from '../../../helpers/paginationLoad';
+import { startDriving, stopDriving } from '../../../helpers/carAnimation';
 
 export let countTotalNum: number;
 
