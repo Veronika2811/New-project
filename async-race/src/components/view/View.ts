@@ -8,7 +8,7 @@ import { CarsItem } from './garage/carsItem/CarsItem';
 import { Pagination, pageNum, pageNumWin } from './pagination/pagination';
 import createDomNode from '../helpers/createDomNode';
 import Modal from './garage/modal/modal';
-// import { WinnersTable } from './winners/WinnersTable';
+import { WinnersTable } from './winners/WinnersTable';
 import WinnersItems from './winners/WinnersItems';
 import Win from './winners/winnersContainer';
 // import { Winners } from './winners/Winners';
@@ -48,7 +48,7 @@ export default class View {
 
   modal;
 
-  // winnersTable;
+  winnersTable;
 
   paginationWin;
 
@@ -69,8 +69,9 @@ export default class View {
     this.modal = new Modal();
     this.winners = new ContainerTitle(this.sectionWinners, this.containerWinners, 'Winners').winnersTitle();
     this.w = new Win(this.containerWinners);
-    // this.winnersTable = new WinnersTable();
+    this.winnersTable = new WinnersTable();
     this.winner = new WinnersItems(this.pageNumWin).createWinners();
     this.paginationWin = new Pagination(this.containerWinners).paginationWinners();
+    // new WinnersTable();
   }
 }

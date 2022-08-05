@@ -8,15 +8,19 @@ import { containerWinners } from '../View';
 // import { pageNumWin, Pagination } from '../pagination/pagination';
 import { contWin } from './winnersContainer';
 import { pageNumWin } from '../pagination/pagination';
+import { sort, order } from './WinnersTable';
 
 export let countTotalNumWin: number;
+
+// export let sort = 'wins';
+// export let order = 'DESC';
 
 export default class WinnersItems {
   // pageNumber;
 
-  sort;
+  // sort = sort;
 
-  order;
+  // order = order;
 
   tbody!: HTMLElement;
 
@@ -40,8 +44,8 @@ export default class WinnersItems {
 
   constructor(numberPage: number) {
     this.numberPage = numberPage;
-    this.sort = 'wins';
-    this.order = 'DESC';
+    // this.sort = 'wins';
+    // this.order = 'DESC';
     // this.tbody.innerHTML = '';
     // this.createWinners();
   }
@@ -57,12 +61,15 @@ export default class WinnersItems {
   }
 
   async createWinners() {
-    const winners = await this.loader.getWinners({ page: this.numberPage, limit: 10, sort: this.sort, order: this.order } );
+    const winners = await this.loader.getWinners({ page: this.numberPage, limit: 10, sort: sort, order: order } );
     this.countTotalWinners.innerHTML = ` (${winners?.count})`;
     this.currentPageWinners.innerHTML = `${this.numberPage}`;
     countTotalNumWin = Number(winners?.count);
-    this.contWin.innerHTML = '';
-    new WinnersTable();
+    // this.contWin.innerHTML = '';
+    // new WinnersTable();
+    while (this.table.children.length > 1) {
+      this.table.removeChild(this.table.lastChild!);
+    }
     winners?.items.forEach((el, index) => {
       this.createWinner({ index: Number(`${(this.numberPage - 1) * 10 + index + 1}`), color: el.car.color, name: el.car.name, wins: el.wins, time: el.time });
     });
