@@ -5,11 +5,13 @@ import createInput from '../../../helpers/createInput';
 import { Loader } from '../../../controller/loader';
 import { CarsItem } from '../carsItem/CarsItem';
 import { cars } from '../containerGarage/ContainerGarage';
-import { pageNum } from '../../pagination/pagination';
-import loadPagination from '../../../helpers/paginationLoad';
+import { pageNum, pageNumWin } from '../../pagination/pagination';
+import { loadPagination } from '../../../helpers/paginationLoad';
 import createRandomCar from '../../../helpers/generateRandomCars';
 import { getCarsOnThePage, raceCars, stopDriving } from '../../../helpers/carAnimation';
 import createAMessageAboutTheWinner from '../../../helpers/createMessageWinner';
+import WinnersItems from '../../winners/WinnersItems';
+// import { Winners } from '../../winners/Winners';
 
 export const carNameUpdate = createInput(['car-name-update'], [{ 'type': 'text' }, { 'placeholder': 'Update name car' }, { 'disabled': 'true' }]);
 export const carColorUpdate = createInput(['car-color'], [{ 'type': 'color' }, { 'value': '#ffffff' }, { 'disabled': 'true' }]);
@@ -105,6 +107,8 @@ export class ControlBtn {
     this.btnRace.disabled = true;
     const winner = await raceCars();
     createAMessageAboutTheWinner((winner.name as string), (winner.time as number));
+    await this.loader.saveWinner( { id: (winner.id as number), time: winner.time } );
+    new WinnersItems(pageNumWin).createWinners();
   }
 
   resetRace() {

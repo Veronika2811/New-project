@@ -1,7 +1,7 @@
 import { Loader } from '../controller/loader';
-import { btnNext, btnPrev } from '../view/pagination/pagination';
+import { btnNext, btnPrev, btnNextWin, btnPrevWin } from '../view/pagination/pagination';
 
-export default async function loadPagination(pageNum: number | undefined) {
+export async function loadPagination(pageNum: number | undefined) {
   const carsObj = await new Loader().getCars(pageNum);
   const currentPage = (Math.ceil(Number(carsObj?.count) / 7));
   
@@ -20,5 +20,28 @@ export default async function loadPagination(pageNum: number | undefined) {
     btnPrev.disabled = true;
   } else {
     btnPrev.disabled = false;
+  }
+}
+
+export async function loadPaginationWin(pageNum: number) {
+  const carsObj = await new Loader().getWinners({ page: pageNum });
+  // console.log((Math.ceil(Number(carsObj?.count) / 10))
+  const currentPage = (Math.ceil(Number(carsObj?.count) / 10));
+  
+  if (currentPage === 1) {
+    btnNextWin.disabled = true;
+    btnPrevWin.disabled = true;
+  }
+  
+  if (currentPage === pageNum) {
+    btnNextWin.disabled = true;
+  } else {
+    btnNextWin.disabled = false;
+  }
+
+  if (pageNum === 1) {
+    btnPrevWin.disabled = true;
+  } else {
+    btnPrevWin.disabled = false;
   }
 }

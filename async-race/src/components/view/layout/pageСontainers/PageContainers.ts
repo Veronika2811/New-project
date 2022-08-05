@@ -1,9 +1,9 @@
 import createDomNode from '../../../helpers/createDomNode';
 import { btnGarage, btnWinners } from '../header/Header';
 
-export const sectionGarage = createDomNode('section', ['garage']);
+export const sectionGarage = createDomNode('section', ['garage', 'hide']);
 
-export const sectionWinners = createDomNode('section', ['winners', 'hide']);
+export const sectionWinners = createDomNode('section', ['winners']);
 
 export default class PageContainers {
   private main;

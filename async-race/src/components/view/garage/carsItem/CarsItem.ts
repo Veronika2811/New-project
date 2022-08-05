@@ -6,9 +6,11 @@ import getCar from '../../../helpers/getImageCar';
 import { Loader } from '../../../controller/loader';
 import { countTotal, currentPage } from '../../layout/containerTitle/ContainerGarageTitle';
 import { carNameUpdate, carColorUpdate, btnUpdateCar } from '../controlButtons/controlButtons';
-import { btnNext, btnPrev, pageNum } from '../../pagination/pagination';
-import loadPagination from '../../../helpers/paginationLoad';
+import { btnNext, btnPrev, pageNum, pageNumWin } from '../../pagination/pagination';
+import { loadPagination } from '../../../helpers/paginationLoad';
 import { startDriving, stopDriving } from '../../../helpers/carAnimation';
+import WinnersItems from '../../winners/WinnersItems';
+// import { Winners } from '../../winners/Winners';
 
 export let countTotalNum: number;
 
@@ -111,8 +113,10 @@ export class CarsItem {
   }
 
   async removeCar(id: number) {
-    this.loader.deleteCar(Number(id));
+    this.loader.deleteCar(id);
     this.createCars();
+    this.loader.deleteWinner(id);
+    new WinnersItems(pageNumWin).createWinners();
     loadPagination(pageNum);
   }
 

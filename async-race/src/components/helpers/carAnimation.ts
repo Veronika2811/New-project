@@ -1,5 +1,5 @@
 import { Loader } from '../controller/loader';
-import { Car, StartDriving } from '../interface/interface';
+import { CarWinner, StartDriving } from '../interface/interface';
 
 export function trackElements(id: number) {
   const startBtn = document.querySelector(`[data-start='${id}']`) as HTMLButtonElement;
@@ -27,12 +27,13 @@ export async function stopDriving(id: number) {
   const { startBtn, stopBtn, car } = trackElements(id);
   stopBtn.disabled = true;
   await new Loader().switchEngine(id, 'stopped');
+  car.style.animationName = '';
+  car.style.animationDuration = '';
+  car.style.animationPlayState = '';
   startBtn.disabled = false;
-  car.style.animationName = 'none';
-  car.style.animationDuration = 'initial';
 }
 
-async function getAWinner(promises: Promise<StartDriving>[], indexes: number[]): Promise<Car> {
+async function getAWinner(promises: Promise<StartDriving>[], indexes: number[]): Promise<CarWinner> {
   const { success, id, time } = await Promise.any(promises);
   if (!success) {
     const indexFailed = indexes.findIndex((i) => i === id);
@@ -55,5 +56,6 @@ export async function raceCars() {
   const promises = currentCarsId.map((id) => startDriving(id));
   
   const winner = await getAWinner(promises, currentCarsId);
+  // console.log(winner);
   return winner;
 }
