@@ -1,0 +1,31 @@
+@import './components/helpers/constants.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.body {
+  background-color: $colorBlack;
+  color: $colorWhite;
+  padding: 10px;
+}
+
+.green {
+  background-color: $colorGreen;
+
+  &:not([disabled]):hover {
+    color: $colorWhite;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.container-garage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
