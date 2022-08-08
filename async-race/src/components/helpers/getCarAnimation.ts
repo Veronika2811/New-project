@@ -37,9 +37,10 @@ function buttonsOn() {
   (document.querySelector('.btn-reset') as HTMLButtonElement).disabled = false;
 }
 
+const state: Animate = {};
+
 function getAnimationCar(car: HTMLElement, distance: number, timeOfAnimation: number) {
   let start = 0;
-  const state: Animate = {};
   function animate(timestamp: number) {
     if (!start) {
       start = timestamp;
@@ -82,7 +83,7 @@ export async function stopDriving(id: number) {
     startBtn, stopBtn, car, btnRemove, btnSelect,
   } = trackElements(id);
   await new Loader().switchEngine(id, 'stopped');
-  window.cancelAnimationFrame(id);
+  window.cancelAnimationFrame(state.idAnimate);
   car.style.transform = '';
   startBtn.disabled = false;
   stopBtn.disabled = true;
