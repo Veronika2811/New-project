@@ -1,6 +1,6 @@
 export interface Car {
-  name: string,
-  color: string,
+  name: string;
+  color: string;
   id?: number;
 }
 
@@ -29,9 +29,30 @@ export interface StartDriving {
 }
 
 export interface WinnersItem {
-  index: number, 
-  color: string, 
-  name: string, 
-  wins: number, 
-  time: number
+  index: number;
+  color: string;
+  name: string;
+  wins: number;
+  time: number;
+}
+
+export interface CarControl {
+  startBtn: HTMLButtonElement;
+  stopBtn: HTMLButtonElement;
+  car: HTMLElement;
+  btnRemove: HTMLButtonElement;
+  btnSelect: HTMLButtonElement;
+}
+
+export interface AllCars {
+  count: string | null;
+  items: Array<Car>;
+}
+
+export interface Attributes {
+  [key: string]: string;
+}
+
+export interface Animate {
+  [key: string]: number;
 }

@@ -14,8 +14,18 @@
 
 .green {
   background-color: $colorGreen;
+
+  &:not([disabled]):hover {
+    color: $colorWhite;
+  }
 }
 
 .hide {
   display: none;
+}
+
+.container-garage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

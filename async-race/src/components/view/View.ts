@@ -1,77 +1,71 @@
-import { Header } from '../view/layout/header/Header';
-import { ControlBtn } from './garage/controlButtons/controlButtons';
-import PageContainers from './layout/pageСontainers/PageContainers';
-import { sectionGarage, sectionWinners } from '../view/layout/pageСontainers/PageContainers';
-import { ContainerTitle } from './layout/containerTitle/ContainerGarageTitle';
-import { cars, ContainerGarage } from './garage/containerGarage/ContainerGarage';
-import { CarsItem } from './garage/carsItem/CarsItem';
-import { Pagination, pageNum, pageNumWin } from './pagination/pagination';
-import createDomNode from '../helpers/createDomNode';
-import Modal from './garage/modal/modal';
-import { WinnersTable } from './winners/WinnersTable';
-import WinnersItems from './winners/WinnersItems';
-import Win from './winners/winnersContainer';
-// import { Winners } from './winners/Winners';
-
-export const containerGarage = createDomNode('div', ['container-garage']);
-
-export const containerWinners = createDomNode('div', ['container-winners']);
+import HeaderRender from './layout/headerRender/HeaderRender';
+import {
+  sectionGarage,
+  sectionWinners,
+  containerCars,
+  containerGarage,
+  containerWinners,
+} from '../constants/constantsDOM';
+import TitleRender from './layout/titleRender/TitleRender';
+import ContainerGarageRender from './garagePage/containerGarageRender/ContainerGarageRender';
+import { PaginationRender, currentPageGarage, currentPageWinners } from './paginationRender/PaginationRender';
+import PageSwitching from '../model/PageSwitching';
+import ButtonsListener from '../model/ControlButtonsListener';
+import ModalListener from '../model/ModalListener';
+import { TableWinnersListener } from '../model/TableWinnersListener';
+import { WinnerRender } from './winnersPage/WinnerRender';
+import { CarRender } from './garagePage/carRender/CarRender';
 
 export default class View {
-  sectionGarage = sectionGarage;
+  protected headerRender;
 
-  sectionWinners = sectionWinners;
+  protected pageSwitching;
 
-  containerWinners = containerWinners;
+  protected sectionGarage = sectionGarage;
 
-  header;
+  protected sectionWinners = sectionWinners;
 
-  pages;
+  protected containerWinners = containerWinners;
 
-  controlBtns;
+  protected controlButtonsRender;
 
-  titlePage;
+  protected titlePageRender;
 
-  containerGarage = containerGarage;
+  protected containerGarage = containerGarage;
 
-  cars = cars;
+  protected containerCars = containerCars;
 
-  containerGarageCars;
+  protected containerGarageCars;
 
-  carsItem;
+  protected paginationPageGarage;
 
-  pagination;
+  protected winnersContent;
 
-  pageNum = pageNum;
+  protected modal;
 
-  winners;
+  protected winnersTable;
 
-  modal;
+  protected winner;
 
-  winnersTable;
+  protected cars;
 
-  paginationWin;
-
-  winner;
-  
-  w;
-
-  pageNumWin = pageNumWin;
+  protected paginationPageWinners;
 
   constructor() {
-    this.header = new Header();
-    this.pages = new PageContainers();
-    this.controlBtns = new ControlBtn(this.sectionGarage);
-    this.titlePage = new ContainerTitle(this.sectionGarage, this.containerGarage, 'Garage').garageTitle();
-    this.containerGarageCars = new ContainerGarage(this.containerGarage); 
-    this.carsItem = new CarsItem(this.cars, this.pageNum);
-    this.pagination = new Pagination(this.containerGarage).paginationGarage(); 
-    this.modal = new Modal();
-    this.winners = new ContainerTitle(this.sectionWinners, this.containerWinners, 'Winners').winnersTitle();
-    this.w = new Win(this.containerWinners);
-    this.winnersTable = new WinnersTable();
-    this.winner = new WinnersItems(this.pageNumWin).createWinners();
-    this.paginationWin = new Pagination(this.containerWinners).paginationWinners();
-    // new WinnersTable();
+    this.headerRender = new HeaderRender();
+    this.pageSwitching = new PageSwitching();
+    this.controlButtonsRender = new ButtonsListener();
+    this.titlePageRender = new TitleRender(this.sectionGarage, this.containerGarage, 'Garage')
+      .garageTitle();
+    this.containerGarageCars = new ContainerGarageRender(this.containerGarage);
+    this.cars = new CarRender(currentPageGarage);
+    this.paginationPageGarage = new PaginationRender(this.containerGarage).paginationGarageRender();
+    this.modal = new ModalListener();
+    this.winnersContent = new TitleRender(this.sectionWinners, this.containerWinners, 'Winners')
+      .winnersTitle();
+    this.winnersTable = new TableWinnersListener();
+    this.winner = new WinnerRender(currentPageWinners).createWinners();
+    this.paginationPageWinners = new PaginationRender(this.containerWinners)
+      .paginationWinnersRender();
   }
 }

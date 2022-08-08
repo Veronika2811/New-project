@@ -1,26 +1,39 @@
-/* eslint-disable no-console */
-import { Car, Winner, WinnersPage } from '../interface/interface';
+import {
+  AllCars,
+  Car,
+  StartDriving,
+  Winner,
+  WinnersPage,
+} from '../interface/interface';
+import {
+  MAX_ITEMS_PER_PAGE_GARAGE,
+  NUMBER_OF_WINS,
+  MAX_ITEMS_PER_PAGE_WINNERS,
+} from '../constants/constants';
 
-export class Loader {
-  baseUrl: string;
+export default class Loader {
+  private garageUrl: string;
 
-  garageUrl: string;
+  private engineUrl: string;
 
-  engineUrl: string;
+  private winnersUrl: string;
 
-  winnersUrl: string;
-
-  constructor(baseUrl = 'http://127.0.0.1:3000', garageUrl = `${baseUrl}/garage`, 
-    engineUrl = `${baseUrl}/engine`, winnersUrl = `${baseUrl}/winners`) {
-    this.baseUrl = baseUrl;
+  constructor(
+    baseUrl = 'http://127.0.0.1:3000',
+    garageUrl = `${baseUrl}/garage`,
+    engineUrl = `${baseUrl}/engine`,
+    winnersUrl = `${baseUrl}/winners`,
+  ) {
     this.garageUrl = garageUrl;
     this.engineUrl = engineUrl;
     this.winnersUrl = winnersUrl;
   }
 
-  async getCars(page?: number, limit = 7) {
+  async getCars(page?: number, limit = MAX_ITEMS_PER_PAGE_GARAGE): Promise<AllCars | void> {
     try {
-      const response = await fetch(`${this.garageUrl}?_page=${page}&_limit=${limit}`);
+      const response = await fetch(
+        `${this.garageUrl}?_page=${page}&_limit=${limit}`,
+      );
       return {
         items: await response.json(),
         count: response.headers.get('X-Total-Count'),
@@ -39,7 +52,7 @@ export class Loader {
     }
   }
 
-  async createCar(body: Car) {
+  async createCar(body: Car): Promise<Car | void> {
     try {
       const response = await fetch(this.garageUrl, {
         method: 'POST',
@@ -54,7 +67,7 @@ export class Loader {
     }
   }
 
-  async deleteCar(id: number) {
+  async deleteCar(id: number): Promise<Car | void> {
     try {
       const response = await fetch(`${this.garageUrl}/${id}`, {
         method: 'DELETE',
@@ -65,7 +78,7 @@ export class Loader {
     }
   }
 
-  async updateCar(id: number, body: Car) {
+  async updateCar(id: number, body: Car): Promise<Car | void> {
     try {
       const response = await fetch(`${this.garageUrl}/${id}`, {
         method: 'PUT',
@@ -82,9 +95,12 @@ export class Loader {
 
   async switchEngine(id: number, status: string) {
     try {
-      const response = await fetch(`${this.engineUrl}?id=${id}&status=${status}`, {
-        method: 'PATCH',
-      });
+      const response = await fetch(
+        `${this.engineUrl}?id=${id}&status=${status}`,
+        {
+          method: 'PATCH',
+        },
+      );
       return await response.json();
     } catch (error) {
       console.warn(error);
@@ -93,17 +109,18 @@ export class Loader {
 
   async drive(id: number) {
     try {
-      const response = await fetch(`${this.engineUrl}?id=${id}&status=drive`, { 
+      const response = await fetch(`${this.engineUrl}?id=${id}&status=drive`, {
         method: 'PATCH',
       });
-      return response.status === 200 ? { ...(await response.json()) } : { success: false };
+      return response.status === 200
+        ? { ...(await response.json()) }
+        : { success: false };
     } catch (error) {
       console.warn(error);
     }
   }
 
-  // Winner
-  async createWinner(body: Winner) {
+  async createWinner(body: Winner): Promise<StartDriving | void> {
     try {
       const response = await fetch(this.winnersUrl, {
         method: 'POST',
@@ -132,22 +149,25 @@ export class Loader {
       console.warn(error);
     }
   }
-  
-  async saveWinner({ id, time }: Winner) {
+
+  async saveWinner({ id, time }: Winner): Promise<StartDriving | void> {
     try {
-      const responseStatus = await (await fetch(`${this.winnersUrl}/${id}`)).status;
+      const responseStatus = (await fetch(`${this.winnersUrl}/${id}`)).status;
       if (responseStatus === 404) {
-        return await this.createWinner({ id, wins: 1, time });
-      } else {
-        const winner = await this.getWinner(id);
-        return await this.updateWinner(id, { id, wins: winner.wins + 1, time: time < winner.time ? time : winner.time });
+        return await this.createWinner({ id, wins: NUMBER_OF_WINS, time });
       }
+      const winner = await this.getWinner(id);
+      return await this.updateWinner(id, {
+        id,
+        wins: winner.wins + 1,
+        time: time < winner.time ? time : winner.time,
+      });
     } catch (error) {
       console.warn(error);
     }
   }
 
-  async getWinner(id: number | undefined) {
+  async getWinner(id: number) {
     try {
       const response = await fetch(`${this.winnersUrl}/${id}`);
       return await response.json();
@@ -156,14 +176,26 @@ export class Loader {
     }
   }
 
-  async getWinners( { page, limit = 10, sort, order }: WinnersPage) {
+  async getWinners({
+    page,
+    limit = MAX_ITEMS_PER_PAGE_WINNERS,
+    sort,
+    order,
+  }: WinnersPage) {
     try {
-      const sorting = sort && order ? `&_sort=${sort}&_order=${order}` : '';
-      const response = await fetch(`${this.winnersUrl}?_page=${page}&_limit=${limit}` + sorting);
+      const sortingTheTableOfWinners = sort && order ? `&_sort=${sort}&_order=${order}` : '';
+      const response = await fetch(
+        `${this.winnersUrl}?_page=${page}&_limit=${limit}${
+          sortingTheTableOfWinners}`,
+      );
       const items = await response.json();
+
       return {
         items: await Promise.all(
-          items.map(async (winner: { id: number }) => ({ ...winner, car: await this.getCar(winner.id) })),
+          items.map(async (winner: { id: number }) => ({
+            ...winner,
+            car: await this.getCar(winner.id),
+          })),
         ),
         count: Number(response.headers.get('X-Total-Count')),
       };
@@ -172,7 +204,7 @@ export class Loader {
     }
   }
 
-  async deleteWinner(id: number) {
+  async deleteWinner(id: number): Promise<StartDriving | void> {
     try {
       const response = await fetch(`${this.winnersUrl}/${id}`, {
         method: 'DELETE',
@@ -183,7 +215,3 @@ export class Loader {
     }
   }
 }
-
-
-
-

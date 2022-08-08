@@ -1,6 +1,7 @@
 {
   "plugins": ["import", "@typescript-eslint"],
   "extends": [
+      "airbnb-base",
       "airbnb-typescript/base",
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended"
@@ -16,10 +17,19 @@
   },
   "rules": {
       "no-debugger": "off",
-      "no-console": "warn",
+      "no-console": "off",
+      "no-alert": "off",
+      "consistent-return": "off",
       "class-methods-use-this": "off",
       "@typescript-eslint/no-var-requires": 0,
       "@typescript-eslint/no-explicit-any": "error",
-      "max-lines-per-function": ["error", { "max": 40 }]
+      "max-lines-per-function": ["error", { "max": 40 }],
+      "import/no-cycle": "off",
+      "import/no-mutable-exports": "off",
+      "no-new": "off",
+      "no-param-reassign": "off",
+      "no-await-in-loop": "off",
+      "no-restricted-syntax": "off",
+      "guard-for-in": "off"
   }
 }

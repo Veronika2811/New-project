@@ -1,0 +1,35 @@
+@import '../../../helpers/constants.scss';
+
+.control-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+.create-car,
+.update-car,
+.control-race-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.car-name-create,
+.car-name-update {
+  padding: 4px;
+}
+
+.car-color {
+  &:not([disabled]):hover {
+    cursor: pointer;
+  }
+}
+
+.white {
+  background-color: $colorWhite;
+
+  &:not([disabled]):hover {
+    color: $colorGreen;
+  }
+}
