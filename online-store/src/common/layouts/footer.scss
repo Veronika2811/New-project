@@ -28,12 +28,12 @@ footer {
   text-decoration: none;
   transition: 0.5s;
 
-  & span {
-    color: $colorBlack;
-  }
-
   &:hover {
     filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg)
       brightness(92%) contrast(87%);
   }
+}
+
+.git-name {
+  color: $colorBlack;
 }

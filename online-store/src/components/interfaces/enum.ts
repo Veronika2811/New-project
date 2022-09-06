@@ -53,7 +53,7 @@ export enum DOM {
             type="checkbox"
             value="offer"
             id="offer-1">
-          <label for="offer-1">Новинки</label>
+          <label for="offer-1" class="custom-checkbox__label">Новинки</label>
         </li>
         <li class="settings__item">
           <input
@@ -62,7 +62,7 @@ export enum DOM {
             type="checkbox"
             value="offer"
             id="offer-2">
-          <label for="offer-2">Популярное</label>
+          <label for="offer-2" class="custom-checkbox__label">Популярное</label>
         </li>
       </ul>
     </div>
@@ -77,7 +77,7 @@ export enum DOM {
             type="checkbox"
             value="decoration"
             id="type-decoration-1">
-          <label for="type-decoration-1">Кольцо</label>
+          <label for="type-decoration-1" class="custom-checkbox__label">Кольцо</label>
         </li>
         <li class="settings__item">
           <input
@@ -86,7 +86,7 @@ export enum DOM {
             type="checkbox"
             value="decoration"
             id="type-decoration-2">
-          <label for="type-decoration-2">Серьги</label>
+          <label for="type-decoration-2" class="custom-checkbox__label">Серьги</label>
         </li>
         <li class="settings__item">
           <input
@@ -95,7 +95,7 @@ export enum DOM {
             type="checkbox"
             value="decoration"
             id="type-decoration-3">
-          <label for="type-decoration-3">Цепочка</label>
+          <label for="type-decoration-3" class="custom-checkbox__label">Цепочка</label>
         </li>
         <li class="settings__item">
           <input
@@ -104,7 +104,7 @@ export enum DOM {
             type="checkbox"
             value="decoration"
             id="type-decoration-4">
-          <label for="type-decoration-4">Браслет</label>
+          <label for="type-decoration-4" class="custom-checkbox__label">Браслет</label>
         </li>
         <li class="settings__item">
           <input
@@ -113,7 +113,7 @@ export enum DOM {
             type="checkbox"
             value="decoration"
             id="type-decoration-5">
-          <label for="type-decoration-5">Заколка</label>
+          <label for="type-decoration-5" class="custom-checkbox__label">Заколка</label>
         </li>
       </ul>
     </div>
@@ -128,7 +128,7 @@ export enum DOM {
             type="checkbox"
             value="typeInsert"
             id="type-insert-1">
-          <label for="type-insert-1">Без вставки</label>
+          <label for="type-insert-1" class="custom-checkbox__label">Без вставки</label>
         </li>
         <li class="settings__item">
           <input
@@ -137,7 +137,7 @@ export enum DOM {
             type="checkbox"
             value="typeInsert"
             id="type-insert-2">
-          <label for="type-insert-2">Бриллиант</label>
+          <label for="type-insert-2" class="custom-checkbox__label">Бриллиант</label>
         </li>
         <li class="settings__item">
           <input
@@ -146,7 +146,7 @@ export enum DOM {
             type="checkbox"
             value="typeInsert"
             id="type-insert-3">
-          <label for="type-insert-3">Фианит</label>
+          <label for="type-insert-3" class="custom-checkbox__label">Фианит</label>
         </li>
         <li class="settings__item">
           <input
@@ -155,7 +155,7 @@ export enum DOM {
             type="checkbox"
             value="typeInsert"
             id="type-insert-4">
-          <label for="type-insert-4">Жемчуг</label>
+          <label for="type-insert-4" class="custom-checkbox__label">Жемчуг</label>
         </li>
       </ul>
     </div>
@@ -170,7 +170,7 @@ export enum DOM {
             type="checkbox"
             value="typeMetall"
             id="type-metall-1">
-          <label for="type-metall-1">Золото</label>
+          <label for="type-metall-1" class="custom-checkbox__label">Золото</label>
         </li>
         <li class="settings__item">
           <input
@@ -179,7 +179,7 @@ export enum DOM {
             type="checkbox"
             value="typeMetall"
             id="type-metall-2">
-          <label for="type-metall-2">Серебро</label>
+          <label for="type-metall-2" class="custom-checkbox__label">Серебро</label>
         </li>
       </ul>
     </div>
