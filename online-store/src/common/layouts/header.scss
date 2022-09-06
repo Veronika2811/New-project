@@ -38,6 +38,8 @@
 }
 
 .items-the-cart {
+  @include flex();
+  @include font($size: 1.2rem);
   display: inline-block;
   position: absolute;
   width: 20px;
@@ -47,8 +49,6 @@
   background: $colorGold;
   right: 15px;
   top: 15px;
-  @include flex();
-  @include font($size: 1.2rem);
 }
 
 .line {
