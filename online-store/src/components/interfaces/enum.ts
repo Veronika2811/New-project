@@ -34,10 +34,10 @@ export enum DOM {
       <div class="filter-price__slider" id="range-slider-year"></div>
       <div class="filter-price__inputs">
       <label for="" class="filter-price__label">
-        <input type="number" min="2010" max="2022" placeholder="2010" class="filter-price__input" id="input-3" readonly="readonly">
+        <input type="number" min="2010" max="2022" placeholder="2010" class="filter-price__input" id="input-min-year" readonly="readonly">
       </label>
       <label for="" class="filter-price__label">
-        <input type="number" min="2010" max="2022" placeholder="2022" class="filter-price__input" id="input-4" readonly="readonly">
+        <input type="number" min="2010" max="2022" placeholder="2022" class="filter-price__input" id="input-max-year" readonly="readonly">
       </label>
     </div>
     </div>

@@ -1,25 +1,23 @@
 import './main_page.scss';
 import { DOM } from './interfaces/enum';
 import * as noUiSlider from 'nouislider';
-import { Listener } from './ListenerPage';
 import Modal from './layouts/Modal';
 import Footer from './layouts/Footer';
 import Header from './layouts/Header';
 import { MAX_PRICE_RANGE, MAX_YEAR_RANGE, MIN_PRICE_RANGE, MIN_YEAR_RANGE, STEP_RANGE } from './constants/constants';
+import listenerInit from './listeners/listenerInit';
 
 export default class Page {
   private main: string = DOM.main;
 
-  createMain() {
+  mainRender() {
     const headerBlock = <HTMLElement>document.querySelector('header');
     headerBlock.insertAdjacentHTML('afterend', this.main);
   }
 
-  createRange() {
+  rangePriceRender() {
     const rangeSliderPrice = document.getElementById('range-slider-price') as noUiSlider.target;
-    const rangeSliderYear = document.getElementById('range-slider-year') as noUiSlider.target;
 
-    // Price
     let startPrice = [MIN_PRICE_RANGE, MAX_PRICE_RANGE];
 
     if (localStorage.getItem('price') !== null) {
@@ -35,14 +33,16 @@ export default class Page {
         'max': MAX_PRICE_RANGE,
       },
     });
+  }
 
-    // Year
+  rangeYearRender() {
+    const rangeSliderYear = document.getElementById('range-slider-year') as noUiSlider.target;
     let startYear = [MIN_YEAR_RANGE, MAX_YEAR_RANGE];
 
     if (localStorage.getItem('price') !== null) {
       startYear = JSON.parse(localStorage.getItem('year') as string);
     }
-
+  
     noUiSlider.create(rangeSliderYear, {
       start: startYear,
       connect: true,
@@ -54,13 +54,14 @@ export default class Page {
     });
   }
 
-  createPage() {
+  pageRender() {
     new Header();
-    this.createMain();
-    this.createRange();
+    this.mainRender();
+    this.rangePriceRender();
+    this.rangeYearRender();
     new Modal();
     new Footer();
-    new Listener().listenerAll();
+    listenerInit();
   }
 }
 

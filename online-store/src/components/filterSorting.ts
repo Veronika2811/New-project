@@ -1,59 +1,48 @@
-import { Filter } from './interfaces/interface';
-import { products } from './card';
+import ProductInformation from './interfaces/interface';
 import Card from './Cards';
 import sortingSelect from './helpers/sortingCards';
 import { searchCard } from './helpers/search';
 import checkedCheck from './helpers/checkedCheckbox';
 import activeCardAndCart from './helpers/activeCardAndCart';
+import filterGoodsByPriceAndYearRange from './filterGoods/filterGoodsByPriceAndYearRange';
 
 export default class FilterSort {
+  public goods;
+  
+  constructor(items: ProductInformation[]) {
+    this.goods = items;
+  }
+
   compareArrays(
-    sourceArray: Array<Filter>,
+    sourceArray: Array<ProductInformation>,
     filter: Array<string | boolean>,
   ) {
-    const sortedArray: Filter[] = [];
+    const sortedArray: ProductInformation[] = [];
 
     sourceArray.forEach((obj) => {
       if (
-        filter.includes(obj.offer) ||
-        filter.includes(obj.decoration) ||
-        filter.includes(obj.insert) ||
+        filter.includes(obj.offer) &&
+        filter.includes(obj.decoration) &&
+        filter.includes(obj.insert) &&
         filter.includes(obj.metall)
       ) {
         sortedArray.push(obj);
       }
     });
-    return sortedArray.length > 0 ? sortedArray : [];
+    return sortedArray;
   }
 
   sortByRange(arrPrice: string[], arrYear: string[]) {
-    const arrPriceAndYear = arrPrice.concat(arrYear);
-    const arrNumber = arrPriceAndYear.map((el) => Number(el));
+    const sortedArrayByRange: Array<ProductInformation> = filterGoodsByPriceAndYearRange(this.goods, arrPrice, arrYear);
 
-    const sortedArrayByRange: Array<Filter> = [];
-
-    products.forEach((el) => {
-      const price = el.price;
-      const year = el.year;
-
-      if (
-        arrNumber[0] <= price &&
-        arrNumber[1] >= price &&
-        arrNumber[2] <= year &&
-        arrNumber[3] >= year
-      ) {
-        sortedArrayByRange.push(el);
-      }
-    });
-
-    if (sortedArrayByRange.length === 0) {
-      new Card().drawText();
-    } else {
+    if (sortedArrayByRange.length > 0) {
       this.selectedСheckboxes(sortedArrayByRange);
+    } else {
+      new Card().drawText();
     }
   }
 
-  selectedСheckboxes(sortedArrayByRange: Array<Filter>) {
+  selectedСheckboxes(sortedArrayByRange: Array<ProductInformation>) {
     const filterChek = document.querySelector('.filter') as HTMLDivElement;
     const currentCheckbox = filterChek.querySelectorAll('input');
 
@@ -63,7 +52,7 @@ export default class FilterSort {
   }
 
   filterSettings(
-    sortedArray: Array<Filter>,
+    sortedArray: Array<ProductInformation>,
     selectedCheckboxesObject: { [key: string]: (string | boolean)[] },
   ) {
     if (selectedCheckboxesObject.offer.length !== 0) {
@@ -87,21 +76,15 @@ export default class FilterSort {
     } else {
       new Card().draw(sortedArray);
 
-      // Sorting
       if (localStorage.getItem('option') !== null) {
         sortingSelect(localStorage.getItem('option') as string);
-      } else {
-        sortingSelect('value1');
       }
 
-      // Search card
       if (localStorage.getItem('search') !== null) {
         searchCard(JSON.parse(localStorage.getItem('search') as string));
       }
 
-      // Active card and cart
       activeCardAndCart();
     }
-
   }
 }

@@ -1,4 +1,4 @@
 import './global.scss';
 import Page from './components/Page';
 
-new Page().createPage();
+new Page().pageRender();

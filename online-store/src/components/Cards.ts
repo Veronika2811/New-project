@@ -1,15 +1,15 @@
-import { Filter } from './interfaces/interface';
+import ProductInformation from './interfaces/interface';
 
 class Card {
 
-  draw(data: Filter[]): void {
+  draw(data: ProductInformation[]): void {
     const rightSide = document.querySelector('.right-side') as HTMLElement;
     rightSide.innerHTML = '';
 
     const fragment = document.createDocumentFragment() as DocumentFragment;
     const newsItemTemp = document.querySelector('.card') as HTMLTemplateElement;
 
-    data.forEach((item: Filter) => {
+    data.forEach((item: ProductInformation) => {
       const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
       (newsClone.querySelector('.card') as HTMLDivElement).dataset.sort = String(item.price);
       (newsClone.querySelector('.card') as HTMLDivElement).dataset.name = item.name;

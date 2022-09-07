@@ -38,7 +38,7 @@
 }
 
 .items-the-cart {
-  @include flex();
+  text-align: center;
   @include font($size: 1.2rem);
   display: inline-block;
   position: absolute;

@@ -1,4 +1,4 @@
-export interface Filter {
+export default interface ProductInformation {
   name: string;
   price: number;
   year: number;
