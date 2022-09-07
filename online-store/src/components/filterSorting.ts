@@ -1,7 +1,7 @@
 import { Filter } from './interfaces/interface';
 import { products } from './card';
 import Card from './Cards';
-import { sortingSelect } from './helpers/sortingCards';
+import sortingSelect from './helpers/sortingCards';
 import { searchCard } from './helpers/search';
 import checkedCheck from './helpers/checkedCheckbox';
 import activeCardAndCart from './helpers/activeCardAndCart';

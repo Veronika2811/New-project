@@ -22,7 +22,7 @@ export default class Footer {
   constructor() {
     this.line = createDomNode('hr', 'line');
 
-    this.footer = createDomNode('footer');
+    this.footer = createDomNode('footer', 'footer');
 
     this.yearOfCreation = createDomNode('span', 'year', '© 2022');
 

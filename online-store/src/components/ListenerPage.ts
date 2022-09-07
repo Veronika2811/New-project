@@ -1,6 +1,6 @@
 
 import FilterSort from './filterSorting';
-import { sortingSelect } from './helpers/sortingCards';
+import sortingSelect from './helpers/sortingCards';
 import * as noUiSlider from 'nouislider';
 import { searchCard } from './helpers/search';
 

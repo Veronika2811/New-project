@@ -1,50 +1,55 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+function stringSorting(element: string, sortOrder?: string) {
+  const parentCards = document.querySelector('.right-side') as HTMLElement;
 
-export function sortingSelect(value: string) {
-  const parentCards = <HTMLElement>document.querySelector('.right-side');
+  let sortСondition;
+  
+  for (let i = 0; i < parentCards.children.length; i++) {
+    for (let j = i; j < parentCards.children.length; j++) {
+      if (sortOrder === 'max') {
+        sortСondition = parentCards.children[i].getAttribute(element) as string > (parentCards.children[j].getAttribute(element) as string);
+      } else {
+        sortСondition = parentCards.children[i].getAttribute(element) as string < (parentCards.children[j].getAttribute(element) as string);
+      }
+      if (sortСondition) {
+        const replacedNode = parentCards.replaceChild(parentCards.children[j], parentCards.children[i]);
+        parentCards.children[i].parentNode?.insertBefore(replacedNode, parentCards.children[i].nextSibling);
+      }
+    }
+  }
+}
 
-  if ( value === 'value1' ) {
-    for (let i = 0; i < parentCards.children.length; i++) {
-      for (let j = i; j < parentCards.children.length; j++) {
-        if (parentCards.children[i].getAttribute('data-name')! > parentCards.children[j].getAttribute('data-name')!) {
-          const replacedNode = parentCards.replaceChild(parentCards.children[j], parentCards.children[i]);
-          parentCards.children[i].parentNode?.insertBefore(replacedNode, parentCards.children[i].nextSibling);
-        }
+function digitSorting(element: string, sortOrder?: string) {
+  const parentCards = document.querySelector('.right-side') as HTMLElement;
+
+  let sortСondition;
+  
+  for (let i = 0; i < parentCards.children.length; i++) {
+    for (let j = i; j < parentCards.children.length; j++) {
+      if (sortOrder === 'max') {
+        sortСondition = Number(parentCards.children[i].getAttribute(element)) > Number(parentCards.children[j].getAttribute(element));
+      } else {
+        sortСondition = Number(parentCards.children[i].getAttribute(element)) < Number(parentCards.children[j].getAttribute(element));
+      }
+      if (sortСondition) {
+        const replacedNode = parentCards.replaceChild(parentCards.children[j], parentCards.children[i]);
+        parentCards.children[i].parentNode?.insertBefore(replacedNode, parentCards.children[i].nextSibling);
       }
     }
-    localStorage.setItem('option', value);
   }
-  if ( value === 'value2' ) {
-    for (let i = 0; i < parentCards.children.length; i++) {
-      for (let j = i; j < parentCards.children.length; j++) {
-        if (parentCards.children[i].getAttribute('data-name')! < parentCards.children[j].getAttribute('data-name')!) {
-          const replacedNode = parentCards.replaceChild(parentCards.children[j], parentCards.children[i]);
-          parentCards.children[i].parentNode?.insertBefore(replacedNode, parentCards.children[i].nextSibling);
-        }
-      }
-    }
-    localStorage.setItem('option', value);
+}
+
+export default function sortingSelect(value: string) {
+  if ( value === 'fromAToZ' ) {
+    stringSorting('data-name', 'max');
   }
-  if ( value === 'value3' ) {
-    for (let i = 0; i < parentCards.children.length; i++) {
-      for (let j = i; j < parentCards.children.length; j++) {
-        if (Number(parentCards.children[i].getAttribute('data-sort')) > Number(parentCards.children[j].getAttribute('data-sort'))) {
-          const replacedNode = parentCards.replaceChild(parentCards.children[j], parentCards.children[i]);
-          parentCards.children[i].parentNode?.insertBefore(replacedNode, parentCards.children[i].nextSibling);
-        }
-      }
-    }
-    localStorage.setItem('option', value);
+  if ( value === 'fromZToA' ) {
+    stringSorting('data-name');
   }
-  if ( value === 'value4' ) {
-    for (let i = 0; i < parentCards.children.length; i++) {
-      for (let j = i; j < parentCards.children.length; j++) {
-        if (Number(parentCards.children[i].getAttribute('data-sort')) < Number(parentCards.children[j].getAttribute('data-sort'))) {
-          const replacedNode = parentCards.replaceChild(parentCards.children[j], parentCards.children[i]);
-          parentCards.children[i].parentNode?.insertBefore(replacedNode, parentCards.children[i].nextSibling);
-        }
-      }
-    }
-    localStorage.setItem('option', value);
+  if ( value === 'fromMinToMaxPrice' ) {
+    digitSorting('data-sort', 'max');
   }
+  if ( value === 'fromMaxToMinPrice' ) {
+    digitSorting('data-sort');
+  }
+  localStorage.setItem('option', value);
 }

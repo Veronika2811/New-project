@@ -5,6 +5,7 @@ import { Listener } from './ListenerPage';
 import Modal from './layouts/Modal';
 import Footer from './layouts/Footer';
 import Header from './layouts/Header';
+import { MAX_PRICE_RANGE, MAX_YEAR_RANGE, MIN_PRICE_RANGE, MIN_YEAR_RANGE, STEP_RANGE } from './constants/constants';
 
 export default class Page {
   private main: string = DOM.main;
@@ -19,7 +20,7 @@ export default class Page {
     const rangeSliderYear = document.getElementById('range-slider-year') as noUiSlider.target;
 
     // Price
-    let startPrice = [20, 200];
+    let startPrice = [MIN_PRICE_RANGE, MAX_PRICE_RANGE];
 
     if (localStorage.getItem('price') !== null) {
       startPrice = JSON.parse(localStorage.getItem('price') as string);
@@ -28,15 +29,15 @@ export default class Page {
     noUiSlider.create(rangeSliderPrice, {
       start: startPrice,
       connect: true,
-      step: 1,
+      step: STEP_RANGE,
       range: {
-        'min': 20,
-        'max': 200,
+        'min': MIN_PRICE_RANGE,
+        'max': MAX_PRICE_RANGE,
       },
     });
 
     // Year
-    let startYear = [2010, 2022];
+    let startYear = [MIN_YEAR_RANGE, MAX_YEAR_RANGE];
 
     if (localStorage.getItem('price') !== null) {
       startYear = JSON.parse(localStorage.getItem('year') as string);
@@ -45,10 +46,10 @@ export default class Page {
     noUiSlider.create(rangeSliderYear, {
       start: startYear,
       connect: true,
-      step: 1,
+      step: STEP_RANGE,
       range: {
-        'min': 2010,
-        'max': 2022,
+        'min': MIN_YEAR_RANGE,
+        'max': MAX_YEAR_RANGE,
       },
     });
   }

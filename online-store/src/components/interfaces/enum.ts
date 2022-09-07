@@ -5,10 +5,10 @@ export enum DOM {
     <div class="wrapper">
       <h2>Сортировка</h2>
       <select name="sort-fields" class="sort-params">
-        <option id="1" value="value1" selected>По названию, от А до Я</option>
-        <option id="2" value="value2">По названию, от Я до А</option>
-        <option id="3" value="value3">Увеличение цены</option>
-        <option id="4" value="value4">Уменьшение цены</option>
+        <option id="1" value="fromAToZ" selected>По названию, от А до Я</option>
+        <option id="2" value="fromZToA">По названию, от Я до А</option>
+        <option id="3" value="fromMinToMaxPrice">Увеличение цены</option>
+        <option id="4" value="fromMaxToMinPrice">Уменьшение цены</option>
       </select>
     </div>
     <hr class="line" />
