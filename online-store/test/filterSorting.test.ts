@@ -1,70 +1,63 @@
-// import FilterSort from '../src/components/filterSorting';
-// import { goods } from '../src/components/goods';
+import filterGoodsByPriceAndYearRange from '../src/components/filterGoods/filterGoodsByPriceAndYearRange';
+import FilterSort from '../src/components/filterSorting';
 
-// const productArray = [
-//   { 
-//     'name': 'Rock-n-roll',
-//     'price': 20,
-//     'year': 2010,
-//     'offer': 'Популярное',
-//     'decoration': 'Браслет',
-//     'insert': 'Без вставки',
-//     'metall': 'Золото',
-//     'image': './assets/catalog/bracelets/1.JPG',
-//   },
-//   { 
-//     'name': 'Нежность',
-//     'price': 70,
-//     'year': 2011,
-//     'offer': 'Популярное',
-//     'decoration': 'Браслет',
-//     'insert': 'Фианит',
-//     'metall': 'Серебро',
-//     'image': './assets/catalog/bracelets/2.JPG',
-//   },
-// ];
+const RockNRollMock = { 
+  name: 'Nail',
+  price: 53,
+  year: 2022,
+  offer: 'Новинка',
+  decoration: 'Браслет',
+  insert: 'Бриллиант',
+  metall: 'Серебро',
+  image: './assets/catalog/bracelets/8.JPG',
+};
 
-// test('Sort an array', () => {
-//   const resultArray  = [
-//     { 
-//       'name': 'Нежность',
-//       'price': 70,
-//       'year': 2011,
-//       'offer': 'Популярное',
-//       'decoration': 'Браслет',
-//       'insert': 'Фианит',
-//       'metall': 'Серебро',
-//       'image': './assets/catalog/bracelets/2.JPG',
-//     },
-//   ];
+const GridMock = { 
+  name: 'Grid',
+  price: 99,
+  year: 2022,
+  offer: 'Новинка',
+  decoration: 'Браслет',
+  insert: 'Без вставки',
+  metall: 'Серебро',
+  image: './assets/catalog/bracelets/9.JPG',
+};
 
-//   expect(new FilterSort(goods).compareArrays(productArray, ['Фианит'])).toEqual(resultArray);
-// });
+const ArtMock = { 
+  name: 'Art',
+  price: 102,
+  year: 2014,
+  offer: false,
+  decoration: 'Цепочка',
+  insert: 'Без вставки',
+  metall: 'Серебро',
+  image: './assets/catalog/chains/2.JPG',
+};
 
-// test('this product has the desired properties', () => {
-//   const objectProduct  = 
-//   { 
-//     'name': 'Нежность',
-//     'price': 70,
-//     'year': 2011,
-//     'offer': 'Популярное',
-//     'decoration': 'Браслет',
-//     'insert': 'Фианит',
-//     'metall': 'Серебро',
-//     'image': './assets/catalog/bracelets/2.JPG',
-//   };
+const PowerMock = { 
+  name: 'Power',
+  price: 34,
+  year: 2022,
+  offer: 'Новинка',
+  decoration: 'Серьги',
+  insert: 'Без вставки',
+  metall: 'Серебро',
+  image: './assets/catalog/earrings/7.JPG',
+};
 
-//   expect(objectProduct).toHaveProperty('name');
-//   expect(objectProduct).toHaveProperty('price');
-//   expect(objectProduct).toHaveProperty('year');
-//   expect(objectProduct).toHaveProperty('offer');
-//   expect(objectProduct).toHaveProperty('decoration');
-//   expect(objectProduct).toHaveProperty('insert');
-//   expect(objectProduct).toHaveProperty('metall');
-//   expect(objectProduct).toHaveProperty('image');
-// });
+const goodsMock = [RockNRollMock, GridMock, ArtMock, PowerMock];
+ 
+it('should sort array of goods by property', () => {
+  const expectedArrayGoods = [RockNRollMock, GridMock, ArtMock];
+  const goodsFilters = ['Браслет', 'Цепочка'];
 
+  expect(new FilterSort(goodsMock).compareArrays(goodsMock, goodsFilters)).toEqual(expectedArrayGoods);
+});
 
-// test('returns sorted array', () => {
-//   expect(new FilterSort(goods).compareArrays(productArray, ['Фианит'])).toBeDefined();
-// });
+it('should sort the array of goods by price range and year of release', () => {
+  const expectedArrayGoods = [RockNRollMock, PowerMock];
+  const filterPrice = ['34', '53'];
+  const filterYear = ['2020', '2022'];
+
+  expect(filterGoodsByPriceAndYearRange(goodsMock, filterPrice, filterYear)).toEqual(expectedArrayGoods);
+});

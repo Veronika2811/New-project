@@ -21,9 +21,9 @@ export default class FilterSort {
 
     sourceArray.forEach((obj) => {
       if (
-        filter.includes(obj.offer) &&
-        filter.includes(obj.decoration) &&
-        filter.includes(obj.insert) &&
+        filter.includes(obj.offer) ||
+        filter.includes(obj.decoration) ||
+        filter.includes(obj.insert) ||
         filter.includes(obj.metall)
       ) {
         sortedArray.push(obj);
