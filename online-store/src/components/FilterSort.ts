@@ -1,10 +1,10 @@
 import ProductInformation from './interfaces/interface';
 import Card from './Cards';
-import sortingSelect from './helpers/sortingCards';
-import { searchCard } from './helpers/search';
-import checkedCheck from './helpers/checkedCheckbox';
-import activeCardAndCart from './helpers/activeCardAndCart';
-import filterGoodsByPriceAndYearRange from './filterGoods/filterGoodsByPriceAndYearRange';
+import sortingSelect from '../helpers/sortingCards';
+import { searchCard } from '../helpers/search';
+import checkedCheck from '../helpers/checkedCheckbox';
+import activeCardAndCart from '../helpers/activeCardAndCart';
+import filterGoodsByPriceAndYearRange from '../helpers/filterGoods/filterGoodsByPriceAndYearRange';
 
 export default class FilterSort {
   public goods;
@@ -35,7 +35,7 @@ export default class FilterSort {
   sortByRange(arrPrice: string[], arrYear: string[]) {
     const sortedArrayByRange: Array<ProductInformation> = filterGoodsByPriceAndYearRange(this.goods, arrPrice, arrYear);
 
-    if (sortedArrayByRange.length > 0) {
+    if (sortedArrayByRange.length) {
       this.selectedСheckboxes(sortedArrayByRange);
     } else {
       new Card().drawText();

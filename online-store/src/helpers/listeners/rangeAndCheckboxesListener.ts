@@ -1,6 +1,6 @@
 import * as noUiSlider from 'nouislider';
-import FilterSort from '../filterSorting';
-import { goods } from '../goods';
+import FilterSort from '../../components/FilterSort';
+import { goods } from '../../goods/goods';
 
 export default function rangeAndCheckboxesListener() {
   const rangeSliderPrice = document.getElementById('range-slider-price') as noUiSlider.target;

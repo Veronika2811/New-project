@@ -1,4 +1,4 @@
-import ProductInformation from '../interfaces/interface';
+import ProductInformation from '../../components/interfaces/interface';
 
 export default function filterGoodsByPriceAndYearRange(goods: Array<ProductInformation>, arrPrice: string[], arrYear: string[]) {
   const sortedArrayByRange: Array<ProductInformation> = [];

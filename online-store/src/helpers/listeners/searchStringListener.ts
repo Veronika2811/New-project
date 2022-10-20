@@ -1,4 +1,4 @@
-import { searchCard } from '../helpers/search';
+import { searchCard } from '../search';
 
 export default function searchStringListener() {
   const inputSearch = document.querySelector('.search') as HTMLInputElement;

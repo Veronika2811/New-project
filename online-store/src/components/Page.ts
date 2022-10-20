@@ -4,8 +4,8 @@ import * as noUiSlider from 'nouislider';
 import Modal from './layouts/Modal';
 import Footer from './layouts/Footer';
 import Header from './layouts/Header';
-import { MAX_PRICE_RANGE, MAX_YEAR_RANGE, MIN_PRICE_RANGE, MIN_YEAR_RANGE, STEP_RANGE } from './constants/constants';
-import listenerInit from './listeners/listenerInit';
+import { MAX_PRICE_RANGE, MAX_YEAR_RANGE, MIN_PRICE_RANGE, MIN_YEAR_RANGE, STEP_RANGE } from '../helpers/constants/constants';
+import listenerInit from '../helpers/listeners/listenerInit';
 
 export default class Page {
   private main: string = DOM.main;

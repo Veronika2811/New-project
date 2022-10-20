@@ -1,0 +1,11 @@
+export const FIANIT = 'Фианит';
+export const SILVER = 'Серебро';
+export const GOLD = 'Золото';
+export const POPULAR = 'Популярное';
+export const NEW = 'Новинка';
+export const FAKE = 'fake';
+export const CHAIN = 'Цепочка';
+export const BRACELET = 'Браслет';
+export const EARRINGS = 'Серьги';
+export const WITHOUT_INSERT = 'Без вставки';
+export const DIAMOND = 'Бриллиант';

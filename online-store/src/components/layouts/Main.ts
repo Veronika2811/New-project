@@ -1,4 +1,4 @@
-import createDomNode from '../helpers/createDomNode';
+import createDomNode from '../../helpers/createDomNode';
 
 export default class Main {
   private main;

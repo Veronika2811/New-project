@@ -1,4 +1,4 @@
-import sortingSelect from '../helpers/sortingCards';
+import sortingSelect from '../sortingCards';
 
 export default function goodsSortingListener() {
   const select = document.querySelector('select') as HTMLSelectElement;

@@ -1,4 +1,4 @@
-import ProductInformation from './interfaces/interface';
+import ProductInformation from '../components/interfaces/interface';
 
 export const goods: ProductInformation[] = [
   { 
